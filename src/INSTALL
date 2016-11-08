@@ -1,0 +1,5 @@
+Installation du manuel de Grisbi au format html avec images
+
+Décompactez l'archive et placez (en tant que root) le répertoire fr 
+ainsi obtenu dans /usr/share/help/grisbi. Au besoin écrasez le 
+répertoire existant.

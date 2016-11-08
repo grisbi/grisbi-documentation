@@ -1,0 +1,12 @@
+Source: grisbi-doc
+Section: doc
+Priority: optional
+Maintainer: Benjamin Drieu <benj@debian.org>
+Build-Depends: debhelper (>> 4.0.0), hevea, imagemagick, perl5, tetex-bin
+Standards-Version: 3.5.8
+
+Package: grisbi-doc
+Architecture: all
+Description: Grisbi manual in HTML and PDF 
+ This is the documentation for Grisbi, a Gnome-based personal
+ financial management program.  It is shipped in HTML and PDF.

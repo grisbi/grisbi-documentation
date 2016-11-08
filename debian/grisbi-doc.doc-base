@@ -1,0 +1,17 @@
+Document: grisbi-doc
+Title: Grisbi Manual
+Author: Daniel Cartron
+Abstract: This is the documentation for Grisbi, a Gnome-based personal
+ financial management program.  
+
+Section: doc
+
+Format: PDF
+Files: /usr/share/doc/grisbi-doc/grisbi-manual.pdf.gz
+
+Format: text
+Files: /usr/share/doc/grisbi-doc/grisbi-manual.text.gz
+
+Format: HTML
+Index: /usr/share/doc/grisbi-doc/html/index.html
+Files: /usr/share/doc/grisbi-doc/html/*.html

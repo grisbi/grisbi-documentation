@@ -1,0 +1,13 @@
+Corriger les labels qui ne sont pas trouvés
+
+Passe de spellcheck (epelle)
+
+Doc sur Makefile: comment utiliser, quoi installer, références pour doc
+LaTeX
+
+Lier le manuel et le fichier .po
+
+Les \og, \fg et \today ne sont pas compris par le html (et probabalement 
+d'autres)
+
+Améliorer le rendu pdf (ajouter liens et miniatures anti-aliasées)

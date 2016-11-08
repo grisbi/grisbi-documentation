@@ -1,0 +1,195 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents : The first start chapter
+% $Id : grisbi-manuel-start.tex, v 0.4 2002/10/27 Daniel Cartron
+% $Id : grisbi-manuel-start.tex, v 0.5.0 2004/06/01 Loic Breilloux
+% $Id : grisbi-manuel-start.tex, v 0.6.0 2011/11/17 Jean-Luc Duflot
+% $Id : grisbi-manuel-start.tex, v 0.8.9 2012/04/27 Jean-Luc Duflot
+% $Id : grisbi-manuel-start.tex, v 1.0 2014/02/12 Jean-Luc Duflot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Premier démarrage de Grisbi\label{start}}
+
+
+\section{Assistant premier démarrage\label{start-first}}
+
+
+Au premier démarrage de Grisbi, l'assistant premier démarrage s'affiche pour
+vous aider à configurer l'application. Il comprend deux étapes, qui concernent
+la gestion du \indexword{fichier de comptes}\index{fichier de comptes} (chargement et enregistrement automatiques,
+chiffrement et copies de sauvegarde).
+
+Il est conseillé de cocher les options :
+
+\begin{itemize}
+ \item chargement automatique du dernier fichier consulté ;
+ \item enregistrer automatiquement en fermant ;
+ \item effectuer une copie de sauvegarde avant d'enregistrer le fichier.
+\end{itemize}
+
+Cet assistant est suivi automatiquement par un deuxième, l'assistant de création du \indexword{fichier de comptes}\index{fichier de comptes}. Puis vient automatiquement un troisième assistant, l'assistant de création de compte, qui permet de créer le premier compte. Tout cela est décrit en détail dans la section \ref{start-newfile} ci-dessous.
+
+À tout moment vous pouvez sortir de n'importe quel assistant par le bouton \menu{Annuler}.
+
+Si vous ne voulez pas utiliser l'assistant premier démarrage, vous pouvez à la
+place utiliser un fichier exemple (voir la section ci-dessous).
+
+
+\section{Fichier exemple\label{start-example}}
+
+
+Si vous voulez utiliser Grisbi immédiatement sans être obligé de rentrer tout un tas d'opérations, par exemple  pour vous faire une idée des possibilités de ce logiciel, vous pouvez télécharger le fichier \file{Example\_1.0.gsb}, soit sur le site de Grisbi dans la rubrique Téléchargement{\siteGrisbiTelechargement}, soit sur le site {Sourceforge}{\siteSourceForgeDocumentation}.
+
+% espace avant Attention ou Note  :  mm
+\vspacepdf{3mm}
+\textbf{Note} : dans ce fichier exemple, les noms des tiers sont de pure invention ; seul un hasard indépendant de notre volonté peut avoir fait que ce soit celui d'une personne ou d'une entité existante.
+
+
+\section{Création d'un nouveau fichier de comptes\label{start-newfile}}
+
+
+La première fois que vous utiliserez Grisbi, vous devrez d'abord créer un \indexword{fichier
+de comptes}\index{fichier de comptes}. L'\gls{extension} de ce fichier sera \file{.gsb} et son nom \file{nom-de-votre-fichier.gsb}. 
+
+Immédiatement après, il vous faudra créer au minimum un compte, et par la suite quelques autres comptes (comptes courants, d'épargne, de crédit, éventuellement un compte d'espèces et quelques comptes de transition) qui contiendront leurs opérations respectives. 
+
+Pour une gestion familiale, vous n'aurez normalement qu'un seul fichier de comptes, car cela permet tous les échanges entre vos différents comptes. Si vous gérez une association, ou une autre famille sans rapport comptable avec la première, vous créerez un autre fichier de comptes, qui portera un autre nom \file{nom-de-votre-deuxième-fichier.gsb}. Ainsi les \indexword{entités comptables}\index{entité comptable} resteront bien séparées.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\strong{Attention} : pour une entité comptable donnée, il est nécessaire et important de bien distinguer LE \og \indexword{fichier de comptes}\index{fichier de comptes} \fg{} et LES \og \indexword{fichiers de compte}\index{fichiers de compte} \fg{} :
+
+\begin{itemize}
+	\item LE \og fichier de comptes \fg{} que vous aurez créé aura pour extension \file{.gsb} et pour nom \file{nom-de-votre-fichier.gsb} ; il contient toutes les données de tous les comptes créés pour la gestion d'une entité comptable ;
+	\item LES \og fichiers de compte \fg{} sont des fichiers que vous pourriez être amené(e) à utiliser ou à créer pour importer ou exporter des données d'une application de comptabilité à une autre ; ces fichiers ne contiendront que les données d'un seul compte (courant ou autre) à la fois ; ils auront des extensions différentes (\file{.ofx}, \file{.csv} ou \file{.qif}) suivant leur contenu ; pour plus de détails, voir le chapitre \vref{move}, \menu{Export et import de comptes}.
+\end{itemize}
+
+% espace après Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+Autrement dit, l'ensemble des comptes de votre foyer est enregistré dans un fichier de comptes, et l'ensemble des comptes de votre association l'est dans un autre fichier de comptes ; et un compte dans Grisbi peut correspondre à un fichier de compte, mais seulement lorsqu'on parle d'importation ou d'exportation de données.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Le déroulement général de la procédure de création d'un fichier de comptes est le suivant : cliquez sur le menu \menu{Fichier - Nouveau fichier de comptes} ; l'assistant de création de fichier de comptes s'ouvre, qui comprend six étapes. À la sixième étape, l'assistant vous propose :
+
+\begin{itemize}
+	\item  soit de créer un nouveau compte, et il enchaîne sur l'assistant de création de compte, qui comprend lui-même cinq étapes, pour créer le premier compte (car il est indispensable de disposer d'au moins un compte) ;
+	\item soit d'utiliser des données déjà existantes, et il enchaîne alors sur l'assistant d'importation des opérations, qui comprend aussi cinq étapes, pour importer des opérations de comptes existants.
+\end{itemize}
+
+Après la création de ce premier compte ou l'importation d'opérations de comptes existants, si vous voulez créer d'autres comptes, vous retournerez à la fin de la procédure de création du fichier de comptes, ce qui vous renverra dans les deux cas vers la création d'un nouveau compte.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour créer votre fichier de comptes, cliquez sur le menu \menu{Fichier - Nouveau fichier de comptes} ; la procédure détaillée est la suivante :
+
+\begin{enumerate}
+	\item fenêtre d'accueil : validez par le bouton \menu{Suivant} ;
+	\item configuration
+		\ifIllustration générale\refimage{start-file-create-img} :
+		\else générale :
+		\fi
+
+		\ifIllustration
+		% image centrée
+		\begin{figure}[htbp]
+		\begin{center}
+		\includegraphics[scale=0.5]{image/screenshot/start_file_create}
+		\end{center}
+		\caption{Configuration générale du fichier de comptes}
+		\label{start-file-create-img}
+		\end{figure}
+		% image centrée
+		\fi
+		
+		\begin{enumerate} 
+		 	\item choisissez le nom de l'entité comptable dont vous gérez la comptabilité, par exemple \og Ma comptabilité \fg{}, qui pourra être choisi comme titre de la page d'accueil de l'application Grisbi,
+			\item saisissez le nom du fichier de comptes avec son arborescence complète ; Grisbi vous propose par défaut le même nom que celui de l'entité comptable, mais vous pouvez le modifier,
+			\item cochez la case \menu{Chiffrer le fichier Grisbi} si vous voulez \gls{chiffrer} le fichier de comptes,
+			\item sélectionnez le \indexword{format de la date}\index{format de date} avec l'un des deux boutons : dd/mm/yyyy pour jour/mois/année, ou mm/dd/yyyy pour mois/jour/année,
+			\item choisissez le \indexword{séparateur}\index{séparateur} décimal et celui des milliers dans les listes déroulantes,
+			 \item renseignez l'adresse (facultatif),
+			 \item  validez par le bouton \menu{Suivant} ;
+		\end{enumerate}
+		
+	\item sélection de la \indexword{devise}\index{devise} de base :
+		\begin{enumerate} 
+		 	\item cliquez sur la devise choisie dans la liste,
+			\item cochez la case \menu{Afficher les devises obsolètes} si vous voulez aussi afficher d'anciennes devises,
+			\item validez par le bouton \menu{Suivant} ;
+		\end{enumerate}
+	\item sélection des \indexword{types de catégories}\index{catégories !types} utilisées :
+		\begin{enumerate} 
+		 	\item cliquez sur la catégorie choisie dans la liste, qui comprend : \menu{Catégories générales}, \menu{Liste vide}, \menu{Comptabilité libérale}, \menu{Plan comptable associatif simplifié} et \menu{Plan comptable associatif},
+			\item cochez la case \menu{Afficher l'ensemble des catégories} si vous voulez aussi afficher d'autres catégories libellées en anglais,
+			\item validez par le bouton \menu{Suivant} ;
+		\end{enumerate}		
+
+	\item définition des \indexword{banques}\index{banques !définition} détenant vos comptes :
+		\begin{enumerate} 
+		 	\item cliquez sur  \menu{Ajouter} pour définir une banque ; renseignez les détails de la banque (nom, code banque, etc.), puis validez par le bouton \menu{Ajouter} pour valider la banque,
+			\item sélectionnez une banque dans la liste et validez par le bouton \menu{Enlever} pour supprimer une banque, puis confirmez dans la fenêtre qui s'ouvre,
+			\item répétez les actions a et b autant de fois que nécessaire,
+			\item  validez par le bouton \menu{Suivant} pour passer à l'étape suivante, \menu{Création d'un nouveau compte} ;
+		\end{enumerate}		 	
+
+	\item configuration terminée  : la configuration du fichier de comptes est terminée, et cette fenêtre vous propose de choisir l'une des deux méthodes de création de votre premier
+\ifIllustration compte\refimage{start-account-choice-img} :
+\else compte :
+\fi
+
+\ifIllustration
+% image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/start_account_choice}
+\end{center}
+\caption{Choix du premier compte}
+\label{start-account-choice-img}
+\end{figure}
+% image centrée
+\fi
+
+		\begin{itemize}
+			\item \menu{Créer un nouveau compte vide} : si vous cochez cette ligne, puis si vous validez par le bouton \menu{Fermer}, cette fenêtre se ferme et l'assistant de création de nouveau compte démarre. Reportez-vous à la section \vref{accounts-new}, \menu{Création d'un nouveau compte}, qui décrit entièrement cette procédure, puis revenez à cette page ;
+
+			\item \menu{À partir de données provenant d'un fichier bancaire ou d'un autre logiciel} : si vous cochez cette ligne, puis si vous validez par le bouton \menu{Fermer}, cette fenêtre se ferme et l'assistant d'importation des données d'un fichier de compte par Grisbi démarre. Reportez-vous à la section \vref{move-import-importinit}, \menu{Import de fichiers de compte d'un autre logiciel dans Grisbi}, qui décrit entièrement cette procédure, puis revenez à cette page.
+		\end{itemize}
+\end{enumerate}
+
+% étiquette du paragraphe suivant, pour que les liens hypertexte dans account.tex et QIF.tex  arrivent bien dessus
+\label{start-newfile-end}
+
+\textit{\textbf{D'une manière ou d'une autre}}, vous venez donc de créer votre fichier de comptes, ainsi que le premier compte de ce fichier. 
+
+%espace pour changement de thème
+\vspacepdf{5mm}
+Si vous voulez créer maintenant d'autres comptes, sélectionnez le menu \menu{Édition - Nouveau compte} pour créer un autre compte (voir la section \vref{accounts-new}, \menu{Création d'un nouveau compte}).
+
+%espace pour changement de thème
+\vspacepdf{5mm}
+Sinon, vous pouvez commencer à utiliser le compte que vous venez de créer ou celui dont vous venez d'importer les données.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\strong{Attention} : d'une manière générale, il est déconseillé d'avoir des accents ou des espaces dans les noms des répertoires et fichiers utilisés par Grisbi. Si c'est le cas, renommez-les maintenant. Par exemple, les espaces peuvent être remplacées par des tirets bas (\_).
+
+% saut de page pour titre solidaire
+\newpage
+
+
+\section{Enregistrement de votre fichier de comptes\label{start-save}}
+
+
+Vos opérations ne sont pas écrites au fur et à mesure de leur saisie comme 
+elles peuvent l'être dans d'autres logiciels ; vous devez donc enregistrer votre fichier de comptes avant de quitter. N'ayez crainte, Grisbi vous prévient si vous ne l'avez pas fait. 
+
+Vous pouvez configurer les options d'enregistrement du fichier de comptes dans le menu \menu{Édition - Préférences}, voir le paragraphe \vref{setup-general-files-manage}, \menu{Gestion des fichiers de comptes}.
+
+
+\section{Import à partir d'un autre logiciel de comptabilité personnelle}
+
+Voir la section \vref{move-import-importinit} pour importer des fichiers de compte d'un autre logiciel dans Grisbi.  Pour le moment, Grisbi supporte
+les formats \gls{Gnucash}, \gls{OFX}, \GLS{CSV} et \GLS{QIF}.
+
+

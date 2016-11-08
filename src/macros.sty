@@ -1,0 +1,171 @@
+% Style file for pdf only
+
+
+% For the hypertext link display on images
+\newcommand{\refimage}[1]{ (fig. \vref{#1})}
+
+
+% For spaces after images bordered with text
+\newcommand{\vspacepdf}[1]{\vspace{#1}}
+\newcommand{\vspacehevea}[1]{}
+
+% Avoid margin overfull by text
+\newcommand{\newlinepdf}{\newline}
+\newcommand{\dash}{-}
+
+
+% For pdf only, not used
+%\pdfcompresslevel=9
+
+
+% Page layout
+\usepackage{geometry}
+\hoffset=-1in
+\voffset=-1in
+\oddsidemargin=20mm
+\evensidemargin=15mm
+\topmargin=10mm
+\marginparwidth=0mm				% largeur note de marge
+\marginparsep=0mm				% distance entre note de marge et corps de texte
+\headheight=7mm					% hauteur entête (6mm pour V0.5)
+%\setlength{\headheight}{\baselineskip}		% hauteur entête
+\headsep=6mm					% distance entre entête et corps de texte
+\footskip=15mm					% distance entre bas de pied de page et bas du corps de texte
+\textwidth=175mm				% textwidth = paperwidth - oddsidemargin - evensidemargin - marginparwidth - marginparsep
+\textheight=252mm				% textheight=paperheight-topmargin-headheight-headsep-footskip
+
+
+% Footnotes for pdf only
+\usepackage{perpage}			% numbers the footnotes page by page (not by chapter)
+\MakePerPage{footnote}
+\usepackage{fixfoot}			% for repetitives footnotes in the same page
+
+% Declaration of the repetitives footnotes
+% example : \DeclareFixedFootnote{\rep}{Text to repeat}
+\DeclareFixedFootnote{\valeur}{valeur par défaut}
+\DeclareFixedFootnote{\couleur}{couleur par défaut}
+\DeclareFixedFootnote{\couleurs}{couleurs par défaut}
+\DeclareFixedFootnote{\siteGrisbi}{\urlGrisbi{}}
+\DeclareFixedFootnote{\siteGrisbiTelechargement}{\urlGrisbiTelechargement{}}
+\DeclareFixedFootnote{\siteSourceForgeDocumentation}{\urlSourceForgeDocumentation{}}
+\DeclareFixedFootnote{\siteMantis}{\urlTuxFamilyMantis{}}
+\DeclareFixedFootnote{\listeDevel}{\urlListDevelEmail{}}
+\DeclareFixedFootnote{\listeBugsreport}{\urlListBugsreport{}}
+
+
+% Style of indexed words in the text, for easy search of each indexed word in the page
+\newcommand{\indexword}[1]{\textsf{#1}}
+
+
+% Redefines empty pages without numbering neither header and footer
+\newcommand{\myclearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+
+% Redefines the tableofcontents command, for good alignment of names and numbering
+\makeatletter
+\renewcommand\tableofcontents{%
+	% increased space between number and subsection name for number >9  (see book.cls file)
+	\renewcommand\l@section{\@dottedtocline{1}{1.5em}{2.8em}}
+	\renewcommand\l@subsection{\@dottedtocline{2}{4.3em}{3.5em}}
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+
+% Replaced because «table des matières» was repeated in capitals characters
+%    \chapter*{\contentsname \@mkboth{\MakeUppercase\contentsname}{}}
+% by
+    \chapter*{\contentsname}
+    \@starttoc{toc}
+    \if@restonecol\twocolumn\fi
+    }
+\makeatother
+
+
+% Redefines listoffigures command
+\ifpdf
+\makeatletter
+\renewcommand\listoffigures{%
+	% increases space between number and figure name for number >9 (see book.cls file)
+	\renewcommand\l@figure{\@dottedtocline{1}{1.5em}{2.8em}}%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listfigurename}
+      \@mkboth{\MakeUppercase\listfigurename}{}
+    \@starttoc{lof}
+    \if@restonecol\twocolumn\fi
+    }
+\makeatother
+\else
+\fi
+
+% Redefines the list labels of frenchb extension, in frenchb.ldf file
+\renewcommand*{\Frlabelitemi}{\textbullet}
+\renewcommand*{\Frlabelitemii}{\textasteriskcentered}
+\renewcommand*{\Frlabelitemiii}{\textendash}
+\renewcommand*{\Frlabelitemiv}{\textperiodcentered}
+
+
+% Adjusts the space between a figure and its legend; by default it is 10pt
+\fancypagestyle{plain}{
+\fancyhf{}
+\fancyfoot[RO,LE]{\thepage{}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}}
+
+\fancypagestyle{headings}{
+\fancyhf{}
+\fancyhead[RE]{\sc\nouppercase{\rightmark{}}}
+\fancyfoot[RO,LE]{\thepage{}}
+\fancyhead[LO]{\large\sc\nouppercase{\leftmark{}}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}}
+
+%\pagestyle{headings}
+
+
+% Index
+\usepackage[xindy]{imakeidx}						% for creating an index
+\usepackage[columns=2,rule=1pt,totoc]{idxlayout}
+
+
+% Hyperlinks
+% hyperref must be the last package
+\ifpdf
+\usepackage[pdftex]{hyperref}
+
+\hypersetup{
+  pdftitle={Manuel de l'utilisateur de Grisbi},
+  pdfauthor={Alain PORTAL <dionysos@grisbi.org>},
+  pdfpagemode=UseOutlines,
+  pdfstartview=XYZ null null 1.0,
+  pdffitwindow=true,
+  pdfcenterwindow=true,
+  bookmarksnumbered=true,
+%  bookmarksopen=true,
+  colorlinks=true,
+  citebordercolor=1 1 1,
+  linkbordercolor=1 1 1,
+  linkcolor=blue,
+  menubordercolor=1 1 1,
+  urlbordercolor=1 1 1,
+  urlcolor=blue,
+  plainpages=false   % pdfpagelabels Commenté car élimine  "Package hyperref Warning: Option `pdfpagelabels' has already been used,"
+  }
+\else
+\fi
+
+% Glossary
+% Creating a glossary with xindy, must be loaded AFTER hyperref
+\usepackage[xindy,toc]{glossaries}	% toc option adds the glossary reference to the table of contents
+
+% Index
+\makeindex  %[intoc]	% creates the index with its reference in the toc
+
+
+
+

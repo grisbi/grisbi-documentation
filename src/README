@@ -1,0 +1,20 @@
+make mrp all
+  will clean up then produce many different formats
+
+If you have a TeX capacity problem while producing the PDF with images,
+trie replacing the value of pool_size in your texmf.cnf file.
+
+On my Debian 3.0 I changed in
+/var/lib/texmf/web2c/texmf.cnf
+
+the line
+
+-=-=-=
+pool_size = 125000
+-=-=-=
+
+into
+
+-=-=-=
+pool_size = 250000
+-=-=-=

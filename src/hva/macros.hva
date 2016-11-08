@@ -1,0 +1,94 @@
+% Style file for html only 
+
+
+% Cancels the hypertext link for image display (for html only), because the caption is on top of the page, and the image is above, not visible
+\newcommand{\refimage}[1]{}
+
+
+% For includegraphics command
+% Adds the .png extension to the file #1 if not exists
+\newcommand{\add@ext}[1]{\@iffileexists{#1}{#1}{#1.png}}
+\renewcommand{\includegraphics}[2][]{\imgsrc{\add@ext{#2}}}
+
+
+% For spaces after images bordered with text
+\newcommand{\vspacehevea}[1]{\vspace{#1}}
+\newcommand{\vspacepdf}[1]{}
+
+
+% Style of indexed words in the text, for easy search of each indexed word in the page
+\newcommand{\indexword}[1]{\textsf{\color{Maroon}#1}}
+% Color of indexed words in the text
+\definecolor{rouge-brique}{named}{Maroon}
+
+% For yellow page background (better readability)
+\newstyle{body}{background-color:\#ffff99;}
+
+% Specific command for pdf, empty for html
+\newcommand{\myclearemptydoublepage}{}
+
+
+% Commented out because repetitives footnotes do not work in html
+%\usepackage{perpage}			% numbers the footnotes page by page (not by chapter)
+%\MakePerPage{footnote}
+%\usepackage{fixfoot}			% for repetitives footnotes in the same page
+
+% Cancels these commands (used only for pdf)
+\newcommand{\valeur}{}
+\newcommand{\couleur}{}
+\newcommand{\couleurs}{}
+\newcommand{\siteGrisbi}{}
+\newcommand{\siteGrisbiTelechargement}{}
+\newcommand{\siteSourceForgeDocumentation}{}
+\newcommand{\siteMantis}{}
+\newcommand{\listeDevel}{}
+\newcommand{\listeBugsreport}{}
+\newcommand{\up}{} 			% hevea gives an error on this command, and returns the correct value but without exponent
+\newcommand{\makeglossaries}{}
+\newcommand{\newglossaryentry}{}
+\newcommand{\frontmatter}{}
+\newcommand{\mainmatter}{}
+\newcommand{\glossarypreamble}{}
+\newcommand{\printglossaries}{}
+\newcommand{\gls}{}
+\newcommand{\GLS}{}
+\newcommand{\Gls}{}
+\newcommand{\glspl}{}
+\newcommand{\space}{}
+\newcommand{\newlinepdf}{}
+\newcommand{\dash}{}
+
+
+% replaces these commands
+\newcommand{\No}{N° }
+\newcommand{\no}{n°}
+
+
+% Index in table of contents in one page mode in html
+\newcommand{\@tocchapter}[2]
+{\chapter*{\aname{#1}{#2}}%
+\addcontentsline{toc}{chapter}{\ahrefloc{#1}{#2}}}
+\renewcommand{\@indexsection}[1]{\@tocchapter{@index}{#1}}
+
+
+% No table of figures in html (hevea bug)
+\renewcommand{\addcontentsline}[3]{}
+
+% Index
+\usepackage[xindy]{imakeidx}						% for creating an index
+\usepackage[columns=2,rule=1pt,totoc]{idxlayout}
+
+% Index
+\makeindex  %[intoc]	% creates the index with its reference in the toc
+
+
+
+
+
+
+
+
+
+
+
+

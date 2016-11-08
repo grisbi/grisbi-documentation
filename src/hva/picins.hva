@@ -1,0 +1,17 @@
+Fichier de style pour images entourées par texte (extension picins) pour html seul
+
+%Minimal implementation:
+% images to the right,
+% options to \parpic not reconized.
+\newstyle{.picins}{float:right; padding:0ex 5ex 0ex 10ex; margin:0ex;}
+\newcommand{\parpic}[2][]{\@open{div}{class="picins"}#2\@close{div}}
+\newcommand{\piccaption}[1]{}
+\newcommand{\picskip}[1]{}
+\newcommand{\pichskip}[1]{}
+
+% réglages des paramètres de newstyle :
+% padding 1 : écart entre haut texte et haut image
+% padding 2 : écart horizontal entre image et bord de page 
+% padding 3 : écart vertical entre bas image et haut image suivante
+% padding 4 : écart horizontal entre image et texte 
+% margin    : écart horizontal entre image et texte ( aussi) 

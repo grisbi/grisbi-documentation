@@ -1,0 +1,51 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+build: build-stamp
+
+build-stamp:  
+	dh_testdir
+	$(MAKE) -C src clean pdf_img
+	$(MAKE) -C src clean html_img
+# 	We do not build txt version as this would have little sense to
+# 	build two packages and bloat Debian archive in order to gain less
+# 	than 500Kb
+#	$(MAKE) -C src clean pdf_txt
+#	$(MAKE) -C src clean html_txt
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+	-$(MAKE) -C src mrproper
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	mkdir -p $(CURDIR)/debian/grisbi-doc/usr/share/doc/grisbi-doc
+	cp $(CURDIR)/src/pdf/grisbi-manuel-img-0.4.0.pdf $(CURDIR)/debian/grisbi-doc/usr/share/doc/grisbi-doc/grisbi-manual-fr-img-0.4.0.pdf
+	mkdir -p $(CURDIR)/debian/grisbi-doc/usr/share/doc/grisbi-doc/html
+	cp -r $(CURDIR)/src/html_img/* $(CURDIR)/debian/grisbi-doc/usr/share/doc/grisbi-doc/html
+	cp -r $(CURDIR)/src/image $(CURDIR)/debian/grisbi-doc/usr/share/doc/grisbi-doc/
+	dh_installdirs
+
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs 
+	dh_installdocs
+	dh_link
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep 
+.PHONY: build clean binary-indep binary install
