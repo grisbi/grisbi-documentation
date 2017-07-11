@@ -42,10 +42,10 @@ sub file_treat {
   my $tmp = &file_read($filename);
 
   # Special for Daniel Cartron: add mailto: urls in HTML format
-  $tmp =~ s/(\\urldef{\\url\w+Email}(?:%[^\n]*\n)?\\url{)/$1mailto:/gs;
+  $tmp =~ s/(\\urldef\{\\url\w+Email}(?:%[^\n]*\n)?\\url\{)/$1mailto:/gs;
   
   # Footnote bracketed calls
-  $tmp =~ s/((?:\\\w+)?{$B})\\footnote{(\\url\w+(?:{})?)\.?}/\\ahref{$2}{$1}/gs;
+  $tmp =~ s/((?:\\\w+)?{$B})\\footnote\{(\\url\w+(?:{})?)\.?}/\\ahref{$2}{$1}/gs;
   # Bracketed calls -- watch out do not take \urldef's
   $tmp =~
   s/((?:\\\w+)?{$B}):?\s+(\\url(?:def\w+|(?!def)\w+)(?:{})?)/\\ahref{$2}{$1}/gs;
@@ -58,10 +58,10 @@ sub file_treat {
   
   # Circumventing HeVeA bugs (or misfeatures)
   $tmp =~ s/{\\penalty\-?\d+$B}//gs;
-  $tmp =~ s/\\v(ref{$B})/\\$1/gs;
+  $tmp =~ s/\\v(ref\{$B})/\\$1/gs;
   $tmp =~ s/(\\begin|\\end){longtable}/$1\{tabular\}/gs;
   
-  $tmp =~ s/\\v(ref{$B})/\\$1/gs;
+  $tmp =~ s/\\v(ref\{$B})/\\$1/gs;
   
   #These two do not demand to group the URL text between {} but
   #  often guess wrong of course...
