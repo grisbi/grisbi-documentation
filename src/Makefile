@@ -14,23 +14,23 @@ all:
 	@echo '********************************************************'
 	@echo '* BUILDING THE TEXT-ONLY PDF VERSION'
 	@echo '********************************************************'
-	@make clean pdf_txt
+	$(MAKE) clean pdf_txt
 	@echo '********************************************************'
 	@echo '* BUILDING THE TEXT-ONLY HTML VERSION'
 	@echo '********************************************************'
-	@make clean html_txt
+	$(MAKE) clean html_txt
 	@echo '********************************************************'
 	@echo '* BUILDING THE IMAGES PDF VERSION'
 	@echo '********************************************************'
-	@make clean pdf_img
+	$(MAKE) clean pdf_img
 	@echo '********************************************************'
 	@echo '* BUILDING THE IMAGES HTML VERSION'
 	@echo '********************************************************'
-	@make clean html_img
+	$(MAKE) clean html_img
 	@echo '********************************************************'
 	@echo '* BUILDING THE IMAGES shtml VERSION'
 	@echo '********************************************************'
-	@make clean shtml_img
+	$(MAKE) clean shtml_img
 	@echo '********************************************************'
 	@echo '* RESULTING FILES:'
 	@echo '********************************************************'
@@ -39,7 +39,7 @@ all:
 	@echo '********************************************************'
 	@echo '* TRANSFER THE FILES ON THE SERVER AND MIRRORS'
 	@echo '********************************************************'
-	@make clean transfer
+	$(MAKE) clean transfer
 
 
 pdf:	$(FILE).pdf
@@ -77,7 +77,7 @@ pdf_txt:	txt pdf
 html:	html/$(FILE).html
 
 html/$(FILE).html:   $(INCLUDES)
-	@make boolean
+	$(MAKE) boolean
 	@#TODO recognize the French language and switch to French mode
 	@mkdir -p .hevea_tmpdir html
 	@perl tool/Prepare_LaTeX_files.pl .hevea_tmpdir *tex
@@ -197,8 +197,8 @@ xpdf:	pdf
 	@$(XPDF) $(FILE).pdf &
 
 t test:
-	@make mrproper dvi ps pdf html
-	@make mrproper
+	$(MAKE) mrproper dvi ps pdf html
+	$(MAKE) mrproper
 
 w3m links lynx: html
 	@$@ $(FILE).html
@@ -217,7 +217,7 @@ shtml/$(FILE).shtml:	html/$(FILE).html
 	@cd shtml && rm -f *.html
 
 $(FILE).dvi:	$(INCLUDES) $(FIGURES_EPS)
-	@make boolean
+	$(MAKE) boolean
 	@echo Generating $@...
 	@# 3 fois pour la table des matières.
 	@latex --interaction=batchmode $(FILE).tex || \
@@ -230,13 +230,13 @@ $(FILE).dvi:	$(INCLUDES) $(FIGURES_EPS)
 	@echo Done.
 
 $(FILE).ps:	$(FILE).dvi
-	@make boolean
+	$(MAKE) boolean
 	@echo Generating $@...
 	@dvips -q -t a4 -o $(FILE).ps $(FILE).dvi
 	@echo Done.
 
 $(FILE).pdf:	$(FILE).tex $(INCLUDES)
-	@make boolean
+	$(MAKE) boolean
 	@echo Generating $@...
 	@pdflatex --interaction=batchmode $(FILE).tex || \
 	  (grep -A5 '^! ' $(FILE).log; exit 1)
