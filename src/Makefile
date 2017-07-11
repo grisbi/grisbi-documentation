@@ -14,23 +14,28 @@ all:
 	@echo '********************************************************'
 	@echo '* BUILDING THE TEXT-ONLY PDF VERSION'
 	@echo '********************************************************'
-	$(MAKE) clean pdf_txt
+	$(MAKE) clean
+	$(MAKE) pdf_txt
 	@echo '********************************************************'
 	@echo '* BUILDING THE TEXT-ONLY HTML VERSION'
 	@echo '********************************************************'
-	$(MAKE) clean html_txt
+	$(MAKE) clean
+	$(MAKE) html_txt
 	@echo '********************************************************'
 	@echo '* BUILDING THE IMAGES PDF VERSION'
 	@echo '********************************************************'
-	$(MAKE) clean pdf_img
+	$(MAKE) clean
+	$(MAKE) pdf_img
 	@echo '********************************************************'
 	@echo '* BUILDING THE IMAGES HTML VERSION'
 	@echo '********************************************************'
-	$(MAKE) clean html_img
+	$(MAKE) clean
+	$(MAKE) html_img
 	@echo '********************************************************'
 	@echo '* BUILDING THE IMAGES shtml VERSION'
 	@echo '********************************************************'
-	$(MAKE) clean shtml_img
+	$(MAKE) clean
+	$(MAKE) shtml_img
 	@echo '********************************************************'
 	@echo '* RESULTING FILES:'
 	@echo '********************************************************'
@@ -39,7 +44,8 @@ all:
 	@echo '********************************************************'
 	@echo '* TRANSFER THE FILES ON THE SERVER AND MIRRORS'
 	@echo '********************************************************'
-	$(MAKE) clean transfer
+	$(MAKE) clean
+	$(MAKE) transfer
 
 
 pdf:	$(FILE).pdf
