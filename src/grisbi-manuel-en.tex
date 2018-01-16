@@ -1,0 +1,292 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%THIS FILE CONTAINS ALL COMMON COMMANDS NEEDED FOR COMPILATION INTO BOTH PDF AND HTML.
+%THE EXTENSION file src/macros.sty CONTAINS ONLY COMMANDS NEEDED EXCLUSIVELY FOR COMPILATION INTO PDF
+%THE DIRECTORY src/hva/ CONTAINS ONLY COMMANDS NEEDED EXCLUSIVELY FOR COMPILATION INTO HTML, WITH THREE EXTENSION FILES, imakeidx.hva, macros.hva AND picins.hva.
+% This English Manual version was adapted from the orignail grisbi-manuel.tex by Bob Anderson, January 2018
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifx\pdfoutput\undefined
+\documentclass[a4paper,12pt,oneside]{book}
+\else
+\documentclass[pdftex,a4paper,12pt,twoside]{book}
+\fi
+
+\usepackage{ifpdf}
+
+\usepackage[T1]{fontenc}			% the font encoding
+
+\usepackage[utf8]{inputenc}			% the present input encoding
+% Bob Anderson disabled the next 2 lines to prevent translation to french language ot LaTeX entries
+%\usepackage[frenchb]{babel}			% the language TODO: make this customizable ; frenchb in place of french
+%\usepackage[frenchb]{translator}	% for translating the Fixed Names
+
+\usepackage{textcomp}				% for special characters like \textcurrency
+%\usepackage{txfonts}
+%\usepackage{ae}
+%\usepackage{cmbright}
+\usepackage{times}					% changed from txfonts
+
+% Web addresses
+\usepackage{url}
+\include{grisbi-manuel-urldef}
+
+
+% --------------------------------------------
+% Load graphicx package with pdf if needed
+% --------------------------------------------
+\ifpdf
+\usepackage[pdftex]{graphicx}
+%% Commented out to avoid errors in html, and put in the macros.sty file for pdf
+%\pdfcompresslevel=9
+\else
+\usepackage{graphicx}
+\fi
+
+% Graphics Extensions
+\ifpdf
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\else
+\DeclareGraphicsExtensions{.eps}
+\fi
+
+% For illustrations
+%\usepackage{picins}			% for text around image 
+\usepackage{caption}		% for good references in table of figures
+
+
+\usepackage{fancyhdr}
+%\pagestyle{fancyplain}
+%\usepackage{tabularx}
+\usepackage{hhline}
+\usepackage{layout}					% TODO: Only if DE mode
+% Some of the following may also need to be commented out if more French creeps in to the English version?
+\usepackage[french]{varioref}		% références in french
+\usepackage{lastpage}
+\usepackage{longtable}
+\usepackage[dvips]{color}			% for a colored title page
+%\usepackage{vmargin}				% for changing the title page margins
+\usepackage{thumbpdf}
+
+
+% Latex loads macros.sty for pdf output and Hevea loads /hva/macros.hva for html output
+\usepackage{macros}
+
+
+\definecolor{jaunegrisbi}{rgb}{1,1,.6}
+\definecolor{bleugrisbi}{rgb}{.1,.1,.4}
+\definecolor{vertgrisbi}{rgb}{0,.6,.4}
+\definecolor{ocregrisbi}{rgb}{1,.7,0}
+
+
+% Virtualization of fonts
+\newcommand{\lang}[1]{\emph{#1}}
+\newcommand{\familyname}[1]{\textsc{#1}}
+\newcommand{\menu}[1]{\textsl{#1}}
+\newcommand{\strong}[1]{\textsc{\textbf{#1}}}
+\newcommand{\key}[1]{\texttt{<#1>}}
+\newcommand{\cmd}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\textbf{#1}}
+\newcommand{\xml}[1]{\texttt{#1}}
+
+
+\newcommand{\actuality}{}	% to see places to watch when updating the doc, using  the command grep actuality *.tex
+
+%% Commented out because it doesn't work in html, and put in the macros.sty file for pdf
+%% NE FONCTIONNE PAS POUR HTML
+% redefine command listoffigures
+%\ifpdf
+%\makeatletter
+%\renewcommand\listoffigures{%
+%	% increases space between number and figure name for number >9 (see book.cls file)
+%	\renewcommand\l@figure{\@dottedtocline{1}{1.5em}{2.8em}}%
+%    \if@twocolumn
+%     \@restonecoltrue\onecolumn
+%    \else
+%      \@restonecolfalse
+%    \fi
+%    \chapter*{\listfigurename}
+%      \@mkboth{\MakeUppercase\listfigurename}{}
+%    \@starttoc{lof}
+%    \if@restonecol\twocolumn\fi
+%    }
+%\makeatother
+%\else
+%\fi
+
+
+% For pdf only; for html, redefined  by an empty command in hva/macros.hva
+% Glossary
+\makeglossaries			% creates the glossary
+% Entries of the glossary are in src/grisbi-manuel-glossary.tex
+\input{grisbi-manuel-glossary}
+
+% Bob Anderson adjusted the next line so the "no illustrations" logic works correctly for the English Manual
+% Note the two files grisbi-manuel-en-boolean-illustration-false.tex and grisbi-manuel-en-boolean-illustration-true.tex
+% also need to be present for the next line to work correctly as a link to one of the above files is automatically created
+
+\input{grisbi-manuel-en-boolean-illustration}
+
+% Beginning of title page
+\ifIllustration
+\title{\Huge \textsc{Grisbi user manual}\\
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=1.0]{image/manuel-logo}
+\end{center}
+\end{figure}}
+\else
+\title{Grisbi user manual}
+\fi
+
+\author{Copyright © 2001-2003 Daniel \familyname{Cartron}\\
+Copyright © 2004 Alain \familyname{Portal}\\
+Copyright © 2004 Loïc \familyname{Breilloux}\\
+Copyright © 2004 Benjamin \familyname{Drieu}\\
+Copyright © 2011-2014 Jean-Luc \familyname{Duflot}}
+
+
+\actuality{} \date{Software Version 1.0 - 12th February 2014}
+% End of title page
+
+\pagestyle{headings}
+
+
+
+\begin{document}
+
+% For pdf only; for html, redefined  by an empty command in hva/macros.hva
+\frontmatter
+
+% not used
+%\include{grisbi-manuel-title}
+
+\maketitle				% title
+\myclearemptydoublepage
+
+\tableofcontents			% table of contents
+\myclearemptydoublepage
+
+
+% List of figures for pdf only ; for html, the addcontentsline is redefined by an empty command in hva/macros.hva
+% Adds reference to lof in the toc
+\ifIllustration
+	\listoffigures
+		\ifpdf
+		\addcontentsline{toc}{chapter}{Table des figures}
+		\myclearemptydoublepage
+		\else
+		\fi
+	\else
+\fi
+
+%% mis dans le \mainmatter pour lien correct des entrées d'index dans le préambule en html
+%% voir aussi le chapitre Préambule
+%\include{grisbi-manuel-preamble}
+%\myclearemptydoublepage
+
+% For pdf only; for html, redefined  by an empty command in hva/macros.hva
+\mainmatter
+
+\include{grisbi-manuel-preamble-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-intro-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-start-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-home-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-QIF-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-datamanagement-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-accounts-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-transactions-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-reconciliation-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-planned-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-search-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-third-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-categories-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-budgetlines-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-financialyear-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-credit-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-budget-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-bankcardmanagement-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-association-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-reports-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-reports-creation-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-setup-en}
+\myclearemptydoublepage
+
+\include{grisbi-manuel-maintenance-en}
+\myclearemptydoublepage
+
+
+
+%% Files editors not used anymore, so useless 
+%%\include{grisbi-manuel-todo}
+%%\myclearemptydoublepage
+%
+%% Files editors not used anymore, so useless 
+%%\include{grisbi-manuel-problems}
+%%\myclearemptydoublepage
+%
+%% Useless so don't include it
+%%\include{grisbi-manuel-XML}
+%
+%% Useless so don't include it
+%%\include{grisbi-manuel-FDL}
+
+
+% Prints the index
+\printindex
+
+
+% Displays a note at the beginning of the glossary
+\renewcommand{\glossarypreamble}{\textbf{Note}: la plupart des définitions des entrées de ce glossaire est issue des articles du même nom de l'encyclopédie libre et collaborative \lang{Wikipédia}\footnote{\urlWikipedia{}}. Bien que ces textes aient été modifiés et adaptés au contexte particulier de ce glossaire, l'auteur remercie Wikipédia de lui avoir fourni ces références.\newline} 
+
+
+% Prints the glossary
+% For pdf only; redefined in hva/macros.hva by an empty command in html
+\printglossaries
+
+
+\end{document}
+
+
+
