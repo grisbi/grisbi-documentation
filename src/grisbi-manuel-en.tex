@@ -18,7 +18,7 @@
 \usepackage[utf8]{inputenc}			% the present input encoding
 % Bob Anderson disabled the next 2 lines to prevent translation to french language ot LaTeX entries
 %\usepackage[frenchb]{babel}			% the language TODO: make this customizable ; frenchb in place of french
-%\usepackage[frenchb]{translator}	% for translating the Fixed Names
+\usepackage[frenchb]{translator}	% for translating the Fixed Names
 
 \usepackage{textcomp}				% for special characters like \textcurrency
 %\usepackage{txfonts}
@@ -28,6 +28,7 @@
 
 % Web addresses
 \usepackage{url}
+\include{grisbi-manuel-urldef-en}
 \include{grisbi-manuel-urldef}
 
 
@@ -90,7 +91,8 @@
 
 
 \newcommand{\actuality}{}	% to see places to watch when updating the doc, using  the command grep actuality *.tex
-
+\newcommand{\og}{}  % Dummy command defintion, only available when \usepackage[frenchb]{babel} is enabled
+\newcommand{\fg}{}  % Dummy command defintion, only available when \usepackage[frenchb]{babel} is enabled
 %% Commented out because it doesn't work in html, and put in the macros.sty file for pdf
 %% NE FONCTIONNE PAS POUR HTML
 % redefine command listoffigures
@@ -118,6 +120,7 @@
 % Glossary
 \makeglossaries			% creates the glossary
 % Entries of the glossary are in src/grisbi-manuel-glossary.tex
+\input{grisbi-manuel-glossary-en}
 \input{grisbi-manuel-glossary}
 
 % Bob Anderson adjusted the next line so the "no illustrations" logic works correctly for the English Manual

@@ -19,7 +19,7 @@
 % \fi
 
 \section*{Forward to the English Translation}
-This English translation is a work in progress.  It was started by me - Bob Anderson\footnote{\url{http://www.scilutions.co.uk}}  in order to give a little back to the Free and Open Source Software (FOSS) Community.  I have neither special financial or linguistic skills but as a long time user of the software and muddling through without the aid of the manual I know how much this translation is needed.
+This English translation is a work in progress.  It was started by me - \lang{Bob Anderson}\footnote{\urlBob{}} in order to give a little back to the Free and Open Source Software (FOSS) Community.  I have neither special financial or linguistic skills but as a long time user of the software and muddling through without the aid of the manual I know how much this translation is needed.
 
 Occasionally I have been unsure about the faithfulness of the English translation to the original French.  Any uncertainties are marked at the beginning and end of the problem passage with pairs of question marks ??thus??.
 
@@ -29,9 +29,9 @@ where an extra paragraph or footnote has had to be added to explain a problem wi
 
 \subsection*{How to assist in the production of an English manual}
 
-I hope this preliminary attempt at this English user manual will be improved upon by others as time goes on. Please visit the Github site at \\ \url{https://github.com/grisbi/grisbi-documentation} \\to contribute and improve upon this translation project. 
+I hope this preliminary attempt at this English user manual will be improved upon by others as time goes on. Please visit the \lang{Github}\footnote{\urlGitDoc{}} site to contribute and improve upon this translation project. 
 
-To ensure you are not duplicating the (yet to be submitted as a git pull request) efforts of another contributor please first email the owner of the git repo {Jean-Luc \familyname{Duflot}}\footnote{ \urlJeanLucDuflotEmail{}}. You can also ask Jean-Luc to subscribe you to the grisbi-documentation list so you are in touch with the rest of the documentation contributors. If you do join this list then out of courtesy to the rest of the developers please communicate on this list in French.  
+To ensure you are not duplicating the (yet to be submitted as a git pull request) efforts of another contributor please first email the owner of the git repo {Jean-Luc \familyname{Duflot}}\footnote{\urlJeanLucDuflotEmail{}}. You can also ask Jean-Luc to subscribe you to the grisbi-documentation list so you are in touch with the rest of the documentation contributors. If you do join this list then out of courtesy to the rest of the developers please communicate on this list in French.  
 
 
 To create a new chapter in the English version of the manual copy the original chapter's French .tex file and add -en to the end of the file name.  Replace the existing dummy file of the same name with your new file (the existing short files that have the names ending in -en were just created as a temporary fix so the full manual generation \cmd{make} file runs without errors).  Take care not to change any of the LaTeX commands that the copied-from-the-French .tex file contains and carefully replace all the French text with a suitable English translation.  You can then test your newly edited file with a suitable LaTeX file viewer or simply run \\\cmd{ make distclear} \\followed by 
@@ -43,8 +43,8 @@ To create a new chapter in the English version of the manual copy the original c
 Eventually the goal of the English translation will be to be able to run the complete manual generation make file to nclude the pdf output and all the images but the first step along this path is to produce only a readable English html manual with no images.
 
 \subsection*{Acknowledgements and a dedication}
-Most of my translations were done with the aid of \\ Google Translate (\url{https://translate.google.com/}) \\
-using Translate Shell (\url{https://github.com/soimort/translate-shell})  
+Most of my translations were done with the aid of \lang{Google Translate}\footnote{\urlGtrans{}}
+using \lang{Translate Shell}\footnote{\urlGtransShell{}}
 
 The English translation of this manual is dedicated to the memory of my father John Anderson FCA\footnote{FCA = Fellow of the Institute of Chartered Accountants.  John Anderson (AJ)  studied accountancy while serving in the Royal Air-force as a Radar Technician during the second World War.  On being demobbed at the end of the war he then joined the accountancy firm started by my Grandfather: H J Anderson and Co.  Any accountancy skills I may have picked up are thanks to him.}
 
@@ -146,8 +146,7 @@ pronounced only since 1953; which would lead to an explanation:
 \emph{gris-bis}, in the series of alternative words for bread,
 \emph{wheat, carmine, biscuit, pancake}, etc.
 
-Finally, if the metonymy\footnote{\url{https://literarydevices.net/metonymy/}
-}  of color is actually used to denominate
+Finally, if the \lang{metonymy}\footnote{\urlMetonym{}} of colour is actually used to denominate
 money, it is always a precise category of money: \og types \fg{}.
 Thus \emph{jaunet, white, white, copper}, are not interchangeable nor
 usable for \og money \fg{} abstract.
