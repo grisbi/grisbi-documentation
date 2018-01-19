@@ -48,6 +48,9 @@ all:
 	# $(MAKE) transfer
 
 
+English: distclean
+	$(MAKE) FILE=grisbi-manuel-en all
+
 pdf:	$(FILE).pdf
 	@test -d pdf || mkdir pdf
 	@echo See copy in pdf/
