@@ -14,6 +14,3 @@ To build the English version of the manual as a series of html pages issue the f
 
 `make FILE=grisbi-manuel-en html_txt`
 
-
-
-
