@@ -1,0 +1,227 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%
+% Contents: The preamble chapter
+% $ Id: gray-manual-preamble.tex, v 0.4 2002/10/27 Daniel Cartron
+% $ Id: gray-manual-preamble.tex, v 0.6.0 2011/11/17 Jean-Luc Duflot (no change)
+% $ Id: gray-manual-preamble.tex, v 0.8.9 2012/04/27 Jean-Luc Duflot (typo changes)
+% $ Id: gray-manual-preamble.tex, v 1.0 2014/02/12 Jean-Luc Duflot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%
+% deleted because it does not work in pdf and creates a problem in html
+% \Begin{small}
+% star command: deleted star for index entries with correct link display in html
+\chapter{Preamble \label{preamble}}
+
+%% commented for index entries with correct link display in html
+%% see also the preamble chapter moved in \mainmatter in manuel.tex
+% \markboth{}{Preamble}
+% \ifpdf
+% \addcontentsline{toc}{chapter}{Preamble}
+% \else
+% \fi
+
+\section*{Forward to the English Translation}
+This English translation is a work in progress.  It was started by me - \lang{Bob Anderson}\footnote{\urlBob{}} in order to give a little back to the Free and Open Source Software (FOSS) Community.  I have neither special financial or linguistic skills but as a long time user of the software and muddling through without the aid of the manual I know how much this translation is needed.
+
+Occasionally I have been unsure about the faithfulness of the English translation to the original French.  Any uncertainties are marked at the beginning and end of the problem passage with pairs of question marks ??thus??.
+
+This translation is a strict paragraph by paragraph  translation, it is important to keep to this translation format in order to simplify the addition to the English translation of any changes made to the original French Manual.  In some places you will also come across a short paragraph or footnote introduced by the phrase \\
+\strong{Translators Note:} \\
+where an extra paragraph or footnote has had to be added to explain a problem with the translation, something specific to the English language interface or flag a section which needs revision in both the French and English manual versions.  However in order to ensure the strict one to one correspondence between the French and English translations; it is essential that the French Manual remains the authoritative document and thus revisions to the English Manual will only be made \strong{AFTER} the French revision is accepted.
+
+\subsection*{How to assist in the production of an English manual}
+
+I hope this preliminary attempt at this English user manual will be improved upon by others as time goes on. Please visit the \lang{Github}\footnote{\urlGitDoc{}} site to contribute and improve upon this translation project. 
+
+To ensure you are not duplicating the (yet to be submitted as a git pull request) efforts of another contributor please first email the owner of the git repo {Jean-Luc \familyname{Duflot}}\footnote{\urlJeanLucDuflotEmail{}}. You can also ask Jean-Luc to subscribe you to the grisbi-documentation list so you are in touch with the rest of the documentation contributors. If you do join this list then out of courtesy to the rest of the developers please communicate on this list in French.  
+
+
+To create a new chapter in the English version of the manual copy the original chapter's French .tex file and add -en to the end of the file name.  Replace the existing dummy file of the same name with your new file (the existing short files that have the names ending in -en were just created as a temporary fix so the full manual generation \cmd{make} file runs without errors).  Take care not to change any of the LaTeX commands that the copied-from-the-French .tex file contains and carefully replace all the French text with a suitable English translation.  You can then test your newly edited file with a suitable LaTeX file viewer or simply run \\\cmd{ make distclear} \\followed by 
+\\\cmd{make FILE=grisbi-manuel-en html\_txt}
+\\to preview just the html version without the images.
+
+\strong{Warning} If you use your own LaTeX file viewer, you will find that there are many special LaTeX macros that have been defined specially for Grisbi and these will cause processing errors until you define quite a few dummy macros to supress these. You are strongly advised to stick to the \cmd{make FILE=grisbi-manuel-en html\_txt} method to check your work unless you are very comfortable working with LaTeX files.
+
+Eventually the goal of the English translation will be to be able to run the complete manual generation make file to nclude the pdf output and all the images but the first step along this path is to produce only a readable English html manual with no images.
+
+\subsection*{Acknowledgements and a dedication}
+Most of my translations were done with the aid of \lang{Google Translate}\footnote{\urlGtrans{}}
+using \lang{Translate Shell}\footnote{\urlGtransShell{}}
+
+The English translation of this manual is dedicated to the memory of my father John Anderson FCA\footnote{FCA = Fellow of the Institute of Chartered Accountants.  John Anderson (AJ)  studied accountancy while serving in the Royal Air-force as a Radar Technician during the second World War.  On being demobbed at the end of the war he then joined the accountancy firm started by my Grandfather: H J Anderson and Co.  Any accountancy skills I may have picked up are thanks to him.}
+
+\subsection*{The translation from the French Manual begins on the following page}
+The translation from the French Manual starts with a the next section heading \strong{Why call it Grisbi?}. I have changed the section heading from the original \strong{Préambule} .  This section is a commentary by the original author on the etymology of the word Grisbi.
+
+I should give a word of warning about my translation efforts on this first section about the origin of the word Grisbi.  I have tried to retain the sense of the various French dictionary entries,  although most of the words are translated to English the accuracy of the translation should not be relied upon for more than giving the reader an overall feel of the original French text.  If you are very interested in the etymology then you had better read the original French version of this section of the manual.  
+\newpage 
+\section*{Why call it Grisbi?}
+
+Several \gls{Grisbi} users have asked me to insert in the manual a brief
+reminder of the meaning of this word, which, to my chagrin, fell back into disuse.
+
+
+My first (brief) research did not bring me any results worth publishing, I had then dropped it until one day I had the opportunity to spend some time in a well-stocked library containing dictionaries of all kinds, there the harvest was abundant. It was so abundant that I hesitated a long time to know what I was going to keep and what I was going to eliminate \ldots
+Finally I decided to keep everything, even if we go from a paragraph to four pages. I just made a compilation of the shortest items to the longest ones.
+Indeed I find it interesting to study the differences between the different
+dictionaries, but even more to note the similarities, at this point
+striking that one could title this chapter not \emph{The game of the seven
+errors} but \emph{Who copied who?} It's up to you to find\dots
+And I also added a passage on the film because for those who still know
+what \indexword{grisbi}\index{Grisbi} means is essentially due to the deserved reputation of this work.
+
+Here are some sources on the etymology \index{etymology@etymology} of the word grisbi:
+
+\subsection*{Dictionary of French language --- Hachette}
+
+[grizbi] n. m. Slang. Silver --- Of grey (grey money, cd rouchi griset [1834], \og liard \fg{}), and suff. pop. -bi; 1895, spread in 1953.
+
+\subsection*{Grand Larousse of the French language}
+
+[grizbi] n. m. (of \emph{grey [and]}, piece of six liards [1834, Esnault] --- der.
+from \emph{grey}, because of the color [cf. also \emph{grisette}, \og coin \fg{} --- 17th century. ---, and \emph{white and grey coin}, 1784, Esnault] --- with the suffix.slang. \emph{-bi}; 1896, Delesalle).
+\emph{Slang.} Money: \emph{Do not touch the grisbi} (title of a novel by Albert
+Simonin [1953]).
+
+\subsection*{Historical Dictionary of the French language --- Robert}
+
+n.m. appeared in 1895 (\emph{grisbis}) and spread from 1953 by the novel
+\emph{Do not touch the grisbi} by A. Simonin, would be composed of \emph{gris}
+\og grey money \fg{} (1784: see le rouchi \emph{griset} \og six-liard coin \fg{}, 1834, and \emph{grisette} \og coin \fg{}, v. 1634 ) and the \emph{bi} element of obscure origin: \emph{grisbi}, \og silver \fg{} in slang, could be a tautological compound of \emph{grey} and \emph{bis}.
+
+\subsection*{Dictionary of French slang and its origins --- Larousse}
+
+Very controversial origin: either of griset, \og coin \fg, and a
+mysterious suffix -bi, or bread both grey and bis, or English slang
+crispy, silver; we propose to see a metonymic use of gripis 1628
+[Cheneau], grispin, grisbis 1849 [Halbert], \og meunier \fg{}, that is to say, \og one who has at his home wheat \fg{} 1895 [Delsalle] but ??recirculated?? by \og Touch the grisbi \fg{}, famous novel of A. Simonin, published in 1953.
+
+VARIANTS --- grijbi: 1902 [Esnault] --- grèzbi: around 1926 [id.]
+
+DERIVATIVES --- grisbinette n.f. One hundred old franc coins: 1957 [Sandry-Carrère].
+
+\subsection*{Treasures of the French language}
+
+\emph{Slang.} Silver. Synon. pop. \emph{money, cake, pèze, cash. The grisbi I'm big enough to pick it myself! (\ldots) Riton who had not even known how to behave like a man (\ldots) as soon as he felt enough grisbi} (\familyname{Simonin}, \emph{Touch not to the grisbi}, 1953, p 231).
+\strong{Pronunciation}: [grizbi]. \strong{Étymol. and Hist.} 1896 \emph{grisbis}
+slang. \og money \fg{} (\familyname{Delesalle}, \emph{Dict, ?? of French slang??}). Word composed of rad. of \emph{griset}, in the sense of this six-liard piece \fg{} (1834 ds \familyname{Esn.}), der. of \emph{grey}, because of the color (\emph{cf.} also \emph{ca} 1634 \emph{grisette} \og coin \fg{}, \emph{The Norman Muse} by D. Ferrand , Ed A. Heron, II, 91, 1784, Brest, \emph{white and grey coin} in \familyname{Esn.}, and a second part of obscure origin which represents maybe the suff. pop. -bi, to be close to \emph{nerbi} \og very black \fg{} (from \familyname{Esn.}). It is not impossible that \emph{grisbi} (formerly \emph{grisbis}) is a tautological compound of \emph{grey} and \emph{bis}.
+\strong{Bbg.} \familyname{Rigaud} (A.). L'arg. litt. \emph{Life lang.} 1972, pp. 114-117.
+
+\subsection*{Grand Robert of the French language}
+
+[grizbi] n. m. --- 1895: spread 1953 by Simonin's novel \emph{Touch not to grisbi}; the word was rare or archaic v. 1950: from \emph{grey} \og grey money \fg{} (see rouchi \emph{griset} \og liard \fg{}, 1834), and suff. pop.
+\strong{Slang} Money. \emph{T'as du grisbi?}
+
+1 --- This expression: \og Do not touch the grisbi \fg{} becomes a variation of \og Do not mess with the nippes \fg{}. This is the keyword that leads the chronicle of these knights of ill-gotten fortune ??which inspired??  Peter Cheyney's cape and machine gun novels.
+\familyname{P. Mac Orlan}, \emph{in} Albert \familyname{Simonin}, Do not touch the grisbi, Preface, p. 6.
+
+2 --- ??\og Do not break your head for politeness \ldots{} First we have no time if you want me to find you Ali. It all depends on what he has of grisbi digging; if he is armed, one has a chance to find him in the flames, in the Carillon part. \fg{}??
+Albert \familyname{Simonin}, do not touch the grisbi, p. 147.
+
+\subsection*{Dictionary of Unconventional French --- Hachette}
+
+n.m. (Grisby)
+
+Silver (intrinsically).
+
+??\emph{To the little boss of the team, a muffle with a torpedo cap, blue
+heaters and pumps varnished, the kid had just said she was frying
+only for the right motive, to relieve me of my hundred bags. He had
+replicated, the naughty jealousy:
+--- The \emph{grisbi}, I'm big enough to pick it up myself!
+They both said they were both, and they were equally ready for anything
+\emph{grisbi} Loot. They and their little friends. Like Angelo-la-Tante and
+Josy-la-Peau-de-Vache; like Ali-le-Fumier and his garbage of espingos;
+like Riton, who had not even known how to be a man with his child, as soon as he
+had felt enough of \emph{grisbi}; like Marco and his little Wanda, if
+honest, but not hesitating to be stepped over by the man \emph{grisbi}! like the same Lulu, no doubt, waiting patiently for me to turn down with my \emph{grisbi}!}??
+
+A. \familyname{Simonin}, Do not touch the grisbi, p. 233
+
+HIST. --- 1895, but probably little used: A. Bruant and L. Blédort, who
+occasionally accumulate synonyms (\emph{weigh, bone,}, etc.), do not use \emph{grisbi}, although Bunting records it in 1901 (\emph{grisbis}). The deserved success of A. Simonin's novel in 1953 ??made first use of?? the word, which does not seem really integrated in the series of alternative words for money, like \emph{wheat, sorrel, flouze} or \emph{fric}.
+
+Rouchi \emph{griset}, \og a six-liard piece \fg{} (1834), so called because of its color. But the only explanation currently available given by Esnault,  is not satisfactory; on the one hand, the element \emph{bi} remains
+unexplained, if not by a \og suffix \fg{} unknown; on the other hand, Bunting writes
+\emph{grisbis}, and it is possible (if not probable) that the central \emph{s}
+pronounced only since 1953; which would lead to an explanation:
+\emph{gris-bis}, in the series of alternative words for bread,
+\emph{wheat, carmine, biscuit, pancake}, etc.
+
+Finally, if the \lang{metonymy}\footnote{\urlMetonym{}} of colour is actually used to denominate
+money, it is always a precise category of money: \og types \fg{}.
+Thus \emph{jaunet, white, white, copper}, are not interchangeable nor
+usable for \og money \fg{} abstract.
+
+We will also recall the meaning of \emph{grey}: \og expensive \fg{} (V. \emph{grisol}) and the possibility of the pseudo-suffix augmentative \emph{bi}, \og very \fg{} , even rare. We would then have: \emph{grey-bi}, \og very expensive \fg{}? But the hypothesis is speculative.
+
+\section*{Bibliography}
+
+\emph{Do not touch the Grisbi!} by Albert \familyname{Simonin}
+
+\begin{itemize}
+\item Black Square \# 94, first edition in 1972, (??still edited??)
+\item Folio \no 2068, first edition in 1989, (??still edited??)
+\item Folio Policier, first edition in 2000, (??still edited??)
+\item The Pocketbook \No. 1152, first edition in 1964;
+\item Black Series \no 148, first edition in 1953
+
+\end{itemize}
+
+\section*{Filmography}
+
+\strong{Do not touch the grisbi!}
+
+Italian, French film (1953). Police officer. Duration: 1h 34 min
+
+Original title: Grisbi
+
+Distribution:
+
+\begin{itemize}
+    \item John \familyname{Gabin}: Max the liar
+    \item Rene \familyname{Dary}: Riton;
+    \item Dora \familyname{Doll}: Lola
+    \item Vittorio \familyname{Sanipoli}: Ramon
+    \item Marilyn \familyname{Buferd}: Betty
+    \item Gaby \familyname{Basset}: Marinette
+    \item Paul \familyname{Barge}: Eugene
+\end{itemize}
+
+Director: Jacques \familyname{Becker}
+
+\subsection*{Synopsis}
+
+Max-le-lieur and Riton have just pulled off the greatest heist of their lives: stealing 50
+million francs worth of gold bars at Orly. With this \og grisbi \fg{}, both
+gangsters expect to enjoy a peaceful retirement. But Riton can not
+resist telling his mistress Josy about money. The ??entraîneuse?? passes the
+valuable information to Angelo, a drug dealer with whom she is cheating on Riton with. Angelo kidnaps the old mobster and demands \og grisbi \fg{} from Max as ransom \dots
+
+\subsection*{Trivia} 
+
+\paragraph{A well-oiled tandem:} Jean \familyname{Gabin} and René
+\familyname{Dary} are considered two sacred figures of cinema 
+before the war.
+\paragraph{\familyname{Becker} father and son:} Jacques' son
+ \familyname{Becker}, Jean, makes his film debut here as an assistant
+director. He is only fifteen years old!
+\paragraph{Albert \familyname{Simonin}:} Writer and screenplay by Albert
+\familyname{Simonin}, who here adapts  his own novel, will make four more movies with \familyname{Gabin}, all dialogues by \familyname{Audiard}: \emph{Le cave se rebiffe} (1961) and \emph{The gentleman of Epsom} (1962) by Gilles \familyname{Grangier}, \emph{Mélodie en sous-sol} (1963) by Henri
+\familyname{Verneuil} and \emph{The Pasha} (1967) by Georges \familyname{Lautner}. After adapting his \emph{Les Tontons flingueurs} for Georges \familyname{Lautner} (1963), he became his screenwriter for \emph{Les Barbouzes}
+(1964).
+
+\subsection*{DVD Version}
+
+\begin{itemize}
+    \item Interactivity: Home menu, access to scenes, filmographies
+drop-downs from the director, from Lino \familyname{Ventura} and John
+    \familyname Gabin{}
+    \item Cinema format: full screen
+    \item Sound version: VF in mono
+    \item Subtitles: none
+    \item France --- 1953 --- Black \& white
+     \item Length: 92 min --- 1 ~ disc --- 1 ~ side --- 1 ~ layer
+    \item Release date: September 19, 2001
+    \item Publisher: Studio Canal
+\end{itemize}
+% deleted because it does not work in pdf and creates a problem in html
+% \End{small}
