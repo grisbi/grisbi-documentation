@@ -169,7 +169,7 @@ shtml:	shtml/$(FILE).shtml
 shtml_img:	img shtml
 	@rm -rf shtml_img
 	@mv shtml shtml_img
-	@cd shtml_img && rename 's/gif/png/' grisbi-manuel*.gif
+	# @cd shtml_img && rename 's/gif/png/' grisbi-manuel*.gif
 
 shtml_txt:	txt shtml
 	@rm -rf shtml_txt
