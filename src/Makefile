@@ -11,16 +11,16 @@ XPDF=xpdf -geometry 600x768+0+0 -z page
 GV=gv
 
 all:
-	@echo '********************************************************'
-	@echo '* BUILDING THE TEXT-ONLY PDF VERSION'
-	@echo '********************************************************'
-	$(MAKE) clean
-	$(MAKE) pdf_txt
-	@echo '********************************************************'
-	@echo '* BUILDING THE TEXT-ONLY HTML VERSION'
-	@echo '********************************************************'
-	$(MAKE) clean
-	$(MAKE) html_txt
+	# @echo '********************************************************'
+	# @echo '* BUILDING THE TEXT-ONLY PDF VERSION'
+	# @echo '********************************************************'
+	# $(MAKE) clean
+	# $(MAKE) pdf_txt
+	# @echo '********************************************************'
+	# @echo '* BUILDING THE TEXT-ONLY HTML VERSION'
+	# @echo '********************************************************'
+	# $(MAKE) clean
+	# $(MAKE) html_txt
 	@echo '********************************************************'
 	@echo '* BUILDING THE IMAGES PDF VERSION'
 	@echo '********************************************************'
@@ -31,21 +31,21 @@ all:
 	@echo '********************************************************'
 	$(MAKE) clean
 	$(MAKE) html_img
-	@echo '********************************************************'
-	@echo '* BUILDING THE IMAGES shtml VERSION'
-	@echo '********************************************************'
-	$(MAKE) clean
-	$(MAKE) shtml_img
-	@echo '********************************************************'
-	@echo '* RESULTING FILES:'
-	@echo '********************************************************'
-	@ls -ald html_{img,txt} shtml_img
-	@du -ks html_{img,txt} shtml_img
-	@echo '********************************************************'
-	@echo '* TRANSFER THE FILES ON THE SERVER AND MIRRORS'
-	@echo '********************************************************'
-	$(MAKE) clean
-	$(MAKE) transfer
+	# @echo '********************************************************'
+	# @echo '* BUILDING THE IMAGES shtml VERSION'
+	# @echo '********************************************************'
+	# $(MAKE) clean
+	# $(MAKE) shtml_img
+	# @echo '********************************************************'
+	# @echo '* RESULTING FILES:'
+	# @echo '********************************************************'
+	# @ls -ald html_{img,txt} shtml_img
+	# @du -ks html_{img,txt} shtml_img
+	# @echo '********************************************************'
+	# @echo '* TRANSFER THE FILES ON THE SERVER AND MIRRORS'
+	# @echo '********************************************************'
+	# $(MAKE) clean
+	# $(MAKE) transfer
 
 
 pdf:	$(FILE).pdf
