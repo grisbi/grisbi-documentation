@@ -1,0 +1,61 @@
+1) Accordingly to
+http://blog.irrepupavel.com/2007/02/installing-latex-style-files-sty-on.html
+
+How to install LaTeX Style Files (.sty) on Ubuntu, using TeTeX or Tex
+Live :
+
+One thing that makes LaTeX so powerful is the enourmous amount of
+extensions available. Some extensions, usually with the .sty filename
+extension, do not come with an installation tutorial. I consider that
+they do not come with a tutorial because it is assumed it is an easy
+task. Another reason for having no installation instructions might be
+because it is platform dependent (i.e., different installation
+directories).
+
+The directory for installing LaTeX files, on Ubuntu, depends on the
+distribution you are using.
+
+If you are using TeTeX, it is: /usr/share/texmf-tetex/tex/latex
+If you are using TeX Live, it is: /usr/share/texmf-texlive/tex/latex
+
+To install a style file you have to create a directory for it and copy
+the contents there. Next you have to run the program mktexlsr as root.
+
+This is an example on how to install the prooftree extension, using the
+TeTeX distribution:
+
+    create a directory named prooftree on /usr/share/texmf-tetex/tex/latex
+    copy the file prooftree.sty and the file prooftree.tex to the directory /usr/share/texmf-tetex/tex/latex/prooftree
+    run sudo mktexlsr
+
+
+
+2) Selon http://forum.ubuntu-fr.org/viewtopic.php?id=61960 :
+
+Télécharger l'extension, par exemple sur le site CTAN, par exemple dans
+/home/votre_dossier/
+
+Ouvrir un terminal et installer en tant que root le dossier de
+l'extension dans la distribution LateX, en tapant l'une des commandes
+suivantes, suivant la distribution LateX installée ; par exemple, pour
+l'extension «picins» :
+
+# cp -R /home/votre_dossier/picins/ /usr/share/texmf/tex/latex/
+ou
+# cp -R /home/votre_dossier/picins/ /usr/share/texmf-tetex/tex/latex/
+ou
+# cp -R /home/votre_dossier/picins/ /usr/share/texmf-texlive/tex/latex/
+
+Puis mettre à jour la base tex en tapant la commande, toujours en root :
+# texhash
+
+3) Selon http://www.redwolf.fr/latex-generer-un-sty-manquant/
+
+Si l'extension est fournie sans le fichier .sty , il suffit de le
+générer : dans le répertoire de l'extension, entrez
+
+$ latex XXX.ins
+
+Puis mettre à jour la base tex en tapant la commande, en root :
+# texhash ~/texmf
+
