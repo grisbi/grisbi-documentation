@@ -11,7 +11,8 @@
 
 \chapter{Opening screen\label{home}}
 
-\strong{Translators Note:} This chapter is currently under revision by {Jean-Luc \familyname{Duflot}}\footnote{email \urlJeanLucDuflotEmail{} Github site \urlJeanLucGit{}} which is fortunate as the user interface is not quite as described by this version.  Differences are highlighted in the text. In addition until the other chapters are translated many of the cross references lead to dead-ends at the moment.
+\strong{Translators Note:} Until the other chapters are translated many of the cross references lead to dead-ends at the moment.
+
 
 When the application starts, Grisbi displays this
 \ifIllustration opening screen \refimage{home-img} page.
@@ -19,7 +20,7 @@ When the application starts, Grisbi displays this
 \fi
 This opening screen can be accessed at any time by clicking on the  \menu{Accounts} tab. 
 
-You can view the Grisbi window in full screen display \indexword{full screen mode}\index{affichage !plein écran}\index{plein écran !affichage} using the function key \key{F11}, and toggle between full screen and normal mode with the same key.
+You can view the Grisbi window in \indexword{full screen mode}\index{affichage !plein écran}\index{plein écran !affichage} using the function key \key{F11}, and toggle between full screen and normal mode with the same key.
 
 \ifIllustration
 % image centrée
@@ -69,7 +70,7 @@ These features can be used instead of clicking directly in the navigation panel 
 
 \section{Navigation panel\label{home-accounting}}
 
-The navigation pane displays in bold the list of tabs:  \menu{Accounts}, \menu{Scheduler}, \menu{Payees}, \menu{Credits simulator}, \menu{Categories}, \menu{Budgetary lines} et \menu{Reports}. By clicking on the small black triangle to the left of the  \menu{Accounts} or \menu{Reports} tabs,  you can scroll or roll up the list of their sub-tabs. You can change the order of tabs and sub-tabs by clicking on one of them and dragging it up or down the list.
+The navigation pane displays in bold the list of tabs:  \menu{Accounts}, \menu{Scheduler}, \menu{Payees}, \menu{Credits simulator}, \menu{Categories}, \menu{Budgetary lines} and \menu{Reports}. By clicking on the small black triangle to the left of the  \menu{Accounts} or \menu{Reports} tabs,  you can scroll or roll up the list of their sub-tabs. You can change the order of tabs and sub-tabs by clicking on one of them and dragging it up or down the list.
 
 \textbf{Note} : These triangles can be replaced, depending on the theme of the desktop environment or window manager you are using, by other characters such as +, -,>, <, and so on.
 
@@ -183,14 +184,8 @@ To return to the opening screen which provides an overview of the entire account
 % espace pour changement de thème
 \vspacepdf{5mm}
 
-The account labels are displayed in black; as the mouse moves over any of the entries, this colour changes to gray.
-A balance greater than the desired Minimum Balance is displayed in dark green; as the mouse cursor moves over the line, its colour changes to light green.
-
-
 The account labels are displayed in black{\couleur} ; as the mouse cursor moves over the line of one of these, its colour changes to gray {\couleur}.
 A balance greater than the  \menu{desired Minimum Balance}  is displayed in dark green {\couleur} ; as the cursor moves over the line, its colour changes to light green {\couleur}.
-
-
 
 A balance less than the \menu{Minimum Balance Required} and greater than the \menu{Minimum Balance authorized} is displayed in orange{\couleur} ; as the pointer passes on its line, this color changes to light orange{\couleur}.
 A balance less than the  \menu{Minimum Authorized Balance}  is displayed in red{\couleur} ; as the pointer passes over its line, this color changes to light red{\couleur}.
@@ -203,7 +198,7 @@ A partial balance can be specified for a group of accounts  If defined this is d
 \vspacepdf{5mm}
 You can configure certain aspects of the display of this home page in the \menu{Edit - Preferences - Main - Main Page} on the Menu Bar or in the \menu{Properties} tab of each account :
 \begin{itemize}
-	 \item \menu{\indexword{Fonts}\index{polices}, \indexword{logo}\index{logo} et \indexword{coulours}\index{couleurs}} : section \vref{setup-display-logo} ;
+	 \item \menu{\indexword{Fonts}\index{polices}, \indexword{logo}\index{logo} and \indexword{colours}\index{couleurs}} : section \vref{setup-display-logo} ;
 	 \item \menu{?? Securities ??} : section \vref{setup-display-addresses-titles} ;
 	 \item \menu{Calculation of balances} : paragraph \vref{setup-general-home-balance} ;
 	 \item \menu{Partial balances from the list of accounts} : paragraph \vref{setup-general-home-partBalance} ;
@@ -219,130 +214,93 @@ In particular, if you find a spelling error in this page, you can correct it: se
 \newpage
 \fi
 
-\section{menu bar\label{home-menus}}
+\section{Menu bar\label{home-menus}}
 
 As in many graphics applications, most of Grisbi's important features are accessible through the menus in the \indexword{Menu Bar}\index{barre de menus}. The features are detailed below.
 
 
-\subsection{Menu \menu{Fichier}\label{home-menus-file}}
+\subsection{\menu{File} menu\label{home-menus-file}}
 
 This menu includes the following functions :
 
->> CHECKED TO HERE  use the example file <<
-
-%New account file: 
-%Open: 
-%Latest files:
-%Save: 
-%Save As: 
-%Import a file: 
-%Export to QIF / CSV file: 
-%Create an archive: 
-%Export an archive to a GSB / QIF / CSV file: 
-%Debug the account file: 
-%Make the account file anonymous: 
-%Make the QIF file anonymous: 
-%Debug mode: 
-%Close: 
-%Leave: Grisbi farm; 
-
 \begin{itemize}
-	\item \menu{Nouveau fichier de comptes} : creates a new account file; the current file is closed and a new empty file is created with an empty account (shortcut key \key{Ctrl}\key{N}),  see the \vref{start-newfile} section ; not to be confused with the creation of a new account;
-	\item \menu{Ouvrir} : open an accounts file  (shortcut key  \key{Ctrl}\key{O}) ;
-	\item \menu{Derniers fichiers} : displays the list of the last n files opened with Grisbi (only if there have been several); this number is configurable in the \menu{Edition - Préférences}, see the \vref{setup-general-files-manage}, \menu{Gestion des fichiers de compte} section ;
-	\item \menu{Enregistrer} : Saves the current account file  (shortcut key \key{Ctrl}\key{S}) ;
-	\item \menu{Enregistrer sous} : opens a file manager to save the current accounts file with the name and location of your choice; Grisbi defaults to the current directory, the name of the current accounts file, with the \file{.gsb} extension ;
-	\item \menu{Importer un fichier} :starts the file import wizard of another software; see  \vref{move-import-importinit} ;
-	\item \menu{Exporter vers un fichier QIF/CSV} :starts the Export Account File Wizard; see \vref{move-export} ;	
-	\item \menu{Créer une archive} : starts the archive creation wizard; see \vref{datamanagement-history-new} ;	
-	\item \menu{Exporter une archive vers un fichier GSB/QIF/CSV} : starts the archive export wizard; see \vref{datamanagement-history-export} ;
-	\item \menu{Déboguer le fichier de compte} :Starts the debug wizard for this file, which will help you look for inconsistencies in your account file; see  \vref{maintenance-file-debug} ;
-	\item \menu{Rendre anonyme le fichier de comptes} :starts the wizard that produces an anonymous copy of your account file; this file can be attached to a bug report; see \vref{maintenance-file-anonymous} ;	
-	\item \menu{Rendre anonyme le fichier QIF} :  starts the wizard that produces an anonymous copy of this file; this file can be attached to a bug report; see \vref{maintenance-QIF-anonymous} ;	
-	\item \menu{Mode de débogage} : puts Grisbi in debug mode, which creates a log file of events; see \vref{maintenance-debug-mode} ; 	
-	\item \menu{Fermer} : closes the current accounts file; Grisbi offers to save it if you have not already done it (keyboard shortcut \key{Ctrl}\key{W}) ;
-	\item \menu{Quitter} : ferme Grisbi ; Grisbi prompts you to save the account file if you have made any changes (raccourci-clavier \key{Ctrl}\key{Q}).
+	\item \menu{New account file...} : creates a new account file; the current file is closed and a new empty file is created with an empty account (shortcut key \key{Ctrl}\key{N}),  see the \vref{start-newfile} section ; not to be confused with the creation of a new account;
+	\item \menu{Open...} : open an accounts file  (shortcut key  \key{Ctrl}\key{O}) ;
+	\item \menu{Recently opened files} : displays the list of the last n files opened with Grisbi (only if there have been several); this number is configurable in the \menu{Edit - Preferences}, see the \vref{setup-general-files-manage}, \menu{Account file management} section ;
+	\item \menu{Save} : Saves the current account file  (shortcut key \key{Ctrl}\key{S}) ;
+	\item \menu{Save as...} : opens a file manager to save the current accounts file with the name and location of your choice; Grisbi defaults to the current directory, the name of the current accounts file, with the \file{.gsb} extension ;
+	\item \menu{Import file...} : starts the file import wizard of another software; see  \vref{move-import-importinit} ;
+	\item \menu{Export accounts as QIF/CSV file...} : starts the Export Account File Wizard; see \vref{move-export} ;	
+	\item \menu{Archive transactions...} : starts the archive creation wizard; see \vref{datamanagement-history-new} ;	
+	\item \menu{Export an archive as GSB/QIF/CSV file...} : starts the archive export wizard; see \vref{datamanagement-history-export} ;
+	\item \menu{Debug account file...} : starts the debug wizard for this file, which will help you look for inconsistencies in your account file; see  \vref{maintenance-file-debug} ;
+	\item \menu{Obfuscate account file...} : starts the wizard that produces an anonymous copy of your account file; this file can be attached to a bug report; see \vref{maintenance-file-anonymous} ;	
+	\item \menu{Obfuscate QIF file...} : starts the wizard that produces an anonymous copy of this file; this file can be attached to a bug report; see \vref{maintenance-QIF-anonymous} ;	
+	\item \menu{Debug mode} : puts Grisbi in debug mode, which creates a log file of events; see \vref{maintenance-debug-mode} ; 	
+	\item \menu{Close} : closes the current accounts file; Grisbi offers to save it if you have not already done it (shortcut key \key{Ctrl}\key{W}) ;
+	\item \menu{Quit} : close Grisbi ; Grisbi prompts you to save the account file if you have made any changes (shortcut key \key{Ctrl}\key{Q}).
 \end{itemize}
 
 
-\subsection{Menu \menu{Édition}\label{home-menus-edit}}
+\subsection{\menu{Edit} menu\label{home-menus-edit}}
 
-Ce menu comprend les fonctions suivantes :
-
-%itemize
-%Edit operation: see transactions-modify section, Editing an operation;
-%New operation: see transactions-new section, Entering a new transaction;
-%Delete an operation: see transactions-delete section, Deleting an operation;
-%Use the selected operation as a template: see transactions-model section, Operation selected as template;
-%Clone the operation: see transactions-duplicate section, Cloning an operation;
-%Convert to scheduled operation: see the transactions-schedule section, Converting an operation to a planned operation;
-%Move the operation to another account: see the transactions-move section, Moving an operation to another account;
-%New account: see accounts-new section, Creating a new account;
-%Delete the current account: see the accounts-delete section, Deleting an account;
-%Preferences:.
-%itemize
+This menu includes the following functions :
 
 \begin{itemize}
-	\item \menu{Editer l'opération} : see \vref{transactions-modify}, \menu{Modification d'une opération} ;
-	\item \menu{Nouvelle opération} : see \vref{transactions-new}, \menu{Saisie d'une nouvelle opération} ;
-	\item \menu{Supprimer une opération} : see \vref{transactions-delete}, \menu{Suppression d'une opération} ;
-	\item \menu{Utiliser l'opération sélectionnée comme modèle} : see \vref{transactions-model}, \menu{Opération sélectionnée comme modèle} ;
-	\item \menu{Cloner l'opération} : see \vref{transactions-duplicate}, \menu{Clonage d'une opération} ;
-	\item \menu{Convertir en opération planifiée} : see \vref{transactions-schedule}, \menu{Conversion d'une opération en opération planifiée} ;
-	\item \menu{Déplacer l'opération vers un autre compte} :see \vref{transactions-move}, \menu{Déplacement d'une opération vers un autre compte} ;
-	\item \menu{Nouveau compte} : see \vref{accounts-new}, \menu{Création d'un nouveau compte} ;
-	\item \menu{Supprimer le compte courant} :see \vref{accounts-delete}, \menu{Suppression d'un compte} ;
-	\item \menu{Préférences} :  allows you to configure Grisbi; see the \vref{setup}, \menu{Configuration de Grisbi} chapter.
+	\item \menu{Edit transaction} : see \vref{transactions-modify}, \menu{Modify a transaction} ;
+	\item \menu{New transaction} : see \vref{transactions-new}, \menu{Entering a new transaction} ;
+	\item \menu{Remove transaction} : see \vref{transactions-delete}, \menu{Deleting a transaction} ;
+	\item \menu{Use selected transaction as a template} : see \vref{transactions-model}, \menu{Selecting a transaction for use as a template} ;
+	\item \menu{Clone transaction} : see \vref{transactions-duplicate}, \menu{Clone a transaction} ;
+	\item \menu{Convert to scheduled transaction} : see \vref{transactions-schedule}, \menu{Converting a transaction to a scheduled transaction} ;
+	\item \menu{Move transaction to another account} : see \vref{transactions-move}, \menu{Moving a transaction to another account} ;
+	\item \menu{New account} : see \vref{accounts-new}, \menu{Creating a new account} ;
+	\item \menu{Remove current account} : see \vref{accounts-delete}, \menu{Removing the current account} ;
+	\item \menu{Preferences} : allows you to configure Grisbi; see the \vref{setup}, \menu{Configuration of Grisbi} chapter.
 \end{itemize}
 
 
-\subsection{Menu \menu{Affichage}\label{home-menus-display}}
+\subsection{\menu{View} menu\label{home-menus-display}}
 
 This menu includes the following functions : 
 
-
-
 \begin{itemize}
-	 \item \menu{Montrer le formulaire de saisie d'opérations} ; 
-	 \item \menu{Montrer les opérations rapprochées} (raccourci-clavier \key{Alt}\key{R}) ;
-	 \item \menu{Montrer les lignes d'archives} (raccourci-clavier \key{Altl}\key{L}) ;
-	 \item \menu{Montrer les \indexword{comptes clos}}\index{compte !clos} ;
-	 \item \menu{Montrer une ligne par opération} ;
-	 \item \menu{Montrer deux lignes par opération} ;
-	 \item \menu{Montrer trois lignes par opération} ;
-	 \item \menu{Montrer quatre lignes par opération} ;
-	 \item \menu{Réinitialiser la largeur des colonnes} ; permet de remettre les colonnes des listes d'opérations à leur largeur d'origine.
+	 \item \menu{Show transaction form} ; 
+	 \item \menu{Show reconciles} (shortcut key \key{Alt}\key{R}) ;
+	 \item \menu{Show lines archives} (shortcut key \key{Altl}\key{L}) ;
+	 \item \menu{Show \indexword{closed accounts}}\index{compte !clos} ;
+	 \item \menu{Show one line per transaction} ;
+	 \item \menu{Show two lines per transaction} ;
+	 \item \menu{Show three lines per transaction} ;
+	 \item \menu{Show four lines per transaction} ;
+	 \item \menu{Reset the column width} ; allows you to reset the columns of the tranaction lists to their original width.
 \end{itemize}
 
 
-\subsection{Menu \menu{Aide}\label{home-menus-help}}
+\subsection{\menu{Help} menu\label{home-menus-help}}
 
->>> DONE TO HERE
-
-
-
-Most of the choices in this menu give links to websites. In order for these links to work, you must have specified to Grisbi the navigation software (or browser) that you wish to use, in the \menu{Édition - Préférences} (see \vref{setup-general-programs}, \menu{Programmes}). Le menu \menu{Aide}  includes the following choices :
+Most of the choices in this menu give links to websites. In order for these links to work, you must have specified to Grisbi the navigation software (or browser) that you wish to use, in the \menu{Edit - Preferences} (see \vref{setup-general-programs}, \menu{Programmes}). The \menu{Help} menu includes the following choices\footnote{\strong{Translators Note:} A "help us with translation" menu item is mentioned in the French version of the manual but does note appear in the English version of Grisbi at release 1.0} :
 
 \begin{itemize}
-	\item \menu{Manuel} : opens your browser to the \og Grisbi User Manual page \fg{} (shortcut key  \key{Ctrl}\key{H}) ;
-	\item \menu{Démarrage rapide} : opens your browser to the \og Grisbi Quick Start page \fg{} ;
-	\item \menu{Traduction} : opens your browser to the \og Translate Grisbi \fg{}, to help us to widen the internationalization of Grisbi ;
-	\item \menu{À propos de Grisbi} : displays the program information box: you will find details about the version, the link to Grisbi's site, the acknowledgements page (contributors to the project) and the user license ;
-	\item \menu{Site Web de Grisbi} : opens your browser to the \lang{Grisbi}\footnote{\urlGrisbi{}} web site ;
-	\item \menu{Signaler une anomalie} : opens your browser to the \lang{Grisbi Bug Tracker page}\footnote{\urlBugTracker{}} to allow you to report a bug that you have discovered. You can also follow on this page the evolution of the corrections made to the reported bugs;
-	\item \menu{Astuce du jour} : opens a dialog box that displays a tip of use, different each time Grisbi starts; you can successively display all the tips, and choose whether or not the display of the tip of the day when starting Grisbi. To remove or reactivate the tip of the day, see \vref{setup-display-messages-trick}, \menu{Astuce du jour}.
+	\item \menu{Manual} : opens your browser to the \og Grisbi User Manual page \fg{} (shortcut key  \key{Ctrl}\key{H}) ;
+	\item \menu{Quick start} : opens your browser to the \og Grisbi Quick Start page \fg{} ;
+%	\item \menu{Traduction} : opens your browser to the \og Translate Grisbi \fg{}, to help us to widen the internationalization of Grisbi ;
+	\item \menu{About Grisbi...} : displays the program information box: you will find details about the version, the link to Grisbi's site, the acknowledgements page (contributors to the project) and the user license ;
+	\item \menu{Grisbi website} : opens your browser to the \lang{Grisbi}\footnote{\urlGrisbi{}} web site ;
+	\item \menu{Report a bug} : opens your browser to the \lang{Grisbi Bug Tracker page}\footnote{\urlBugTracker{}} to allow you to report a bug that you have discovered. You can also follow on this page the evolution of the corrections made to the reported bugs;
+	\item \menu{Tip of the day} : opens a dialog box that displays a tip of use, different each time Grisbi starts; you can successively display all the tips, and choose whether or not the display of the tip of the day when starting Grisbi. To remove or reactivate the tip of the day, see \vref{setup-display-messages-trick}, \menu{Tip of the day}.
 \end{itemize}
 
 
-\section{Raccourcis-clavier\label{home-shortcuts}}
+\section{Shortcut keys\label{home-shortcuts}}
 
 
-Keyboard shortcuts make it easy to enter data and navigate through Grisbi's windows, avoiding the need to move and click. By using the ones corresponding to the most common manipulations for you, you improve your ergonomics \indexword{ergonomie}\index{ergonomie} by limiting the important movements of your arms.
+Keyboard shortcuts make it easy to enter data and navigate through Grisbi's windows, avoiding the need to move and click. By using the ones corresponding to the most common manipulations for you, you improve your \indexword{ergonomics}\index{ergonomie} by limiting the important movements of your arms.
  
-Grisbi has a number of keyboard shortcuts, presented here according to different themes (see also  \vref{introduction-manual-conventions}, \menu{Conventions typographiques du présent manuel}).
-%introduction-manual-conventions, Typographical Conventions in this manual).
+Grisbi has a number of keyboard shortcuts, presented here according to different themes (see also  \vref{introduction-manual-conventions}, \menu{Typographical conventions in this manual}).
+.
 
-\subsection{Application et fichiers}
+\subsection{Application and files}
 
 \begin{itemize}
 	\item New accounts file : \key{Ctrl}\key{N}
@@ -353,22 +311,22 @@ Grisbi has a number of keyboard shortcuts, presented here according to different
 \end{itemize}
 
 
-\subsection{Panneau de navigation}
+\subsection{Navigation panel}
 
 \begin{itemize}
 	\item Select a tab or account: \key{ Arrow Up}, \key{Arrow Down}, \key{Page Up} ou \key{Page Down}
 \end{itemize}
 
-\subsection{List of operations and planned operations}
+\subsection{List of transactions and scheduled transactions}
 
 \begin{itemize}
-	\item Select an operation: \key{Enter}
+	\item Select a transaction: \key{Enter}
 	\item Move selection:\key{Arrow Up} ou \key{Arrow Down}
-	\item New operation:  \key{Enter} on empty line, or \key{Ctrl}\key{T}
-	\item Modify an operation: \key{Enter}
-	\item Delete an operation: \key{Delete} ;
-	\item Point or detach an operation:\key{Ctrl}\key{P}
-	\item Reconcile or unhook an operation: \key{Ctrl}\key{R}
+	\item New transaction:  \key{Enter} on empty line, or \key{Ctrl}\key{T}
+	\item Modify an transaction: \key{Enter}
+	\item Delete an transaction: \key{Delete} ;
+	\item Select a transaction for a reconciliation:\key{Ctrl}\key{P}
+	\item Remove a reconciled transaction: \key{Ctrl}\key{R}
 	\item Show or hide archival lines: \key{Altl}\key{L}
 \end{itemize}
 
@@ -386,13 +344,13 @@ Grisbi has a number of keyboard shortcuts, presented here according to different
 \subsection{Drop down lists}
 
 \begin{itemize}
-	 \item Open a list : \key{Page Down} ou \key{Down Arrow}
+	 \item Open a list : \key{Page Down} or \key{Down Arrow}
 	 \item Move in the list : \key{Up Arrow}, \key{Down Arrow}, \key{Page Up} or \key{Page Down}
 	 \item Validate a choice within a list: \key{Enter}
 	 \item Currencies, ??exercises?? and methods of payment:
 		\begin{itemize}
 			\item open list : \key{Space} ; 
-			\item move in the list: \key{Up Arrow} ou \key{Down Arrow} ;
+			\item move in the list: \key{Up Arrow} or \key{Down Arrow} ;
 			\item validate the item in the list : \key{Space}.
 		\end{itemize}
 \end{itemize}
@@ -400,21 +358,11 @@ Grisbi has a number of keyboard shortcuts, presented here according to different
 
 \subsection{Dates entered on the calendar}
 
-itemize
-Opens a calendar (on the date field): Ctrl Enter
-Closes the calendar without changing the date: Esc
-Validate the selected date: Enter
-Next or previous day: + or -, Right Arrow or Left Arrow
-Previous or next week: Arrow Up or Arrow Down
-Previous or next month: Page Up or Page Down
-First day or last day of the month: Start or End
-itemize
-
 \begin{itemize}
 	\item Opens a calendar (on the date field) : \key{Ctrl}\key{Enter}
 	\item Closes the calendar without changing the date : \key{Esc}
 	\item Validate the selected date : \key{Enter}
-	\item Next or previous day : \key{+} ou \key{-}, \key{Right Arrow} or \key{Left Arrow}
+	\item Next or previous day : \key{+} or \key{-}, \key{Right Arrow} or \key{Left Arrow}
 	\item Previous or next week : \key{Up Arrow} or \key{Down Arrow}
 	\item Previous or next month : \key{Page Up} or \key{Page Down}
 	\item First day or last day of the month : \key{Start} or \key{End}
@@ -424,10 +372,10 @@ itemize
 \subsection{Dates entered on keyboard }
 
 \begin{itemize}
-	\item Next or previous day : \key{+} ou \key{-}
-	\item Previous or next week : \key{Shift} \key{+} ou \key{Majuscule} \key{-}
-	\item Previous or next month : \key{Page Up} ou \key{Page Down}
-	\item Previous or Next Year : \key{Shift} \key{Page Up} ou \key{Shift} \key{Page Down}
+	\item Next or previous day : \key{+} or \key{-}
+	\item Previous or next week : \key{Shift} \key{+} or \key{Majuscule} \key{-}
+	\item Previous or next month : \key{Page Up} or \key{Page Down}
+	\item Previous or Next Year : \key{Shift} \key{Page Up} or \key{Shift} \key{Page Down}
 	\item Validate the selected date \key{Enter}
 \end{itemize}
 
@@ -435,7 +383,7 @@ itemize
 \subsection{Payees, categories, budget allocations, credit simulator, historical data and forecasts}
 
 \begin{itemize}
-	\item Move selection : \key{Up Arrow}, \key{Down Arrow}, \key{Page Up} ou \key{Page Down}
+	\item Move selection : \key{Up Arrow}, \key{Down Arrow}, \key{Page Up} or \key{Page Down}
 %Ces raccourcis ne fonctionnent plus :
 %	\item afficher les sous-catégories ou sous-imputations budgétaires (sur une catégorie ou une imputation budgétaire) : \key{Espace} ;
 %	\item afficher les opérations des sous-catégories ou sous-imputations budgétaires (sur une sous-catégorie ou une sous-imputation budgétaire) : \key{Espace}.
@@ -446,7 +394,7 @@ itemize
 
 \begin{itemize}
 	\item Select another tab : \key{Up Arrow}, \key{Down Arrow}, \key{Page Up}, \key{Page Down}
-	\item Navigate between the tab panel and the different options in the settings panel : \key{Tab}, \key{Up Arrow}, \key{Down Arrow}, \key{Left Arrow} et \key{Right Arrow}
+	\item Navigate between the tab panel and the different options in the settings panel : \key{Tab}, \key{Up Arrow}, \key{Down Arrow}, \key{Left Arrow} and \key{Right Arrow}
 \end{itemize}
 
 \subsection{Help}
