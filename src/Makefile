@@ -1,3 +1,7 @@
+# TOP contains the relative path of this Makefile
+TOP := $(dir $(lastword $(MAKEFILE_LIST)))
+TOOL_DIR := $(TOP)tool
+
 #TODO overfull, underfull rules...
 
 FILE=grisbi-manuel
@@ -89,7 +93,7 @@ html/$(FILE).html:   $(INCLUDES)
 	$(MAKE) boolean
 	@#TODO recognize the French language and switch to French mode
 	@mkdir -p .hevea_tmpdir html
-	@perl tool/Prepare_LaTeX_files.pl .hevea_tmpdir *tex
+	@perl $(TOOL_DIR)/Prepare_LaTeX_files.pl .hevea_tmpdir *tex
 # copy of macros.sty for html_img	
 	cp -p macros.sty .hevea_tmpdir/
 # must also get images
@@ -100,7 +104,7 @@ html/$(FILE).html:   $(INCLUDES)
 	cd .hevea_tmpdir && \
 	perl -i -pe 's/<HR WIDTH="80%" SIZE=2>//gs' $(FILE).html
 	cd .hevea_tmpdir && \
-	perl ../tool/HeVeA_postprocess.pl $(FILE).html
+	perl ../$(TOOL_DIR)/HeVeA_postprocess.pl $(FILE).html
 	@echo File grisbi-manuel.html done	 
 	cd .hevea_tmpdir && \
 	hacha $(FILE).html
@@ -181,17 +185,17 @@ shtml_txt:	txt shtml
 
 img:
 	@echo Linking to image mode
-	@ln -sf $(FILE)-boolean-illustration-true.tex \
+	@ln -sf $(TOP)$(FILE)-boolean-illustration-true.tex \
 		$(FILE)-boolean-illustration.tex
 
 txt:
 	@echo Linking to text mode
-	@ln -sf $(FILE)-boolean-illustration-false.tex \
+	@ln -sf $(TOP)$(FILE)-boolean-illustration-false.tex \
 		$(FILE)-boolean-illustration.tex
 
 default:
 	@echo Linking to default mode
-	@ln -sf $(FILE)-boolean-illustration-false.tex \
+	ln -sf $(TOP)$(FILE)-boolean-illustration-false.tex \
 		$(FILE)-boolean-illustration.tex
 
 boolean:
