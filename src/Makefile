@@ -132,7 +132,7 @@ html_img:	img html
 	@echo Remove tgz_html/ directory -html without image- because the html files include now the image legend...	
 	#in case we compile with illustrations
 	(test -L .hevea_tmpdir/$(FILE)001.png && cp -pd .hevea_tmpdir/*.png html/) || true
-	cd html && (test -e image || cp -Rf ../image ../html)
+	cd html && (test -e image || cp -Rf ../image .)
 	@echo Images added to html/
 	mv html fr
 	cp topic.dat fr/topic.dat
