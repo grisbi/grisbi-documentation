@@ -185,17 +185,17 @@ shtml_txt:	txt shtml
 
 img:
 	@echo Linking to image mode
-	ln -sf $(TOP)$(FILE)-boolean-illustration-true.tex \
+	ln -sf $(TOP)grisbi-manuel-boolean-illustration-true.tex \
 		$(FILE)-boolean-illustration.tex
 
 txt:
 	@echo Linking to text mode
-	ln -sf $(TOP)$(FILE)-boolean-illustration-false.tex \
+	ln -sf $(TOP)grisbi-manuel-boolean-illustration-false.tex \
 		$(FILE)-boolean-illustration.tex
 
 default:
 	@echo Linking to default mode
-	ln -sf $(TOP)$(FILE)-boolean-illustration-false.tex \
+	ln -sf $(TOP)grisbi-manuel-boolean-illustration-false.tex \
 		$(FILE)-boolean-illustration.tex
 
 boolean:
