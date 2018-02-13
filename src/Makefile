@@ -118,7 +118,7 @@ html/$(FILE).html:   $(INCLUDES)
 	cd .hevea_tmpdir && cp -p *.html ../html/ 
 	cd .hevea_tmpdir && cp -p *.gif ../html/
 # create symbolic link to change the name of the file displayed in several pages
-	cd html && ln -s index.html $(FILE).html
+	cd html && ln -sf index.html $(FILE).html
 	@echo Symbolic link to "grisbi-manuel.html" done
 	@echo Compilation in html completed		
 # create the archive for html
