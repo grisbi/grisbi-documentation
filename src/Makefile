@@ -56,44 +56,44 @@ English: distclean
 	$(MAKE) FILE=grisbi-manuel-en all
 
 pdf:	$(FILE).pdf
-	@test -d pdf || mkdir pdf
+	test -d pdf || mkdir pdf
 	@echo See copy in pdf/
-	@cp $(FILE).pdf pdf/$(FILE)-$(VERSION).pdf
+	cp $(FILE).pdf pdf/$(FILE)-$(VERSION).pdf
 	
 pdf_indexglossary: $(FILE).pdf
-	@texindy $(FILE).idx
-	@makeglossaries grisbi-manuel.glo
+	texindy $(FILE).idx
+	makeglossaries grisbi-manuel.glo
 	@echo Remove pdf file
-	@rm $(FILE).pdf
+	rm $(FILE).pdf
 	@echo Compile again in pdf by make pdf to get index and glossary.
 
 pdf_img:	img pdf
-	@test -d pdf_img || mkdir pdf_img
+	test -d pdf_img || mkdir pdf_img
 	@echo That is now different : see copy in pdf_img/
-	@mv $(FILE).pdf pdf_img/$(FILE)-img-$(VERSION).pdf
-	@rm -R pdf
+	mv $(FILE).pdf pdf_img/$(FILE)-img-$(VERSION).pdf
+	rm -R pdf
 
 pdf_img_indexglossary:	img pdf
-	@test -d pdf_img || mkdir pdf_img
-	@mv $(FILE).pdf pdf_img/$(FILE)-img-$(VERSION).pdf
-	@texindy $(FILE).idx
-	@makeglossaries grisbi-manuel.glo
+	test -d pdf_img || mkdir pdf_img
+	mv $(FILE).pdf pdf_img/$(FILE)-img-$(VERSION).pdf
+	texindy $(FILE).idx
+	makeglossaries grisbi-manuel.glo
 	@echo Remove pdf file
-	@rm pdf_img/$(FILE)-img-$(VERSION).pdf
+	rm pdf_img/$(FILE)-img-$(VERSION).pdf
 	@echo Compile again in pdf by make pdf_img to get index and glossary.
 
 pdf_txt:	txt pdf
-	@test -d pdf || mkdir pdf
-	@mv $(FILE).pdf pdf/$(FILE)-txt-$(VERSION).pdf	
+	test -d pdf || mkdir pdf
+	mv $(FILE).pdf pdf/$(FILE)-txt-$(VERSION).pdf	
 
 
 html:	html/$(FILE).html
 
 html/$(FILE).html:   $(INCLUDES)
 	$(MAKE) boolean
-	@#TODO recognize the French language and switch to French mode
-	@mkdir -p .hevea_tmpdir html
-	@perl $(TOOL_DIR)/Prepare_LaTeX_files.pl .hevea_tmpdir *tex
+	#TODO recognize the French language and switch to French mode
+	mkdir -p .hevea_tmpdir html
+	perl $(TOOL_DIR)/Prepare_LaTeX_files.pl .hevea_tmpdir *tex
 # copy of macros.sty for html_img	
 	cp -p macros.sty .hevea_tmpdir/
 # must also get images
@@ -123,74 +123,74 @@ html/$(FILE).html:   $(INCLUDES)
 	@echo Compilation in html completed		     
 # create the archive for html
 	cd html && tar -czf $(FILE)-html-$(VERSION).tar.gz $(FILE)* index.html *.gif 
-	@test -d tgz_html || mkdir tgz_html
-	@mv html/$(FILE)-html-$(VERSION).tar.gz tgz_html/$(FILE)-html-$(VERSION).tar.gz
+	test -d tgz_html || mkdir tgz_html
+	mv html/$(FILE)-html-$(VERSION).tar.gz tgz_html/$(FILE)-html-$(VERSION).tar.gz
 	@echo Archive in tgz_html/ done	
 
 html_img:	img html  	
-	@rm -R tgz_html
+	rm -R tgz_html
 	@echo Remove tgz_html/ directory -html without image- because the html files include now the image legend...	 	
-	@#in case we compile with illustrations
-	@(test -L .hevea_tmpdir/$(FILE)001.png && cp -pd .hevea_tmpdir/*.png html/) || true
-	@cd html && (test -e image || cp -Rf ../image ../html)
+	#in case we compile with illustrations
+	(test -L .hevea_tmpdir/$(FILE)001.png && cp -pd .hevea_tmpdir/*.png html/) || true
+	cd html && (test -e image || cp -Rf ../image ../html)
 	@echo Images added to html/	
-	@mv html fr	
-	@cp topic.dat fr/topic.dat
+	mv html fr	
+	cp topic.dat fr/topic.dat
 # create the archive for html_img
-	@tar -czf $(FILE)-html_img-$(VERSION).tar.gz fr/$(FILE)* fr/image fr/index.html fr/*.gif INSTALL fr/topic.dat
-	@test -d tgz_html_img || mkdir tgz_html_img
-	@mv $(FILE)-html_img-$(VERSION).tar.gz tgz_html_img/$(FILE)-html_img-$(VERSION).tar.gz
-	@mv fr html_img
+	tar -czf $(FILE)-html_img-$(VERSION).tar.gz fr/$(FILE)* fr/image fr/index.html fr/*.gif INSTALL fr/topic.dat
+	test -d tgz_html_img || mkdir tgz_html_img
+	mv $(FILE)-html_img-$(VERSION).tar.gz tgz_html_img/$(FILE)-html_img-$(VERSION).tar.gz
+	mv fr html_img
 	@echo Archive in tgz_html_img/ done
 
 	
 html_txt:	txt html
-	@mv html fr
-	@cp topic.dat fr/topic.dat
-	@tar -czhf $(FILE)-txt-$(VERSION).tar.gz fr/$(FILE)* fr/index.html fr/*.gif INSTALL fr/topic.dat --exclude fr/$(FILE).html
-	@test -d tgz || mkdir tgz
-	@mv $(FILE)-txt-$(VERSION).tar.gz tgz/$(FILE)-txt-$(VERSION).tar.gz
-	@mv fr html_txt
+	mv html fr
+	cp topic.dat fr/topic.dat
+	tar -czhf $(FILE)-txt-$(VERSION).tar.gz fr/$(FILE)* fr/index.html fr/*.gif INSTALL fr/topic.dat --exclude fr/$(FILE).html
+	test -d tgz || mkdir tgz
+	mv $(FILE)-txt-$(VERSION).tar.gz tgz/$(FILE)-txt-$(VERSION).tar.gz
+	mv fr html_txt
 
 
 ps:	$(FILE).ps
 
 ps_img:	img ps
-	@mv $(FILE).ps $(FILE)-img-$(VERSION).ps
+	mv $(FILE).ps $(FILE)-img-$(VERSION).ps
 
 ps_txt:	txt ps
-	@mv $(FILE).ps $(FILE)-txt-$(VERSION).ps
+	mv $(FILE).ps $(FILE)-txt-$(VERSION).ps
 
 
 dvi: 	$(FILE).dvi
 
 dvi_img:	img dvi
-	@mv $(FILE).ps $(FILE)-img-$(VERSION).ps
+	mv $(FILE).ps $(FILE)-img-$(VERSION).ps
 
 dvi_txt:	txt dvi
-	@mv $(FILE).dvi $(FILE)-txt-$(VERSION).dvi
+	mv $(FILE).dvi $(FILE)-txt-$(VERSION).dvi
 
 
 shtml:	shtml/$(FILE).shtml
 
 shtml_img:	img shtml
-	@rm -rf shtml_img
-	@mv shtml shtml_img
-	# @cd shtml_img && rename 's/gif/png/' grisbi-manuel*.gif
+	rm -rf shtml_img
+	mv shtml shtml_img
+	# cd shtml_img && rename 's/gif/png/' grisbi-manuel*.gif
 
 shtml_txt:	txt shtml
-	@rm -rf shtml_txt
-	@mv shtml shtml_txt
+	rm -rf shtml_txt
+	mv shtml shtml_txt
 
 
 img:
 	@echo Linking to image mode
-	@ln -sf $(TOP)$(FILE)-boolean-illustration-true.tex \
+	ln -sf $(TOP)$(FILE)-boolean-illustration-true.tex \
 		$(FILE)-boolean-illustration.tex
 
 txt:
 	@echo Linking to text mode
-	@ln -sf $(TOP)$(FILE)-boolean-illustration-false.tex \
+	ln -sf $(TOP)$(FILE)-boolean-illustration-false.tex \
 		$(FILE)-boolean-illustration.tex
 
 default:
@@ -200,66 +200,66 @@ default:
 
 boolean:
 	@echo Checking img/txt mode is set
-	@test -L $(FILE)-boolean-illustration.tex || make default
+	test -L $(FILE)-boolean-illustration.tex || make default
 
 v: dvi
-	@$(XDVI) $(FILE) &
+	$(XDVI) $(FILE) &
 
 gv:	ps
-	@$(GV) $(FILE) &
+	$(GV) $(FILE) &
 
 xpdf:	pdf
-	@$(XPDF) $(FILE).pdf &
+	$(XPDF) $(FILE).pdf &
 
 t test:
 	$(MAKE) mrproper dvi ps pdf html
 	$(MAKE) mrproper
 
 w3m links lynx: html
-	@$@ $(FILE).html
+	$ $(FILE).html
 
 %.eps:	%.png
 	@echo Convert $< $@
-	@convert $< $@
+	convert $< $@
  
 
 shtml/$(FILE).shtml:	html/$(FILE).html
-	@mv html shtml
-	@cd shtml && rm -f *.shtml
-	@cd shtml && for file in *.html; do tidy -f ../tidy-err.txt -config ../tool/tidy.cfg $$file > $$file.tmp; mv $$file.tmp $$file; done
-	@cd shtml && for file in *.html; do perl ../tool/HTML_to_SHTML.pl < $$file > `echo $$file | sed -e 's/\.html$$/\.shtml/'`; done
-	@cd shtml && rm -f $(FILE).html
-	@cd shtml && rm -f *.html
+	mv html shtml
+	cd shtml && rm -f *.shtml
+	cd shtml && for file in *.html; do tidy -f ../tidy-err.txt -config ../tool/tidy.cfg $$file > $$file.tmp; mv $$file.tmp $$file; done
+	cd shtml && for file in *.html; do perl ../tool/HTML_to_SHTML.pl < $$file > `echo $$file | sed -e 's/\.html$$/\.shtml/'`; done
+	cd shtml && rm -f $(FILE).html
+	cd shtml && rm -f *.html
 
 $(FILE).dvi:	$(INCLUDES) $(FIGURES_EPS)
 	$(MAKE) boolean
 	@echo Generating $@...
-	@# 3 fois pour la table des matières.
-	@latex --interaction=batchmode $(FILE).tex || \
+	# 3 fois pour la table des matières.
+	latex --interaction=batchmode $(FILE).tex || \
 	  (grep -A5 '^! ' $(FILE).log; exit 1)
-	@latex --interaction=batchmode $(FILE).tex
-	@# famous problem with LaTeX: pagestyle in tableofcontents
-	@# perl -i -pe 's/^/\\thispagestyle{fancy}\n/s' $(FILE).toc
-	@latex --interaction=batchmode $(FILE).tex
-	@grep Warning $(FILE).log || true
+	latex --interaction=batchmode $(FILE).tex
+	# famous problem with LaTeX: pagestyle in tableofcontents
+	# perl -i -pe 's/^/\\thispagestyle{fancy}\n/s' $(FILE).toc
+	latex --interaction=batchmode $(FILE).tex
+	grep Warning $(FILE).log || true
 	@echo Done.
 
 $(FILE).ps:	$(FILE).dvi
 	$(MAKE) boolean
 	@echo Generating $@...
-	@dvips -q -t a4 -o $(FILE).ps $(FILE).dvi
+	dvips -q -t a4 -o $(FILE).ps $(FILE).dvi
 	@echo Done.
 
 $(FILE).pdf:	$(FILE).tex $(INCLUDES)
 	$(MAKE) boolean
 	@echo Generating $@...
-	@pdflatex --interaction=batchmode $(FILE).tex || \
+	pdflatex --interaction=batchmode $(FILE).tex || \
 	  (grep -A5 '^! ' $(FILE).log; exit 1)
-	@pdflatex --interaction=batchmode $(FILE).tex
-	@pdflatex --interaction=batchmode $(FILE).tex
-	@thumbpdf $(FILE).pdf
-	@pdflatex --interaction=batchmode $(FILE).tex
-	@grep Warning $(FILE).log || true
+	pdflatex --interaction=batchmode $(FILE).tex
+	pdflatex --interaction=batchmode $(FILE).tex
+	thumbpdf $(FILE).pdf
+	pdflatex --interaction=batchmode $(FILE).tex
+	grep Warning $(FILE).log || true
 	@echo one.
 
 transfer: transferpdf transferphp transfertgz transferpaq
@@ -288,18 +288,18 @@ transferphp:
 
 clean:
 	@echo -n Cleaning intermediate files...
-	@#la commande @rm -f *.{aux,log,out,toc,tpt,bak,haux,lof,htoc,idx,ind,xdy,glg,glo,gls} ne fonctionne pas
-	@rm -f *.aux *.bak *.glg *.glo *.gls *.haux *.htoc *.idx *.ind *.lof *.log *.out *.toc *.tpt *.xdy
-	@rm -rf .hevea_tmpdir
-	@rm -f thumb*.*
+	#la commande rm -f *.{aux,log,out,toc,tpt,bak,haux,lof,htoc,idx,ind,xdy,glg,glo,gls} ne fonctionne pas
+	rm -f *.aux *.bak *.glg *.glo *.gls *.haux *.htoc *.idx *.ind *.lof *.log *.out *.toc *.tpt *.xdy
+	rm -rf .hevea_tmpdir
+	rm -f thumb*.*
 	@echo "  done."
 
 mrp mrproper: distclean
 
 distclean:	clean
 	@echo -n Cleaning result files...
-	@rm -f $(FILE){-img,-txt,}.{dvi,ps,pdf,html,shtml} $(FIGURES_EPS) \
+	rm -f $(FILE){-img,-txt,}.{dvi,ps,pdf,html,shtml} $(FIGURES_EPS) \
 	  $(FILE)-boolean-illustration.tex \
-	@rm $(FILE).pdf	  
-	@rm -Rf fr html html_img html_txt shtml shtml_img shtml_txt pdf pdf_img tgz_html tgz_html_img paq
+	rm $(FILE).pdf	  
+	rm -Rf fr html html_img html_txt shtml shtml_img shtml_txt pdf pdf_img tgz_html tgz_html_img paq
 	@echo "  done."
