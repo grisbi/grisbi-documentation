@@ -57,7 +57,7 @@ pdf:	$(FILE).pdf
 	@cp $(FILE).pdf pdf/$(FILE)-$(VERSION).pdf
 	
 pdf_indexglossary: $(FILE).pdf
-	@texindy grisbi-manuel.idx
+	@texindy $(FILE).idx
 	@makeglossaries grisbi-manuel.glo
 	@echo Remove pdf file
 	@rm $(FILE).pdf
@@ -72,7 +72,7 @@ pdf_img:	img pdf
 pdf_img_indexglossary:	img pdf
 	@test -d pdf_img || mkdir pdf_img
 	@mv $(FILE).pdf pdf_img/$(FILE)-img-$(VERSION).pdf
-	@texindy grisbi-manuel.idx
+	@texindy $(FILE).idx
 	@makeglossaries grisbi-manuel.glo
 	@echo Remove pdf file
 	@rm pdf_img/$(FILE)-img-$(VERSION).pdf
