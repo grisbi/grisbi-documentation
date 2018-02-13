@@ -128,7 +128,7 @@ html/$(FILE).html:   $(INCLUDES)
 	@echo Archive in tgz_html/ done
 
 html_img:	img html
-	rm -R tgz_html
+	rm -Rf tgz_html
 	@echo Remove tgz_html/ directory -html without image- because the html files include now the image legend...	
 	#in case we compile with illustrations
 	(test -L .hevea_tmpdir/$(FILE)001.png && cp -pd .hevea_tmpdir/*.png html/) || true
