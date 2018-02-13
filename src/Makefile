@@ -59,7 +59,7 @@ pdf:	$(FILE).pdf
 	test -d pdf || mkdir pdf
 	@echo See copy in pdf/
 	cp $(FILE).pdf pdf/$(FILE)-$(VERSION).pdf
-	
+
 pdf_indexglossary: $(FILE).pdf
 	texindy $(FILE).idx
 	makeglossaries grisbi-manuel.glo
@@ -84,7 +84,7 @@ pdf_img_indexglossary:	img pdf
 
 pdf_txt:	txt pdf
 	test -d pdf || mkdir pdf
-	mv $(FILE).pdf pdf/$(FILE)-txt-$(VERSION).pdf	
+	mv $(FILE).pdf pdf/$(FILE)-txt-$(VERSION).pdf
 
 
 html:	html/$(FILE).html
@@ -94,47 +94,47 @@ html/$(FILE).html:   $(INCLUDES)
 	#TODO recognize the French language and switch to French mode
 	mkdir -p .hevea_tmpdir html
 	perl $(TOOL_DIR)/Prepare_LaTeX_files.pl .hevea_tmpdir *tex
-# copy of macros.sty for html_img	
+# copy of macros.sty for html_img
 	cp -p macros.sty .hevea_tmpdir/
 # must also get images
-	ln -sf ../image .hevea_tmpdir/image			
+	ln -sf ../image .hevea_tmpdir/image
 # use -fix instead of calling hevea twice
 	cd .hevea_tmpdir && \
-	hevea -fix -O -I ../hva $(FILE).tex  	   
+	hevea -fix -O -I ../hva $(FILE).tex  	
 	cd .hevea_tmpdir && \
 	perl -i -pe 's/<HR WIDTH="80%" SIZE=2>//gs' $(FILE).html
 	cd .hevea_tmpdir && \
 	perl ../$(TOOL_DIR)/HeVeA_postprocess.pl $(FILE).html
-	@echo File grisbi-manuel.html done	 
+	@echo File grisbi-manuel.html done	
 	cd .hevea_tmpdir && \
 	hacha $(FILE).html
 	@echo Note that errors « Warning: Undefined label: ... » are not significant and result only from an hevea bug.
-	@echo File index.html done	 		
-# rename the file displayed in one page	
+	@echo File index.html done	
+# rename the file displayed in one page
 	cd .hevea_tmpdir && mv $(FILE).html $(FILE)-1page.html
 	@echo Rename the file displayed in 1 page done
-# copy files into html/	
-	cd .hevea_tmpdir &&  cp -p *.css ../html/     
-	cd .hevea_tmpdir && cp -p *.html ../html/        
-	cd .hevea_tmpdir && cp -p *.gif ../html/	
-# create symbolic link to change the name of the file displayed in several pages	
+# copy files into html/
+	cd .hevea_tmpdir &&  cp -p *.css ../html/
+	cd .hevea_tmpdir && cp -p *.html ../html/ 
+	cd .hevea_tmpdir && cp -p *.gif ../html/
+# create symbolic link to change the name of the file displayed in several pages
 	cd html && ln -s index.html $(FILE).html
-	@echo Symbolic link to "grisbi-manuel.html" done	
-	@echo Compilation in html completed		     
+	@echo Symbolic link to "grisbi-manuel.html" done
+	@echo Compilation in html completed		
 # create the archive for html
-	cd html && tar -czf $(FILE)-html-$(VERSION).tar.gz $(FILE)* index.html *.gif 
+	cd html && tar -czf $(FILE)-html-$(VERSION).tar.gz $(FILE)* index.html *.gif
 	test -d tgz_html || mkdir tgz_html
 	mv html/$(FILE)-html-$(VERSION).tar.gz tgz_html/$(FILE)-html-$(VERSION).tar.gz
-	@echo Archive in tgz_html/ done	
+	@echo Archive in tgz_html/ done
 
-html_img:	img html  	
+html_img:	img html
 	rm -R tgz_html
-	@echo Remove tgz_html/ directory -html without image- because the html files include now the image legend...	 	
+	@echo Remove tgz_html/ directory -html without image- because the html files include now the image legend...	
 	#in case we compile with illustrations
 	(test -L .hevea_tmpdir/$(FILE)001.png && cp -pd .hevea_tmpdir/*.png html/) || true
 	cd html && (test -e image || cp -Rf ../image ../html)
-	@echo Images added to html/	
-	mv html fr	
+	@echo Images added to html/
+	mv html fr
 	cp topic.dat fr/topic.dat
 # create the archive for html_img
 	tar -czf $(FILE)-html_img-$(VERSION).tar.gz fr/$(FILE)* fr/image fr/index.html fr/*.gif INSTALL fr/topic.dat
@@ -143,7 +143,7 @@ html_img:	img html
 	mv fr html_img
 	@echo Archive in tgz_html_img/ done
 
-	
+
 html_txt:	txt html
 	mv html fr
 	cp topic.dat fr/topic.dat
@@ -221,7 +221,7 @@ w3m links lynx: html
 %.eps:	%.png
 	@echo Convert $< $@
 	convert $< $@
- 
+
 
 shtml/$(FILE).shtml:	html/$(FILE).html
 	mv html shtml
@@ -300,6 +300,6 @@ distclean:	clean
 	@echo -n Cleaning result files...
 	rm -f $(FILE){-img,-txt,}.{dvi,ps,pdf,html,shtml} $(FIGURES_EPS) \
 	  $(FILE)-boolean-illustration.tex \
-	rm $(FILE).pdf	  
+	rm $(FILE).pdf	
 	rm -Rf fr html html_img html_txt shtml shtml_img shtml_txt pdf pdf_img tgz_html tgz_html_img paq
 	@echo "  done."
