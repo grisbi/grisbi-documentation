@@ -1,0 +1,1733 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents : The setup chapter
+% $Id : grisbi-manuel-setup.tex, v 0.4 2002/10/27 Daniel Cartron
+% $Id : grisbi-manuel-setup.tex, v 0.5.0 2004/06/01 Loic Breilloux
+% $Id : grisbi-manuel-setup.tex, v 0.6.0 2011/11/17 Jean-Luc Duflot
+% $Id : grisbi-manuel-setup.tex, v 0.8.9 2012/04/27 Jean-Luc Duflot
+% $Id : grisbi-manuel-setup.tex, v 1.0 2014/02/12 Jean-Luc Duflot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Configuration de Grisbi\label{setup}}
+
+
+Pour avoir accès aux paramètres de configuration de Grisbi, cliquez sur le menu \menu{Edition - Préférences}. La fenêtre de configuration s'ouvre, et vous pouvez en changer la taille et la position. 
+
+Cette fenêtre se compose de deux panneaux verticaux : le panneau des onglets à gauche, et le panneau des réglages \ifIllustration à droite\refimage{setup-sections-img}.
+
+% image centrée  ; échelle réduite pour entrer dans la page
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.42]{image/screenshot/setup_sections}
+\end{center}
+\caption{Fenêtre de configuration}
+\label{setup-sections-img}
+\end{figure}
+% image centrée 
+\else à droite.
+\fi
+
+Il y a vingt-sept onglets qui sont regroupés en six sections :
+\begin{itemize}
+	\item \menu{Généralités} ;
+	\item \menu{Affichage} ;
+	\item \menu{Opérations} ;
+	\item \menu{Formulaire des opérations} ;
+	\item \menu{Ressources} ;
+	\item \menu{Budget prévisionnel}.
+\end{itemize}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+La fenêtre de configuration s'ouvre en affichant l'onglet \menu{Fichiers} dans le panneau des réglages à droite.
+
+Vous pouvez sélectionner un autre onglet en cliquant sur son nom, ou en naviguant dans le panneau des onglets avec les touches du clavier   \key{Flèche Haut}, \key{Flèche Bas}, \key{Page Haut}, \key{Page Bas}.
+
+Vous pouvez naviguer entre le panneau des onglets et les différentes options du panneau des réglages avec les touches \key{Tabulation}, \key{Flèche Haut}, \key{Flèche Bas}, \key{Flèche Gauche} et \key{Flèche Droit}.
+
+
+\section{Généralités\label{setup-general}}
+
+
+\subsection{Fichiers\label{setup-general-files}}
+
+Cet onglet définit la façon dont Grisbi utilise vos fichiers \ifIllustration de comptes\refimage{setup-files-img}.
+
+% image centrée 
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_files}
+\end{center}
+\caption{Gestion des fichiers de comptes et des sauvegardes}
+\label{setup-files-img}
+\end{figure}
+% image centrée 
+\else de comptes.
+\fi
+
+
+\subsubsection{Gestion des fichiers de comptes\label{setup-general-files-manage}}
+
+Vous pouvez y définir :
+
+\begin{itemize}
+	\item \menu{Chargement automatique du dernier fichier consulté} ;
+	\item \menu{Enregistrer automatiquement en fermant} : lors de la fermeture du fichier ou de l'application ; par défaut, Grisbi n'enregistre pas automatiquement le fichier s'il a été modifié et vous demande si vous voulez l'enregistrer ;
+	\item \menu{Forcer l'enregistrement des fichiers verrouillés} : Grisbi permettant à plusieurs utilisateurs d'avoir accès au même fichier de comptes, le fichier en cours d'utilisation est verrouillé en écriture pour les autres utilisateurs qui voudraient l'utiliser en même temps ; mais vous pouvez vouloir forcer l'enregistrement par ces utilisateurs, ou ne vouloir l'enregistrer que si le fichier n'est pas en cours d'utilisation par un autre ; par défaut, l'enregistrement est forcé ;
+	\item \menu{Chiffrer le fichier Grisbi} : le \indexword{\gls{chiffrement} du fichier de comptes}\index{fichier de comptes !chiffrement} permet de ne le lire et le modifier que si vous connaissez le mot de passe ; par défaut, il n'est pas chiffré ;
+	%saut de ligne pour Note suivante à la ligne en html 
+
+	\strong{Attention} : il n'existe \emph{aucune} méthode pour récupérer un fichier chiffré dont on a perdu le mot de passe.
+	%saut de ligne pour Note suivante à la ligne en html
+
+	\strong{Attention} : pour une raison inconnue, l'utilisation de cette fonction de Grisbi sous Windows peut rendre le fichier de comptes totalement inutilisable ; il est donc recommandé de faire des sauvegardes très souvent, ou mieux encore, de ne pas l'utiliser : son utilisation est à vos risques et périls ;
+	\item \menu{Compresser le fichier Grisbi} : la \indexword{compression du fichier de comptes} \index{fichier de comptes !compression} permet d'avoir un fichier moins volumineux ; dans ce cas, il ne sera plus lisible directement avec un éditeur de texte ; par défaut, il est compressé, et cette compression est faite au format \file{.\gls{GZ}} ;
+	\item \menu{Mémorisation des derniers fichiers ouverts} : réglage du nombre des derniers fichiers ouverts accessibles par le menu \menu{Fichier - Derniers fichiers}.
+\end{itemize}
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : il est conseillé de sélectionner l'option  \menu{ Enregistrer automatiquement en fermant} : les modifications sont sauvegardées à la fermeture de Grisbi sans rien demander à l'utilisateur.
+
+
+\subsubsection{Sauvegardes\label{setup-general-files-backup}}
+
+Vous pouvez y définir :
+
+\begin{itemize}
+	\item \menu{Créer un fichier de sauvegarde unique} : ce fichier de sauvegarde automatique sera créé par défaut à la racine de votre répertoire personnel, avec une extension automatique du nom de fichier ; par défaut, Grisbi fait plutôt des sauvegardes automatiques à intervalles réguliers ;
+	\item \menu{Compresser le fichier de sauvegarde} : par défaut, il n'est pas compressé ;
+	\item \menu{Effectuer une copie de sauvegarde après avoir ouvert les fichiers} : dans ce cas, vous indiquerez plus bas un répertoire de sauvegarde ; par défaut, il n'y a pas de sauvegarde automatique après l'ouverture du fichier de comptes ;
+	\item \menu{Effectuer une copie de sauvegarde avant d'enregistrer les fichiers} : dans ce cas, vous indiquerez plus bas un répertoire de sauvegarde ; par défaut, il y a une sauvegarde automatique avant l'enregistrement du fichier de comptes ;
+	\item \menu{Effectuer une copie de sauvegarde toutes les \ldots{ } minutes} : réglage de l'intervalle entre deux sauvegardes automatiques, en minutes ;
+	\item \menu{Répertoire de sauvegarde} : la liste déroulante permet d'ouvrir différents volumes de stockage, et le choix \menu{Autre} ouvre un gestionnaire de fichiers qui permet d'identifier le chemin du répertoire actuel, et de naviguer dans le système de fichiers pour définir le répertoire de sauvegarde.
+\end{itemize}
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : il est conseillé de sélectionner l'option \menu{ Effectuer une copie de sauvegarde avant d'enregistrer les fichiers} : Grisbi sauvegarde l'ancien fichier avant de faire une sauvegarde des dernières modifications.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\strong{Attention} : d'une manière générale, il est déconseillé d'avoir des accents ou des espaces dans les noms des répertoires et fichiers utilisés par Grisbi. Si c'est le cas, renommez-les maintenant. Par exemple, les espaces peuvent être remplacées par des tirets bas (\_). 
+
+\ifIllustration
+\else
+% saut de page pour titre solidaire
+\newpage
+\fi
+
+
+\subsubsection{Fichier de configuration\label{setup-general-files-config}}
+
+Vous pouvez choisir ici d'\menu{Utiliser le \indexword{fichier de configuration} de la version stable comme modèle\index{fichier de configuration}}. Cela peut être utile si vous voulez essayer une version en cours de développement en conservant tous vos réglages de la version stable.
+
+
+\subsection{Archives\label{setup-general-archives}}
+
+Cet onglet sert à gérer les archives existantes et l'automatisation \ifIllustration de l'archivage\refimage{setup-history-img}.
+% image centrée 
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[scale=0.50]{image/screenshot/setup_history}
+\end{center}
+\caption{Gestion des archives}
+\label{setup-history-img}
+\end{figure}
+% image centrée 
+\else de l'archivage.
+\fi
+
+
+\subsubsection{Archives existantes\label{setup-general-archives-existing}}
+
+Un tableau affiche la \indexword{liste des archives}\index{archive !liste} faites précédemment, avec les informations relatives au mode de sélection des opérations utilisé pour la création de l'archive :
+
+\begin{itemize}
+	\item le nom de l'archive ;
+	\item si les opérations ont été sélectionnées par date : les dates initiale et finale de l'archive ;
+	\item si les opérations ont été sélectionnées par exercice : l'année de l'exercice ;	
+	\item si les opérations ont été sélectionnées par un état : le nom de cet état.
+	\end{itemize}	
+
+
+\subsubsection{Modifier l'archive\label{setup-general-archives-remove}}
+
+Si vous sélectionnez une ligne d'archive par un clic dans le tableau, son nom apparaît dans le champ libellé \menu{Nom}, et les deux boutons de \indexword{suppression d'archive}\index{archive ! suppression} \menu{Supprimer l'archive} et \menu{Supprimer l'archive et les opérations} deviennent actifs ; vous pouvez alors :
+
+\begin{itemize}
+	\item dans le champ \menu{Nom} : modifier le nom de l'archive ;	
+	\item par le bouton \menu{Supprimer l'archive} : par un clic, vous supprimez le statut \emph{archive} des opérations appartenant à l'archive sélectionnée ; ces opérations seront donc à nouveau visibles dans la liste des opérations ;  une fenêtre d'avertissement et de validation s'affiche et vous pouvez soit valider, soit annuler cette action ; cette opération est réversible, en recréant la même archive ;
+	\item par le bouton \menu{Supprimer l'archive et les opérations} : par un clic, vous  supprimez du fichier de comptes de Grisbi l'archive sélectionnée \emph{et toutes les opérations contenues dans celle-ci} ; une fenêtre d'avertissement et de validation s'affiche et vous pouvez soit valider, soit annuler cette action ; cette \indexword{opération est irréversible}\index{opération !irréversible}, et il est vivement conseillé d'exporter auparavant l'archive vers un fichier au format \gls{GSB}, \gls{QIF} ou \gls{CSV} (voir \menu{Fichier - Exporter une archive vers un fichier GSB/ QIF/CSV/...}
+
+% espace après Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\strong{Attention} :  si vous choisissez cette dernière fonction, il n'y aura pas d'autre avertissement, et l'archive sera supprimée \emph{IMMÉDIATEMENT} ainsi que toutes ses opérations. Cette suppression est irréversible !
+\end{itemize}
+
+
+\subsubsection{Avertissement et création automatique\label{setup-general-archives-create}}
+
+Lorsqu'un certain nombre d'opérations enregistrées est atteint, Grisbi peut d'une part afficher un  \indexword{avertissement}\index{archive !avertissement} que cette quantité d'opérations n'a pas été encore archivée, d'autre part lancer automatiquement la \indexword{création d'une archive}\index{archive !création automatique}.
+
+En cliquant sur la case libellée \menu{Créer automatiquement une archive si nécessaire}, vous validez cette fonction d'archivage automatique.
+
+Avec le libellé \menu{Avertir si plus de \ldots{ } opérations ne sont pas archivées}, vous pouvez définir ce nombre d'opérations. La valeur par défaut est 3000.
+
+
+\subsection{Importer\label{setup-general-import}}
+
+% image centrée 
+Cet onglet sert à configurer certains \ifIllustration paramètres d'importation de données\refimage{setup-import-img}.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_import}
+\end{center}
+\caption{Paramètres d'importation}
+\label{setup-import-img}
+\end{figure}
+% image centrée 
+\else paramètres d'importation.
+\fi
+
+
+\subsubsection{Paramètres pour l'import\label{setup-general-import-parameters}}
+
+Quand vous importez un compte, Grisbi vérifie, pour chaque opération de ce compte, si elle existe déjà dans votre fichier de comptes : si l'opération importée comporte un identifiant bancaire (ce qui est généralement le cas), il commence par chercher une opération qui a le même identifiant. S'il ne trouve pas, il va chercher une opération du même montant et à une date proche.
+
+Le champ de libellé \menu{Intervalle de recherche des opérations similaires} permet de définir combien de jours avant et après la date de l'opération importée Grisbi va faire cette recherche. Ainsi, une opération datée du 10 du mois sera recherchée 5 jours avant et après si le réglage est de 5 (sa valeur par défaut est 2).
+
+Vous pouvez faire les choix suivants :
+
+\begin{itemize}
+	\item \menu{Fusionner les opérations importées avec les opérations trouvées} : fusionne les opérations importées à partir d'un fichier au format \gls{OFX} avec les opérations planifiées trouvées dans l'intervalle de temps défini ci-dessus ;
+	\item \menu{Associer automatiquement la catégorie au tiers si c'est possible} : associe au tiers la catégorie et l'imputation budgétaire de la dernière opération ayant eu le même tiers, sauf pour les chèques ;
+	\item \menu{Extraire un numéro à enregistrer dans \No chèque/virement} : récupère un numéro contenu dans le tiers pour le sauvegarder dans le champ \menu{\No chèque/virement}.
+\end{itemize}
+
+
+\subsubsection{Définition de l'exercice\label{setup-general-import-financialyear}}
+
+Vous pouvez définir quelle type de date sera utilisée pour l'attribution de l'\indexword{exercice}\index{exercice !définition} à chaque opération importée, en choisissant entre les boutons :
+
+\begin{itemize}
+	\item \menu{Utiliser la date de l'opération} : c'est le choix par défaut ;     
+	\item \menu{Utiliser la date de valeur ou la date de l'opération si non présente}.
+\end{itemize}
+
+
+\subsection{Associations pour l'import\label{setup-general-importLinks}}
+
+\ifIllustration
+% image entourée par un paragraphe ( picins)
+% pas de référence à l'illustration car erreur de numéro de figure avec picins.
+\pichskip{8mm}
+% supprimé car en html les figures entourées ne sont pas numérotées, et la numérotation des figures centrées décalée par rapport au pdf
+%\piccaption{Associations pour l'importation}
+\label{setup-importLinks-img}
+\parpic[r]{\includegraphics[scale=0.5]{image/screenshot/setup_importLinks}}
+\picskip{18}
+% image entourée par un paragraphe ( picins)
+\fi
+\noindent Lorsque vous importez un fichier, vous pouvez établir une association entre une \indexword{chaîne de caractères}\index{chaîne de caractères} de ce fichier et un tiers. Par exemple, tous les libellés \gls{QIF} contenant \newlinepdf \og loyer \fg{} peuvent être associés à un tiers qui peut, par exemple, représenter votre propriétaire. Cela permet de définir automatiquement des tiers à partir d'informations avec lesquelles vous savez qu'elles ont un rapport.
+
+\ifIllustration
+% espace après légende  : 10 mm
+\vspacepdf{15mm}
+\fi
+
+La section \menu{Associations pour l'import} affiche le tableau des associations tiers-chaîne de caractères, et deux boutons \menu{Ajouter} et \menu{Enlever}. La section \menu{Détails des associations} affiche un champ de saisie et une liste déroulante pour le \menu{Nom du tiers}, et un champ de saisie pour la \menu{Chaîne recherchée} : cela permet d'afficher les paramètres de l'association pour l'import\index{import !paramétrage} sélectionnée dans le tableau, ou de créer ou modifier une association.
+
+\ifIllustration
+% espace après image entourée
+\vspacehevea{20mm}
+\fi
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour ajouter une association, procédez comme suit :
+\begin{itemize}
+	\item saisissez un nom dans le champ \menu{Nom du tiers} ; Grisbi vous propose le complètement automatique d'après les tiers connus ; ou bien sélectionnez un tiers dans la liste déroulante ;
+	\item saisissez une chaîne de caractères à rechercher dans le champ \menu{Chaîne recherchée} ; vous pouvez utiliser le caractère \og \% \fg{} comme joker, par exemple \og Carte Visa\% \fg{}, \og\%Tresor Public\% \fg{} ou \og VIR \% BANQUE \fg{} ;
+	\item cliquez sur le bouton \menu{Ajouter} ; l'association s'affiche dans le tableau.
+\end{itemize}
+
+\vspacepdf{5mm}
+
+Pour modifier une association, procédez comme suit :
+\begin{itemize}
+	\item modification du tiers :
+		\begin{enumerate}
+			\item sélectionnez l'association dans le tableau par un clic de souris : ses paramètres apparaissent dans la zone \menu{Détails des associations},
+			\item dans cette zone, modifiez le tiers dans le champ de saisie libellé \menu{Nom du tiers}, ou grâce à la liste déroulante à sa droite, indiquée par un petit triangle noir ;	
+	%saut de ligne pour Note suivante à la ligne en html 
+
+			\textbf{Note} : ces triangles peuvent être remplacés, en fonction du thème de l'environnement de bureau ou du gestionnaire de fenêtres que vous utilisez, par d'autres caractères tels que +, -, >, <, etc.
+		\end{enumerate}		
+	\item modification de la chaîne recherchée :		
+		\begin{enumerate}
+			\item dans la colonne \menu{Chaîne recherchée} du tableau, cliquez sur la ligne de l’association : cela met son champ \menu{Chaîne recherchée} en mode édition,
+			\item modifiez-la, puis validez par la touche \key{Entrée} ; le champ \menu{Chaîne recherchée} de cette association est mis à jour.	
+		\end{enumerate}
+\end{itemize} 
+ 
+\ifIllustration
+% espace pour changement de thème
+\vspacepdf{5mm}
+\fi 
+ 
+Pour supprimer une association, procédez comme suit :
+\begin{itemize}
+	\item sélectionnez-la dans le tableau par un clic de souris ;
+	\item cliquez sur le bouton \menu{Enlever} ; l'association disparaît du tableau.
+\end{itemize}
+
+
+\subsection{Programmes\label{setup-general-programs}}
+
+Cet onglet permet de définir le programme qui sera lancé par les différents choix du menu \menu{Aide}. Le champ \indexword{navigateur Web}\index{navigateur Web} permet de définir ce programme, qui affichera directement les contenus au format \gls{HTML} dont Grisbi connaît l'adresse \indexword{\gls{URL}} \index{url}, comme le Manuel de l'Utilisateur en ligne.
+
+\ifIllustration
+% image entourée par un paragraphe ( picins)
+% pas de référence à l'illustration car erreur de numéro de figure avec picins.
+\pichskip{7mm}
+% supprimé car en html les figures entourées ne sont pas numérotées, et la numérotation des figures centrées décalée par rapport au pdf
+%\piccaption{Lancement de programmes}
+\label{setup-programs-img}
+\parpic[l]{\includegraphics[scale=0.5]{image/screenshot/setup_programs}}
+%\picskip{8} ne marche plus, superpose le texte et l'image
+% image entourée par un paragraphe ( picins)
+\fi
+
+\noindent  Dans le champ \menu{Navigateur Web}, la commande \cmd{xdg-open}, reconnue par tous les bons systèmes d'exploitation, lance votre navigateur par défaut. Vous pouvez aussi saisir la commande qui lance un autre navigateur, par exemple \newlinepdf \cmd{firefox} ou bien, si vous voulez un affichage ultra-rapide, un navigateur ultra-léger comme Dillo ou Midori (commande \cmd{dillo} ou \cmd{midori}).
+
+% espace avant Attention ou Note  : 10 mm
+\vspacepdf{5mm}
+\textbf{Note} : dans cette commande, vous devrez peut-être indiquer aussi le chemin d'accès complet à la commande.
+
+\ifIllustration
+% espace après image entourée
+\vspacehevea{2mm}
+\fi
+
+%\vspacepdf{5mm}
+\textbf{Note} : cela peut fonctionner de saisir une commande pour lancer l'affichage du manuel en pdf, par ex. \cmd{evince chemin/grisbi-manuel-img-xxx.pdf} avec son chemin ; il se peut que cela affiche aussi une erreur peu importante, mais si vous préférez ce format \dots
+
+
+
+
+\subsection{Échéancier\label{setup-general-planned}}
+
+L'échéancier peut vous signifier une \indexword{alerte d'opération planifiée}\index{alerte !opération planifiée} à l'approche d'une échéance, par un message qui s'affiche dans la page d'accueil. Vous pouvez choisir entre les boutons :
+% espace avant image 5mm
+\vspacepdf{3mm}
+
+\begin{itemize}
+	% image entourée par une liste (picins)
+	% pas de référence à l'illustration car erreur de numéro de figure avec picins.
+	\ifIllustration
+	% supprimé car en html les figures entourées ne sont pas numérotées, et la numérotation des figures centrées décalée par rapport au pdf
+	%\piccaption{Alertes de l'échéancier}
+	\label{setup-plannedtransactions-img}
+	\parpic[l]{\includegraphics[scale=0.5]{image/screenshot/setup_plannedtransactions}}
+	% image entourée par une liste 
+	\fi
+	\item \menu{Alerter/Exécuter les opérations planifiées arrivées à terme} : le message n'apparaît qu'à la date où l'opération est échue ; c'est le choix par défaut ;
+	\item \menu{Alerter/Exécuter les opérations planifiées du mois} : le message apparaît dès le 1\up{er} jour du mois pour toutes les opérations échues durant le mois.
+\end{itemize}
+
+\ifIllustration
+% espace après légende  : 10 mm
+\vspacepdf{12mm}
+\fi
+
+Vous pouvez aussi y définir avec l'incrémenteur le \menu{Nombre de jours avant l'alerte ou l'exécution des opérations}.
+
+\ifIllustration
+% espace après image entourée
+\vspacehevea{15mm}
+\fi
+
+\subsection{Paramètres régionaux\label{setup-general-localisation}}
+
+
+\subsubsection{Choisir le format de la date}\index{date !séparateur}\index{séparateur !date}\index{date !format\label{setup-general-localisation-date}}
+
+Grisbi vous laisse le choix dans le format de la date. Vous pouvez choisir son format entre les boutons :
+\begin{itemize}
+	\item \menu{dd/mm/yy} : affichage du jour, du mois et de l'année ; c'est le format utilisé dans les pays francophones, et c'est le format par défaut ;    
+	\item \menu{mm/dd/yy} : affichage du mois, du jour et de l'année ; c'est le format utilisé dans les pays anglophones ;
+	\item \menu{dd.mm.yy} : affichage du jour, du mois et de l'année ; c'est le format utilisé en Europe centrale.	
+\end{itemize}
+
+
+\subsubsection{Choisir le séparateur décimal et le séparateur des milliers}\index{séparateur !milliers\label{setup-general-localisation-numbers}}
+
+Vous pouvez choisir dans les deux listes déroulantes :
+\begin{itemize}
+	\item le \indexword{séparateur décimal} ; la virgule est le séparateur utilisé dans les pays francophones, et c'est le séparateur par défaut ;    
+	\item le \indexword{séparateur des milliers} ; l'espace est le séparateur utilisé dans les pays francophones, et c'est le séparateur par défaut.
+\end{itemize}
+
+
+\subsection{Accueil\label{setup-general-home}}
+
+Il s'agit de la configuration de trois aspects \ifIllustration de la page d'accueil\refimage{setup-home-img}.
+%image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_home}
+\end{center}
+\caption{Configuration de la page d'accueil}
+\label{setup-home-img}
+\end{figure}
+%image centrée
+\else de la page d'accueil.
+\fi
+
+
+\subsubsection{Pluriel de final\label{setup-general-home-final}}
+
+Ce \indexword{pluriel du mot \og final \fg{}} \index{pluriel de final}apparaît notamment dans la page d'accueil. Vous pouvez choisir le pluriel de \og Solde final \fg{}, entre \menu{Soldes finals} (choix par défaut) et \menu{Soldes finaux}. En effet, l'emploi de l'un ou l'autre est possible, c'est donc à votre convenance. 
+
+
+\subsubsection{Calcul des soldes\label{setup-general-home-balance}}
+
+Vous pouvez aussi \menu{Prendre en compte les transactions planifiées dans le calcul des soldes}\index{solde !opérations planifiées} en cochant la case correspondante : c'est le choix par défaut.
+
+
+\subsubsection{Soldes partiels de la liste des comptes\label{setup-general-home-partBalance}}
+
+La page d'accueil affiche le solde de chaque compte créé dans Grisbi, ainsi que le solde final de tous les comptes. Vous pouvez aussi lui faire afficher les soldes de plusieurs comptes, groupés par vous-mêmes en \indexword{groupes de comptes}\index{groupe de comptes}. Ces \indexword{soldes partiels}\index{solde !partiel} seront affichés en-dessous des \indexword{soldes des comptes}\index{solde !comptes}, et leur ordre peut être ajusté à votre convenance, ainsi que leur couleur.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Le tableau \menu{Soldes partiels de la liste des comptes} affiche les groupes de comptes\index{groupe de comptes !solde partiel} et leurs paramètres : \menu{Nom}, \menu{Liste des comptes}, \menu{Colorise}, \menu{Type de compte}, \menu{Devise}.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Vous pouvez ajuster l'ordre d'\indexword{affichage des soldes partiels}\index{affichage !soldes partiels} dans la page d'accueil de plusieurs manières :
+
+\begin{itemize}
+	\item en cochant la case \menu{Mettre le solde partiel sous ses comptes si c'est possible} qui se trouve sous le tableau ;
+	\item en modifiant les numéros d'ordre des groupes dans le tableau ;
+	\item en sélectionnant la ligne du groupe dans le tableau et en déplaçant la sélection dans la liste.
+\end{itemize}
+
+\ifIllustration
+% saut de page pour phrase solidaire
+\newpage
+\fi
+
+
+Pour \indexword{ajouter un groupe de comptes}\index{groupe de comptes !ajouter} dans la liste, procédez comme suit :
+
+\begin{enumerate}
+	\item cliquez sur \menu{Ajouter} ; la fenêtre \menu{Détail des soldes partiels} s'affiche ;
+	\item saisissez le nom de votre nouveau groupe de comptes dans le champ \menu{Nom} ;
+	\item sélectionnez au moins deux comptes dans la liste \menu{Nom du compte}, en utilisant la sélection multiple avec \key{Ctrl}\key{Clic} ou  \key{Majuscule}\key{Clic} ; 
+ 	\item le libellé \menu{Liste des comptes} indique les numéros d'ordre des comptes choisis (ces numéros correspondent à l'ordre de création de chaque compte) ;
+	\item le libellé \menu{Position dans la liste des comptes} indique le numéro d'ordre de création du groupe de comptes.
+	\item quand il est négatif, le solde s'affiche par défaut en noir{\couleur} ; cochez la case \menu{Colorise} pour qu'il s'affiche en rouge{\couleur} dans ce cas,  puis validez par le bouton \menu{Valider} ;
+	\item si les comptes sélectionnés ont des devises différentes, une fenêtre s'ouvre, sélectionnez la devise du solde partiel, puis validez par le bouton \menu{Valider} ;
+	\item le tableau \menu{Soldes partiels de la liste des comptes} affiche maintenant la ligne de votre nouveau groupe de comptes. 
+\end{enumerate}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{modifier un groupe de comptes}\index{groupe de comptes !modifier} dans la liste, procédez comme suit :
+
+\begin{enumerate}
+	\item sélectionnez un groupe de comptes par un clic sur sa ligne ;
+	\item cliquez sur \menu{Modifier} : la fenêtre \menu{Détail des soldes partiels} s'affiche : les comptes du groupe sont affichés sur fond grisé ;
+	\item modifiez le nom de votre groupe de comptes dans le champ \menu{Nom} ;
+	\item changez votre sélection de comptes (gardez au moins deux comptes dans la liste), en utilisant la sélection multiple avec \key{Ctrl}\key{Clic} ou \key{Majuscule}\key{Clic} ; 
+ 	\item le libellé \menu{Liste des comptes} indique les numéros d'ordre modifiés des comptes choisis ;
+	\item le libellé \menu{Position dans la liste des comptes} indique le même numéro d'ordre de création du groupe de comptes qu'auparavant.
+
+	\item cochez la case  \menu{Colorié en rouge{\couleur}}, si le solde est négatif, à votre convenance, puis validez par le bouton \menu{Valider} ;
+	\item si les comptes sélectionnés ont des devises différentes, une fenêtre s'ouvre, sélectionnez la devise du solde partiel, puis validez par le bouton \menu{Valider} ;
+	\item le tableau \menu{Soldes partiels de la liste des comptes} affiche maintenant la ligne de votre nouveau groupe de comptes modifié. 
+\end{enumerate}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+
+Pour \indexword{supprimer un groupe de comptes}\index{groupe de comptes !supprimer} dans la liste, procédez comme suit :
+
+\begin{enumerate}
+	\item sélectionnez un groupe de comptes par un clic sur sa ligne ;
+	\item cliquez sur \menu{Enlever} ; le groupe de comptes sélectionné disparaît de la liste.
+\end{enumerate}
+
+% saut de page pour titre solidaire
+\newpage
+
+
+\section{Affichage\label{setup-display}}
+
+
+\subsection{Polices, logo et couleurs\label{setup-display-logo}}
+
+Vous pouvez modifier le logo de Grisbi, la police de caractères utilisés et \ifIllustration certaines couleurs\refimage{setup-fonts-logo-img}.
+% image centrée
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_fonts_logo}
+\end{center}
+\caption{Logo de Grisbi, polices de caractères et couleurs}
+\label{setup-fonts-logo-img}
+\end{figure}
+% image centrée
+\else certaines couleurs.
+\fi
+
+
+\subsubsection{Logo de Grisbi\label{setup-display-logo-icon}}
+
+Vous pouvez afficher ou non un logo dans la page d'accueil de Grisbi en (dé)cochant le bouton \menu{Afficher un logo}. Le logo par défaut est le même que celui qui est affiché en miniature devant le libellé \menu{Cliquez sur la prévisualisation pour modifier le logo}. Vous pouvez le changer à votre convenance. 
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+Pour changer le logo, procédez comme suit :
+
+\begin{enumerate}
+	\item cliquez sur la prévisualisation du logo ;
+	\item une fenêtre de gestionnaire de fichiers s'affiche ;
+	\item naviguez dans l'arborescence des fichiers pour trouver votre nouveau logo ; ce doit être un fichier avec une extension de format d'image ; puis validez ;
+	\item la prévisualisation du nouveau logo s'affiche.
+\end{enumerate}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Cette fonction est surtout intéressante pour les trésoriers d'associations (ou d'autres organisations) qui pourront ainsi imprimer des états avec leur logo au lieu de celui de Grisbi.
+
+\textbf{Note} : le logo de Grisbi existe en plusieurs formats, dont \gls{PNG} et \gls{SVG}.
+% espace après Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+
+
+\subsubsection{Polices\label{setup-display-logo-fonts}}
+
+Pour changer la police de caractères utilisée dans Grisbi pour les opérations, procédez comme suit :
+
+\begin{enumerate}
+	\item cliquez sur la case \menu{Choisir une police pour les opérations} : cela valide le champ indiquant le nom de la police courante et sa taille ;
+	\item cliquez sur ce champ : une fenêtre de choix de police s'affiche ;
+	\item sélectionnez la police, le style et la taille puis validez par le bouton \menu{Valider}.
+\end{enumerate}
+
+
+\subsubsection{Couleurs\label{setup-display-logo-colors}}
+
+Toutes les couleurs accessibles dans la liste déroulante commençant par \menu{Couleur de fond 1 de la liste des opérations} sont modifiables ; pour les modifier,  procédez comme suit :
+
+\begin{enumerate}
+	\item cliquez sur la liste déroulante et choisissez l'une des possibilités proposées ;
+	\item cliquez sur le pavé de choix des couleurs juste à droite : la fenêtre de palette des couleurs s'affiche ;
+	\item sélectionnez la couleur désirée, puis validez par le bouton \menu{Valider}.
+\end{enumerate}
+
+La \menu{Couleur pour l'opération qui donne le solde à aujourd'hui} sert à distinguer le solde du compte quand on a choisi l'option \menu{Exécuter les opérations planifiées du mois} (voir la section \vref{setup-general-planned}, \menu{Échéancier}).
+
+Vous pouvez revenir aux réglages de couleur d'origine en cliquant sur le bouton \menu{Restaurer les réglages par défaut}.
+
+
+\subsection{Messages et alertes\label{setup-display-messages}}
+
+Cet onglet permet d'autoriser ou non l'affichage des messages et des alertes \ifIllustration que vous renvoie Grisbi\refimage{setup-messages-alerts-img}.
+\else que vous renvoie Grisbi.
+\fi
+
+\ifIllustration
+% image centrée 
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_messages_alerts}
+\end{center}
+\caption{Messages et alertes}
+\label{setup-messages-alerts-img}
+\end{figure}
+% image centrée 
+\fi
+
+
+\subsubsection{Astuce du jour\label{setup-display-messages-trick}}
+
+Avec la case à cocher \menu{Afficher l'astuce du jour}, vous autorisez ou non  l'affichage de la fenêtre de l'astuce du jour\index{astuce du jour} dans la page d'accueil, à chaque démarrage de Grisbi (par défaut, elle ne sera pas affichée). De toutes manières, cette fenêtre peut aussi être affichée à tout moment, en sélectionnant le menu \menu{Aide - Astuce du jour}.
+
+
+\subsubsection{Afficher les messages ou alertes suivants}
+
+En (dé)cochant la case correspondante, vous pouvez autoriser ou non l'affichage des \indexword{messages d'alerte}\index{alerte !messages}\index{messages !alerte} suivants  :
+
+\begin{itemize}
+	\item \menu{Option de sécurité non implémentée} ;
+	\item \menu{Le \gls{chiffrement} est irréversible} ;
+	\item \menu{Le fichier de comptes est lisible par tous} ;
+	\item \menu{Le fichier \file{nom\_de\_votre\_fichier.gsb} est déjà ouvert} ;
+	\item \menu{Comptes sous le solde minimal voulu \index{solde !minimal voulu}} ;
+	\item \menu{Pas d'imputation budgétaire saisie} ;
+	\item \menu{Récupération des ventilations  ?} ;
+	\item \menu{Pas d'incohérence} ;
+	\item \menu{Confirmation d'un (dé)rapprochement manuel} ;
+	\item \menu{Dates de début et de fin du rapprochement} ;
+	\item \menu{Vous utilisez Grisbi version \emph{numéro-de-version-de-Grisbi}}.
+\end{itemize}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+
+
+
+Par défaut, l'affichage de tous ces messages est validé.
+
+
+\subsection{Adresses et titres\label{setup-display-addresses}}
+
+Cet onglet permet de saisir un titre \ifIllustration et des adresses\refimage{setup-adresses-img}.
+\else et des adresses.
+\fi
+
+\ifIllustration
+% image centrée 
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_adresses}
+\end{center}
+\caption{Adresses et titres}
+\label{setup-adresses-img}
+\end{figure}
+% image centrée 
+\fi
+
+
+\subsubsection{Titres\label{setup-display-addresses-titles}}
+
+Grisbi affiche en haut de sa page d'accueil, à droite de l'icône \menu{Grisbi}, un \indexword{titre}\index{affichage !titre}\index{titre !affichage} qui permet d'identifier sur quel document vous travaillez actuellement, sous la forme \og libellé - Grisbi\fg{}. Vous pouvez définir ici ce libellé, parmi les trois suivants :
+
+\begin{itemize}
+	\item l'\menu{Entité comptable} : c'est le nom du domaine de comptabilité sur lequel vous travaillez, par exemple \og Ma comptabilité \fg{} ou \og Association \fg{}, et que vous avez saisi à la création du fichier de comptes ; vous pouvez le modifier ici dans le champ \menu{Nom de l'entité comptable} ; cela peut être utile si vous gérez plusieurs \indexword{entités comptables}\index{entité comptable} ;
+	\item le \menu{Titulaire du compte} : Grisbi affiche le nom du titulaire (ou du propriétaire) du dernier compte consulté ; si ce titulaire n'est pas renseigné dans les propriétés du compte, Grisbi affiche le nom de ce compte ;
+	\item le \menu{Nom du fichier de comptes} : c'est le \indexword{nom du fichier}\index{fichier de comptes !nom}\index{nom !fichier de comptes} dans le répertoire courant, sous la forme \file{nom\_de\_\_votre\_fichier.gsb}, et c'est le choix par défaut.
+\end{itemize}
+
+
+\subsubsection{Adresses\label{setup-display-addresses-address}}
+
+Vous pouvez indiquer ici deux adresses différentes pour le titulaire, dans les deux champs juste en-dessous.
+
+
+\subsection{Tiers, catégories et imputations budgétaires\label{setup-display-third}}
+
+Cet onglet permet de définir certains paramètres d'affichage de ces trois \ifIllustration onglets\refimage{setup-thirdCategories-img}.
+% image centrée
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_thirdCategories}
+\end{center}
+\caption{Tiers, catégories et imputations budgétaires}
+\label{setup-thirdCategories-img}
+\end{figure}
+% image centrée
+\else onglets.
+\fi
+
+
+\subsubsection{Devises des totaux\label{setup-display-third-currencies}}
+
+Vous pouvez ici définir individuellement la \indexword{devise utilisée pour les totaux}\index{devise !totaux} des différents onglets \menu{Tiers}, \menu{Catégories} et \menu{Imputations budgétaires}. Pour chacun, sélectionnez la devise dans la liste déroulante correspondante. Le choix ne peut être fait que parmi les devises que connaît votre fichier de comptes (voir la section \vref{setup-resources-currencies}, \menu{Devises}).
+
+
+\subsubsection{Calcul des totaux\label{setup-display-third-sum}}
+
+La case \menu{Ajouter les opérations archivées aux totaux}, cochée par défaut, permet de tenir ou non compte des opérations archivées dans le \indexword{calcul des totaux}\index{affichage !totaux}\index{calcul des totaux !affichage}, pour les onglets \menu{Tiers}, \menu{Catégories} et \menu{Imputations budgétaires}. Lorsque cette option est cochée, les totaux dans ces onglets comptabilisent les opérations archivées. Dans le cas contraire les totaux ne comptabilisent que les opérations non archivées.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\strong{Attention} : ne décochez cette case qu'en connaissance de cause, car ces totaux risqueraient alors de ne pas refléter la réalité !
+
+
+\subsubsection{Option de tri pour les opérations\label{setup-display-third-sort}}
+
+Vous pouvez choisir l'\indexword{ordre d'affichage des opérations}\index{tri !opérations}, parmi deux critères de \gls{tri} :
+
+\begin{itemize}
+	\item tri par numéro : c'est le choix par défaut ;
+	\item tri par date croissante ;
+	\item tri par date décroissante.
+\end{itemize}
+
+
+\subsubsection{Action associée au double clic sur une sous-catégorie ou sous-imputation budgétaire\label{setup-display-third-mouse}}
+
+Vous pouvez définir l'action qu'exécutera le \indexword{double-clic} de la souris\index{sous-catégories !double-clic}\index{sous-imputations budgétaires !double-clic} sur une sous-catégorie ou une sous-imputation budgétaire, parmi les choix suivants :
+\begin{itemize}
+	\item développer la ligne : c'est le choix par défaut ;
+	\item éditer la ligne ;
+	\item gérer la ligne.
+\end{itemize}
+
+
+\subsection{Éléments de l'interface\label{setup-display-toolbars}}
+
+Ces trois éléments de la fenêtre de Grisbi peuvent être configurés. Pour les identifier correctement, voir le chapitre \vref{home}, \menu{Accueil} \ifIllustration \refimage{setup-toolbar-img}.
+% image centrée
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_toolbar}
+\end{center}
+\caption{Éléments de l'interface}
+\label{setup-toolbar-img}
+\end{figure}
+% image centrée
+\else .
+\fi
+
+
+\subsubsection{Barre d'information}
+
+La barre d'information\index{barre d'information !affichage} peut être masquée ou affichée en (dé)cochant la case correspondante \menu{Afficher la barre d'information}. 
+
+\subsubsection{Panneau de navigation}
+
+Vous pouvez choisir la possibilité du changement d'onglet avec la molette de la souris dans le panneau de navigation\index{panneau de navigation !défilement}, en cochant la case \menu{Ajouter le défilement avec la souris dans le panneau de navigation} : c'est le choix par défaut.
+
+
+\subsubsection{Barre d'outils}
+
+Vous pouvez choisir le mode d'affichage des boutons de la barre d'outils\index{barre d'outils !boutons}, avec :
+\begin{itemize}
+	\item \menu{du texte} ;
+	\item \menu{des icônes} ;
+	\item \menu{les deux} : c'est le choix par défaut.
+\end{itemize}
+
+
+\section{Opérations\label{setup-operations}}
+
+
+\subsection{Comportement de la liste\label{setup-operations-list}}
+
+Cet onglet permet de configurer la liste \ifIllustration des opérations\refimage{setup-listBehaviour-img}.
+% image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_listBehaviour}
+\end{center}
+\caption{Configuration de la liste des opérations}
+\label{setup-listBehaviour-img}
+\end{figure}
+% image centrée
+\else des opérations.
+\fi
+
+
+\subsubsection{Modes d'affichage\label{setup-operations-list-modes}}
+
+Vous pouvez choisir le \indexword{mode d'affichage} de la liste\index{affichage !nombre de lignes}\index{affichage !modes}, c'est à dire le \indexword{nombre de lignes} qui sont affichées pour chaque opération : sélectionnez, dans la liste déroulante, le mode d'affichage (\menu{Vue simple}, \menu{Mode \og deux lignes \fg{}} ou \menu{Mode \og trois lignes \fg{}}) dans la liste des opérations des comptes (voir la section \vref{transactions-list-description}, \menu{Description}). Le mode \menu{Vue complète} ne peut être configuré, car il affiche évidemment toutes les lignes.
+
+\textbf{Note} : le contenu de chaque ligne choisie dépend de la configuration de l'affichage des champs : voir la section \vref{setup-operations-cells}, \menu{Cellules de la liste des opérations}.
+% espace après Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+
+Vous pouvez choisir les fonctions suivantes, à votre convenance :
+\begin{itemize}
+	\item \menu{Ouvrir l'opération sélectionnée avec un simple clic\index{affichage !opérations}} : c'est le choix par défaut ;
+	\item \menu{Surligner l'opération qui donne le solde à aujourd'hui}\index{solde !affichage de l'opération} : le \indexword{surlignage}\index{affichage !surlignage} permet de distinguer l'opération qui donne le solde du jour en coloriant son fond de façon spécifique ; c'est utile lorsque l'on exécute par avance des opérations futures, et c'est le choix par défaut.
+\end{itemize}
+
+
+\subsubsection{Option de tri primaire}
+
+Le \indexword{tri primaire}\index{tri !primaire} sert à déterminer la date pour laquelle le  solde est calculé après chaque opération. Vous pouvez choisir l'un de ces deux critères pour ce tri primaire :
+
+\begin{itemize}
+	\item \menu{Tri par date de valeur ou par date de l'opération si non présente} : les opérations sont triées par date de valeur ; dans le cas où cette date n'est pas renseignée, elle est remplacée par la date de l'opération ; c'est le \gls{tri} par défaut de Grisbi ;
+	\item \menu{Tri par date de valeur puis par date de l'opération} : les opérations sont triées par date de valeur, et pour chaque date, elles sont triées par date de l'opération.
+\end{itemize}
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : le choix du \gls{tri primaire} fait ici modifie nécessairement la chronologie des opérations, donc le solde calculé après chaque ligne d'opération.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : pour trier les opérations par date d'opération ou par date de valeur, il faut qu'une colonne de la liste des opérations affiche cette date (voir la section \vref{transactions-list-fields}, \menu{Champs d'information et de saisie}), et que vous ayez sélectionné \menu{Date d'opération} ou \menu{Date de valeur} dans le menu contextuel par un clic-droit dans le libellé de la colonne (voir la section \vref{transactions-list-sorts}, \menu{Tris}).
+
+
+\subsubsection{Option de tri secondaire}
+
+Vous pouvez choisir l'un de ces quatre critères pour le \indexword{\gls{tri secondaire}}\index{tri !secondaire} :
+
+\begin{itemize}
+	\item \menu{Tri par numéro d'opération} : c'est le tri par défaut de Grisbi ;
+	\item \menu{Tri par montant (crédit débit)} ;
+	\item \menu{Tri par tiers ou par numéro d'opération si non présent} : les opérations sont triées par tiers ; dans le cas où le tiers n'est pas renseigné, le tri est fait par numéro d'opération ;
+	\item \menu{Tri par date puis par numéro d'opération} : les opérations sont triées par date, et pour chaque date, elles sont triées par numéro d'opération.
+\end{itemize}
+
+
+\subsubsection{Différenciation des comptes\label{setup-operations-list-differenciation}}
+
+La \indexword{différenciation des comptes}\index{affichage !comptes}
+\index{compte !affichage différencié} est la possibilité de régler leur affichage indépendamment : vous pouvez choisir de \menu{Retenir les réglages de l'affichage séparément pour chaque compte} en cochant la case correspondante.
+
+
+\subsection{Cellules de la liste des opérations\label{setup-operations-cells}}
+
+Vous pouvez définir le nombre et l'emplacement exact des champs des opérations dans la liste des opérations, grâce aux deux tableaux 
+\ifIllustration décrits ci-dessous\refimage{setup-listCells-img}.
+\else décrits ci-dessous.
+\fi
+
+\ifIllustration
+% image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_listCells}
+\end{center}
+\caption{Cellules de la liste des opérations}
+\label{setup-listCells-img}
+\end{figure}
+% image centrée
+\fi
+
+\textbf{Note} : la disposition de l'affichage des champs des opérations dans la liste des opérations des comptes est totalement indépendante de celle de  l'affichage des champs dans le formulaire de saisie, qui est elle-même décrite dans la section \vref{setup-form-content}, \menu{Contenu}.
+
+\ifIllustration
+\else
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\fi
+
+
+\subsubsection{Prévisualisation de la liste des opérations\label{setup-operations-cells-display}}
+
+Le tableau de prévisualisation présente un aperçu des \indexword{champs d'une opération}\index{champ d'information !aperçu}, dont le contenu est affiché dans la liste des opérations de l'onglet  \menu{Opérations} de chaque compte.
+
+Ce tableau comprend quatre lignes et sept colonnes, qui définissent 28 \indexword{cellules}\index{cellule !définition}, qui peuvent donc afficher au maximum 28 champs. Vous pouvez modifier la \indexword{largeur des colonnes}\index{colonne !largeur} en cliquant, dans la ligne des libellés des colonnes, sur le séparateur entre deux d'entre-elles (sans relâcher) et en le déplaçant avec la souris.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : le \indexword{libellé de chaque colonne}\index{colonne !libellé}
+ de ce tableau est celui du champ de la première ligne de cette colonne, quand il est rempli.
+% espace après Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+
+Un même champ ne peut être présent que dans une seule cellule de la liste des opérations.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Vous pouvez \indexword{déplacer un champ}\index{champ d'information !déplacer}
+ d'une cellule à une autre cellule en cliquant (sans relâcher) sur son nom et en le déplaçant dans l'autre cellule. Si celle-ci contient déjà un champ, celui-ci disparaît et doit être éventuellement remis en place dans une autre cellule.
+
+
+\subsubsection{Contenu de la liste des opérations}\index{affichage !lignes d'opérations\label{setup-operations-cells-fields}}
+
+Le tableau montre tous les \indexword{champs affichables}\index{champ !affichable} dans le tableau de prévisualisation, donc dans la liste des opérations. Il sert à choisir les champs affichés dans la prévisualisation. Chaque cellule de ce tableau peut avoir deux couleurs :
+
+\begin{itemize}
+	\item gris foncé{\couleur} quand ce champ ne se trouve pas déjà dans la prévisualisation et qu'on peut l'y mettre ;
+	\item rouge{\couleur} quand ce champ se trouve déjà dans la prévisualisation.
+\end{itemize}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{ajouter un champ} dans la prévisualisation\index{champ d'information !ajouter}, cliquez sur son nom (sur fond gris foncé{\couleur}) dans le tableau de contenu : la couleur de sa cellule passe au rouge{\couleur}, tandis que le nom de ce champ apparaît dans les dernières lignes du tableau de prévisualisation. Déplacez ensuite ce champ dans la cellule qui vous convient.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{enlever un champ} de la  prévisualisation\index{champ d'information !enlever}, cliquez sur son nom (sur fond rouge{\couleur}) dans le tableau de contenu : la couleur de sa cellule passe au gris foncé{\couleur}, tandis que ce champ disparaît de la prévisualisation.
+
+\ifIllustration
+% espace pour changement de thème
+\vspacepdf{5mm}
+\fi
+
+Pour \indexword{modifier un champ} de la  prévisualisation\index{champ d'information !modifier}, déplacez-le dans une autre cellule et ajoutez un autre champ à la place.
+
+\textbf{Note} : il est possible d'enlever tous les champs du tableau de prévisualisation, et dans ce cas la liste des opérations ne contiendra l'\indexword{affichage d'aucune opération} \index{affichage !aucune opération}.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Grisbi vous offre une très grande \indexword{souplesse} pour l'affichage des \indexword{champs des opérations}\index{affichage !champ des opérations}\index{affichage !souplesse} dans la liste des opérations des comptes : d'une part, vous pouvez positionner n'importe quel champ d'information sur n'importe quelle cellule de n'importe laquelle des quatre lignes du tableau de prévisualisation ; d'autre part, le menu \menu{Mode d'affichage} de la liste d'opérations permet quatre possibilités d'affichage (\menu{Vue simple}, \menu{Mode \og deux lignes \fg{}}, \menu{Mode \og trois lignes \fg{}} et \menu{Vue complète}), qui peuvent être configurés dans le paragraphe  \vref{setup-operations-list-modes}, \menu{Modes d'affichage}. Vous pouvez donc, suivant le \menu{Mode d'affichage} sélectionné, afficher quatre jeux de lignes que vous voulez, par exemple :
+\begin{itemize}
+	\item \menu{Vue simple} : affichage de la ligne 1 ;
+	\item \menu{Mode \og deux lignes \fg{}} : affichage des lignes 3-4 ;
+	\item \menu{Mode \og trois lignes \fg{}} : affichage des lignes 1-2-4 ;
+	\item \menu{Vue complète} : affichage des lignes 1-2-3-4, évidemment.
+\end{itemize}
+
+
+\subsection{Messages avant suppression\label{setup-operations-remove}}
+
+En (dé)cochant la case correspondante, vous pouvez autoriser ou non l'affichage des messages suivants :
+
+\begin{itemize}
+	\ifIllustration
+	% image entourée par une liste (picins)
+	% pas de référence à l'illustration car erreur de numéro de figure avec picins.
+	% supprimé car en html les figures entourées ne sont pas numérotées, et la numérotation des figures centrées décalée par rapport au pdf
+	%\piccaption{Messages avant suppression}
+	\label{setup-messagesDelete-img}
+	\parpic[r]{\includegraphics[scale=0.5]{image/screenshot/setup_messagesDelete}}
+	% image entourée par une liste
+	\fi
+	\item \menu{Supprimer une sous-opération} ;
+	\item \menu{Supprimer une opération} ;
+	\item \menu{Supprimer une sous-opération planifiée} ;
+	\item \menu{Supprimer une opération planifiée} ;
+	\item \menu{Supprimer cette occurrence ou toutes, de l'opération sélectionnée} ; 
+	\item \menu{Supprimer une règle d'importation de fichier}.
+\end{itemize}
+
+\ifIllustration
+% espace après légende  : 10 mm
+\vspacepdf{20mm}
+\fi
+
+Par défaut, l'affichage de tous ces messages est validé.
+
+\ifIllustration
+% espace après image entourée
+\vspacehevea{13mm}
+\fi
+
+
+\subsection{Rapprochement\label{setup-operations-reconciliation}}
+
+Cet onglet permet de gérer \ifIllustration les rapprochements effectués antérieurement\refimage{setup-reconciliation-img}.
+
+% image centrée
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_reconciliation}
+\end{center}
+\caption{Gestion des rapprochements antérieurs}
+\label{setup-reconciliation-img}
+\end{figure}
+% image centrée
+\else les rapprochements effectués antérieurement.
+\fi
+
+
+\subsubsection{Sélection de la date de fin de rapprochement\label{setup-operations-reconciliation-date}}
+
+Vous pouvez définir la date de fin de rapprochement\index{rapprochement !date de fin}
+ parmi ces deux dates :
+\begin{itemize}
+	\item \menu{Date de début plus un mois} ; c'est la date par défaut ;
+	\item \menu{Date du jour}.
+\end{itemize}
+
+
+\subsubsection{Liste des rapprochements}\index{rapprochements !liste\label{setup-operations-reconciliation-list}}
+
+Le tableau \indexword{liste tous les rapprochements}\index{rapprochement !liste} déjà effectués dans tous les comptes de votre fichier de comptes. 
+
+Pour afficher tous les rapprochements d'un ou plusieurs comptes, cliquez sur le petit triangle à gauche de leurs noms. Vous pouvez alors sélectionner un des rapprochements par un clic sur sa ligne, son numéro s'affiche dans la colonne \menu{Compte}, et ses dates (initiale et finale) et soldes (initial et final) s'affichent dans leurs colonnes respectives.
+
+\textbf{Note} : ces triangles peuvent être remplacés, en fonction du thème de l'environnement de bureau ou du gestionnaire de fenêtres que vous utilisez, par d'autres caractères tels que +, -, >, <, etc.
+
+
+\subsubsection{Rapprochement sélectionné}\index{rapprochement !caractéristiques\label{setup-operations-reconciliation-selection}}
+
+Quand vous sélectionnez un rapprochement dans le tableau, le détail de ses caractéristiques apparaît dans les différents champs, que vous pouvez modifier en cas de besoin.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Le bouton \menu{Supprimer le rapprochement}\index{rapprochement !supprimer} permet de \indexword{supprimer le rapprochement} sélectionné ; dans ce cas, toutes les opérations rapprochées liées à ce rapprochement perdront leur statut d'opérations rapprochées, retrouveront le statut d'opérations pointées et seront donc marquées \og \textbf{P} \fg{}. 
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\strong{Attention} : la suppression d'un rapprochement, la modification ou la suppression de certaines caractéristiques d'un rapprochement, peuvent avoir des conséquences importantes sur le compte concerné, par exemple la cohérence entre les dates (initiale et finale), ou entre les soldes (initial et final) de deux rapprochements consécutifs, pouvant aller jusqu'à rendre votre fichier de comptes inutilisable. Il est donc fortement conseillé de faire une \textbf{copie de sauvegarde} de votre fichier de comptes auparavant.
+
+% espace après Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+
+Le bouton \menu{Trouver les opérations marquées et non associées à un rapprochement}\index{rapprochement !opérations non associées} permet d'aider à rétablir une continuité des rapprochements et de réparer certaines erreurs. Les \indexword{opérations marquées}\index{opération !marquée} correspondent à des opérations qui peuvent avoir une lettre \og \textbf{P} \fg{}, \og \textbf{R} \fg{} ou \og \textbf{T} \fg{} dans la colonne \menu{P/R}. Si vous cliquez sur ce bouton, un assistant s'ouvre, qui permet de  :
+
+\begin{itemize}
+	\item créer directement à la main autant de relevés que nécessaire, juste par leur date et soldes ;
+	\item associer automatiquement les opérations orphelines à un relevé correspondant à sa date ; cela est très pratique pour les opérations orphelines créées par l'usage incorrect de la touche \key{Ctrl}\key{R} ;
+	\item associer manuellement les opérations orphelines à des relevés.
+\end{itemize}
+
+
+\subsection{Options de tri pour les rapprochements\label{setup-operations-sort}}
+
+Vous pouvez configurer ici l'ordre d'affichage de la liste des opérations\index{rapprochement !tri des opérations} lors d'un rapprochement des opérations d'un compte (voir le chapitre \vref{reconciliation}, \menu{Rapprochement bancaire}). Cet ordre peut être configuré par un \gls{tri} selon les modes de règlement. Cela peut être utile si votre relevé bancaire présente un ordre particulier selon ces modes de règlement, et si vous voulez faire correspondre l'affichage de Grisbi avec \ifIllustration ce relevé\refimage{setup-reconciliation-sort-img}.
+% image centrée
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_reconciliation_sort}
+\end{center}
+\caption{Options de tri pour les rapprochements}
+\label{setup-reconciliation-sort-img}
+\end{figure}
+% image centrée
+\else ce relevé.
+\fi
+
+Un tableau affiche la liste des comptes de votre fichier de comptes. Pour afficher tous les modes de règlement d'un ou plusieurs comptes, cliquez sur le petit triangle à gauche de leur nom.
+
+\textbf{Note} : ces triangles peuvent être remplacés, en fonction du thème de l'environnement de bureau ou du gestionnaire de fenêtres que vous utilisez, par d'autres caractères tels que +, -, >, <, etc.
+
+%espace après Attention ou Note : 5 mm
+\vspacepdf{5mm}
+Vous pouvez choisir, individuellement pour chaque compte, que les opérations de votre compte se présentent triées par mode de règlement.
+
+Vous pouvez aussi, individuellement pour chaque compte, y \menu{Séparer les modes neutres}\index{rapprochement !mode neutre} : un \indexword{mode neutre} est un mode de règlement qui peut être indifféremment un débit ou un crédit, comme par exemple un virement, au contraire du mode \menu{Prélèvement} qui est toujours un débit, ou du mode  \menu{Dépôt} qui est toujours un crédit. 
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour ajuster un ordre particulier pour un compte, procédez comme suit :
+\begin{enumerate}
+	\item cliquez, sur la ligne du compte concerné, dans la case de la colonne \menu{Tri par mode} ;
+	\item cliquez, sur la même ligne, dans la case de la colonne \menu{Séparer les modes neutres}, si vous le voulez : ces modes se séparent en deux, l'un positif et l'autre négatif ;
+	\item cliquez sur l'un des modes de règlement et déplacez-le à la position voulue avec les boutons \menu{Monter} ou \menu{Descendre} ;
+	\item recommencez cette action sur les autres modes jusqu'à l'obtention de l'ordre de \gls{tri} voulu pour ce compte.
+\end{enumerate}
+
+
+\section{Formulaire des opérations\label{setup-form}}
+ 
+
+\subsection{Contenu\label{setup-form-content}}
+
+Vous pouvez définir le nombre et l'emplacement exact des champs constituant le formulaire de saisie des opérations, grâce aux deux tableaux \ifIllustration décrits ci-dessous\refimage{setup-transactions-form-img}.
+% image centrée
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_transactions_form}
+\end{center}
+\caption{Formulaire des opérations}
+\label{setup-transactions-form-img}
+\end{figure}
+% image centrée
+\else décrits ci-dessous.
+\fi
+
+\textbf{Note} : la disposition de l'affichage des champs dans le formulaire de saisie est totalement  indépendante de celle de  l'affichage des champs dans la liste des opérations des comptes, qui est elle-même décrite dans la section \vref{setup-operations-cells}, \menu{Cellules de la liste des opérations}.
+
+
+\subsubsection{Prévisualisation de la structure du formulaire\label{setup-form-content-display}}
+
+Ce tableau de prévisualisation présente un aperçu des champs du formulaire de saisie des opérations tels qu'ils seront affichés dans l'onglet \menu{Opérations} d'un compte.
+
+Le formulaire peut avoir de 4 à 6 colonnes et de 1 à 4 lignes. Vous pouvez en diminuer ou augmenter le nombre grâce aux boutons \menu{Enlever} et \menu{Ajouter} à côté des libellés \menu{lignes} et \menu{colonnes} sous ce tableau à gauche et à droite. Vous pouvez modifier la \indexword{largeur des colonnes}\index{colonne !largeur} en cliquant sur le séparateur entre deux d'entre-elles (sans relâcher) et en le déplaçant avec la souris.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : bien que les colonnes de ce tableau soient nommées ici \og Col 1 \fg{} à \og Col 6 \fg{}, le libellé d'une colonne dans le formulaire de saisie (dans la liste des opérations d'un compte) est \emph{toujours} le libellé du champ situé sur la première ligne de ce tableau de prévisualisation.
+% espace après Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+ 
+Une \indexword{cellule}\index{cellule !définition} est définie par l'intersection d'une ligne et d'une colonne. Un même champ ne peut être présent que dans une seule cellule du formulaire.
+
+
+\subsubsection{Contenu de la structure du formulaire\label{setup-form-content-fields}}
+
+Ce tableau montre tous les champs affichables dans le tableau de prévisualisation. Il sert à définir les champs affichés dans la prévisualisation. Chaque cellule de ce tableau peut avoir deux couleurs :
+
+\begin{itemize}
+	\item gris clair quand ce champ ne se trouve pas déjà dans la prévisualisation et qu'on peut l'y mettre ;
+	\item gris foncé quand ce champ se trouve déjà dans la prévisualisation.
+\end{itemize}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Vous pouvez \indexword{déplacer un champ}\index{champ de saisie !déplacer} d'une cellule à une autre cellule en cliquant (sans relâcher) sur son nom et en le déplaçant dans l'autre cellule. Si celle-ci n'est pas vide, les deux champs sont intervertis.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{ajouter un champ} dans la prévisualisation\index{champ de saisie !ajouter}, cliquez sur son nom dans ce tableau de contenu : la couleur de sa cellule passe au gris foncé, tandis que le nom de ce champ apparaît dans la prévisualisation. La première ligne se complète d'abord si elle a des cellules vides, sinon la suivante fait de même, etc.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{enlever un champ} de la  prévisualisation\index{champ de saisie !enlever}, cliquez sur son nom dans ce tableau de contenu : la couleur de sa cellule passe au gris clair, tandis que ce champ disparaît de la prévisualisation.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : il est impossible d'enlever les champs  \menu{Date}, \menu{Débit} et \menu{Crédit}, car ce sont les informations minimales indispensables à une opération.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : les champs \menu{Devise} et \menu{Change} sont liés dans le formulaire de saisie : la configuration de l'affichage du champ \menu{Devise} dans le formulaire y positionne automatiquement le champ \menu{Change}, et inversement ; vous pouvez ensuite les déplacer dans les cellules voulues.
+
+
+\subsection{Comportement\label{setup-form-behaviour}}
+
+\ifIllustration
+% image centrée
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_formBehaviour}
+\end{center}
+\caption{Comportement du formulaire des opérations}
+\label{setup-formBehaviour-img}
+\end{figure}
+% image centrée
+\fi
+
+Vous pouvez définir les comportements suivants du \ifIllustration formulaire\refimage{setup-formBehaviour-img} :
+\else formulaire :
+\fi
+
+\begin{itemize}
+	\item l'appui sur la \indexword{touche \key{Entrée}}\index{formulaire de saisie !touche \key{Entrée}} possède l'une ou l'autre des fonctions suivantes  :
+		\begin{itemize}
+			\item \menu{sélectionne le prochain champ} ; c'est le choix par défaut,
+			\item \menu{termine l'enregistrement de l'opération} ;
+		\end{itemize}
+		
+	\item la \indexword{détermination automatique de l'exercice}\index{formulaire de saisie !détermination de l'exercice} se fait de l'une ou l'autre des manières suivantes :
+		
+		\begin{itemize}
+			\item \menu{correspond à la date de l'opération} : c'est le choix par défaut,
+			\item \menu{correspond à la date de valeur de l'opération} ;
+		\end{itemize}
+	\item le \indexword{séparateur décimal} \index{formulaire de saisie !séparateur décimal}peut être automatique en cochant la case \menu{Ajout automatique du séparateur dans les champs numériques s'il est omis}.
+\end{itemize}
+
+
+\subsection{Aide à la saisie du formulaire\label{setup-form-input}}
+
+En (dé)cochant la case correspondante, vous pouvez autoriser ou non les \ifIllustration fonctions suivantes\refimage{setup-enterHelp-img} :
+\else fonctions suivantes :
+\fi
+
+\begin{itemize}
+	\item \menu{Remplissage automatique des opérations à partir du tiers} : lorsque vous avez saisi le tiers, les autres champs du formulaire sont remplis avec les données de la dernière opération ayant le même tiers ; c'est le choix par défaut ; de plus, vous pouvez choisir :
+		\begin{itemize}
+			\item \menu{Efface le champ \menu{Crédit} ou  \menu{Débit}},
+			\item \menu{Récupérer automatiquement les sous-opérations de l'opération associée} : les champs des sous-opérations sont remplis avec les données de la dernière opération ventilée ayant le même tiers que celui déjà saisi,
+			\item \menu{Limiter le remplissage avec des tiers appartenant au compte courant} : la recherche de l'opération se fait dans le compte courant ; si la case n'est pas cochée, elle se fait dans la totalité des comptes ;
+		\end{itemize}
+	\item \menu{Mélanger les catégories de débit/crédit} : lorsque l'on déroule la liste des catégories, elles sont triées par ordre alphabétique plutôt que par débit puis crédit ;
+	\item \menu{Remplissage sensible à la casse} : le remplissage automatique tient compte de la \indexword{casse}\index{caractères !casse} des caractères ;
+	\item \menu{Ne pas permettre la création de nouveau tiers} ;
+	\item \menu{Ne pas autoriser la création de nouvelles catégories/imputations budgétaires}.
+\end{itemize}
+
+\ifIllustration
+% image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_enterHelp}
+\end{center}
+\caption{Aide à la saisie du formulaire}
+\label{setup-enterHelp-img}
+\end{figure}
+% image centrée
+\fi
+
+Vous pouvez aussi définir le \menu{Nombre maximum de lignes dans les menus déroulants (0 pour aucune limite)}, en saisissant un nombre dans le champ adjacent ; la valeur par défaut est 0, et il vaut mieux garder cette valeur, car c'est le fonctionnement le plus pratique. 
+% Ne fonctionne pas sur la 0.8.8 ni la 0.9.x.
+
+
+\section{Ressources\label{setup-resources}}
+
+
+\subsection{Devises\label{setup-resources-currencies}}
+
+Cet onglet affiche le tableau des \indexword{devises connues}\index{devise !connue} par votre fichier de comptes, ainsi que les \indexword{propriétés de la devise}\index{devise !propriétés} \ifIllustration sélectionnée \refimage{setup-currencies-img}. 
+\else sélectionnée.
+\fi
+Il permet de \indexword{gérer les devises}\index{devise !gérer}, de définir leur nom, symbole, code ISO, ainsi que leur nombre de chiffres après la virgule nécessaires. Par exemple, si votre système le permet, vous pouvez saisir \key{AltGr}\key{e} pour le symbole de l'euro. 
+
+\ifIllustration
+% image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_currencies}
+\end{center}
+\caption{Configuration des devises}
+\label{setup-currencies-img}
+\end{figure}
+% image centrée
+\fi
+
+%Cette fonction n'est plus présente pour les devises de l'euro, mais devrait être possible pour les futures candidates à l'euro :
+%Vous pouvez aussi indiquer si les devises passeront à l'euro lorsque vous choisirez de basculer la tenue d'un compte dans cette monnaie (ceci est probablement obsolète pour beaucoup d'utilisateurs, mais certains peuvent en avoir encore besoin).
+
+\ifIllustration
+\else
+% espace pour changement de thème
+\vspacepdf{5mm}
+\fi
+Pour \indexword{ajouter une devise}\index{devise !ajouter}, procédez comme suit :
+
+\begin{enumerate}
+	\item cliquez sur le bouton \menu{Ajouter} : la fenêtre de sélection de la devise s'affiche ;
+	\item cherchez le pays ou la devise dans la liste ; si vous ne trouvez pas, cochez la case \menu{Afficher les devises obsolètes} pour afficher d'\indexword{anciennes devises}\index{devise !ancienne} ;
+	\item cliquez dans la liste sur la ligne du pays ou de la devise choisie ;
+	\item  si besoin, modifiez les propriétés de la devise dans la zone \menu{Propriétés de la devise} ;
+	\item validez par le bouton \menu{Fermer} : la devise s'affiche dans la liste des devises.
+\end{enumerate}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{modifier une devise}\index{devise !modifier}, sélectionnez-la et modifiez-la dans la zone \menu{Propriétés de la devise}.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{supprimer une devise}\index{devise !supprimer}, sélectionnez-la et cliquez sur le bouton \menu{Enlever}.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : si vous essayez de supprimer une devise utilisée dans une opération d'un de vos comptes, Grisbi affichera une fenêtre de refus.
+
+%Section «Liens entre devises»  : tout  le texte et le début de «Banques» se trouvent dans la marge de bas de page et sont illisibles quand le tableau des devises de la zone euro est présent. Donc Tableau et texte de présentation  SUPPRIMÉS
+%
+%Pour information, le tableau ci-dessous reprend les taux de conversion en euro des monnaies de la zone euro. Depuis le 1 \ier janvier 1999, ces taux sont fixés de manière définitive et irrévocable. Le tableau exprime la valeur de 1 euro dans chaque monnaie. Cette valeur se compose d'une séquence de six chiffres significatifs (par ex. : 1 EUR = xx,xxxx BEF). 
+%\begin{longtable}{|l|c|r|}
+%\hline 
+%Devise          & Abréviation & Taux\\
+%\hline
+%\hline 
+%Franc belge          & BEF & 40,3400\\
+%\hline 
+%Schilling autrichien & ATS & 13,7603\\
+%\hline 
+%Mark allemand        & DEM & 1,95583\\
+%\hline*
+%Peseta espagnole     & ESP & 166,386\\
+%\hline 
+%Mark finlandais      & FIM & 5,94573\\
+%\hline 
+%Franc français       & FRF & 6,55957\\
+%\hline 
+%Livre irlandaise     & IEP & 0,78756\\
+%\hline 
+%Lire italienne       & ITL & 1936,27\\
+%\hline 
+%Franc luxembourgeois & LUF & 40,3399\\
+%\hline 
+%Florin néerlandais   & NLG & 2,20371\\
+%\hline 
+%Escudo portugais     & PTE & 200,482\\
+%\hline 
+%Drachme grecque      & GRD & 340,750\\
+%\hline
+%\end{longtable}
+%
+%Section «Liens entre devises»  : tout  le texte et le début de «Banques» se trouvent dans la marge de bas de page et sont illisibles quand le tableau des devises de la zone euro est présent. Donc Tableau et texte de présentation  SUPPRIMÉS
+
+
+\subsection{Liens entre devises\label{setup-resources-rate}}
+
+Cet onglet affiche le tableau des  \indexword{liens existants}\index{devise !liens existants} entre les devises connues par votre fichier de comptes ; il permet de \indexword{gérer les taux de change}\index{taux de change !gérer}, ainsi que d'autres \ifIllustration détails\refimage{setup-exchangerate-img}.
+% image centrée 
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_exchangerate}
+\end{center}
+\caption{Configuration des taux de change}
+\label{setup-exchangerate-img}
+\end{figure}
+% image centrée 
+\else détails.
+\fi
+
+%espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{ajouter un lien entre deux devises}\index{lien entre devises !ajouter}, procédez comme suit :
+
+\begin{enumerate}
+	\item cliquez sur le bouton \menu{Ajouter} : une nouvelle ligne de lien s'affiche ;
+	\item sélectionnez ce lien par un clic sur sa ligne ;
+	\item dans la zone  \menu{Propriétés du lien}, définissez la devise de départ et celle d'arrivée grâce aux deux listes déroulantes, et saisissez le taux de change dans le champ entre ces deux listes ;
+	  % espace pour notte alignée avec l'item
+	  
+	  \textbf{Note} : vous pouvez inverser le sens de la conversion (un euro vaut X Devise, ou bien une Devise vaut Y euros) en inversant le nom des devises dans les deux listes déroulantes ; vous pouvez ainsi entrer exactement le taux de change tel qu'il vous est communiqué. 
+	\item cochez la case \menu{Taux de change fixe} si c'est le cas ;
+	\item validez par le bouton \menu{Fermer}.
+\end{enumerate}
+
+%espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{modifier un lien entre deux devises}\index{lien entre devises !modifier}, sélectionnez-le et modifiez-le dans la zone \menu{Propriétés du lien}.
+
+%espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{supprimer un lien entre deux devises}\index{lien entre devises !supprimer}, sélectionnez-le et cliquez sur le bouton \menu{Enlever}
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : si vous essayez de supprimer un lien d'une devise utilisée dans une opération d'un de vos comptes, Grisbi affichera une fenêtre de refus.
+
+
+\subsection{Banques\label{setup-resources-banks}}
+
+Cet onglet \indexword{liste les banques}\index{banques !liste} que vous avez entrées dans votre fichier de comptes, ainsi que
+\ifIllustration tous leurs détails\refimage{setup-bank-img}.
+\else tous leurs détails.
+\fi
+
+\ifIllustration
+% image centrée
+\begin{figure}[ht!]
+\begin{center}
+\includegraphics[scale=0.48]{image/screenshot/setup_bank}
+\end{center}
+\caption{Configuration des établissements financiers}
+\label{setup-bank-img}
+\end{figure}
+% image centrée
+\fi
+
+Le tableau \menu{Banques connues} affiche la liste de ces banques. En sélectionnant une banque par un clic sur sa ligne, les sections \menu{Détails de la banque}, \menu{Correspondant} et \menu{Remarques} affichent tous les \indexword{détails sur la banque}\index{banque !détails} que vous avez déjà entrés dans Grisbi.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{ajouter une banque}\index{banque !ajouter}, procédez comme suit :
+
+\begin{enumerate}
+	\item cliquez sur le bouton \menu{Ajouter} : une nouvelle ligne \menu{Nouvelle banque} s'affiche ;
+	\item sélectionnez cette banque par un clic sur sa ligne ;
+	\item dans la zone \menu{Détails de la banque}, saisissez ses nom, code, Code BIC, adresses, téléphone et site Internet ;
+	\item dans la zone \menu{Correspondant}, saisissez le nom de votre contact ;
+	\item validez par le bouton \menu{Fermer}.
+\end{enumerate}
+
+\ifIllustration
+\else
+% espace pour changement de thème
+\vspacepdf{5mm}
+\fi
+
+Pour \indexword{modifier une banque}\index{banque !modifier}, sélectionnez-la et modifiez-en ses détails.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{supprimer une banque}\index{banque !supprimer}, sélectionnez-la, cliquez sur le bouton \menu{Enlever}, puis validez dans la fenêtre de confirmation.
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\strong{Attention} : cette suppression est irréversible.
+
+
+\subsection{Exercices\label{setup-resources-financialyear}}
+
+Cet onglet permet de créer de nouveaux exercices, et de modifier ou supprimer des exercices \ifIllustration existants\refimage{setup-financialyear-img}.
+\else existants.
+\fi
+
+\ifIllustration
+% image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_financialyear}
+\end{center}
+\caption{Configuration des exercices}
+\label{setup-financialyear-img}
+\end{figure}
+% image centrée
+\fi
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Le tableau \menu{Exercices définis} affiche la \indexword{liste des exercices}\index{exercice !liste} déjà définis dans votre fichier de comptes.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{ajouter un exercice}\index{exercice !ajouter}, procédez comme suit :
+
+\begin{enumerate}
+	\item cliquez sur le bouton \menu{Ajouter} : une nouvelle ligne \menu{Nouvel exercice} s'affiche ;
+	\item dans la zone  \menu{Détails sur l'exercice}, saisissez son nom et ses dates de début et de fin : les dates peuvent être saisies, comme dans le formulaire de saisie des opérations, au clavier (voir la section \vref{transactions-new-dates}, \menu{Saisie de date au clavier}) ou au calendrier (voir la section \vref{transactions-new-calendar}, \menu{Saisie de date au calendrier}) ;
+	\item cliquez sur le bouton \menu{Associer les opérations sans exercice}, si vous voulez que votre nouvel exercice soit affecté automatiquement à toutes les opérations correspondantes ; si vous validez la fenêtre qui s'affiche ensuite, Grisbi affiche le nombre d'opérations qui ont été associées à l'exercice concerné ;
+	\item cochez la case \menu{Activer les exercices dans le formulaire de saisie d'opérations}, si vous voulez afficher un champ  \menu{Exercice} dans le formulaire de saisie, et ainsi pouvoir entrer un exercice lors de la saisie des opérations ;
+	\item validez par le bouton \menu{Fermer}.
+\end{enumerate}
+
+\textbf{Note} : les exercices ne doivent pas se chevaucher ; si c'est le cas, Grisbi affiche un message d'alerte en rouge{\couleur} \ifIllustration \refimage{setup-financialyear-img}.
+\else .
+\fi
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{modifier un exercice}\index{exercice !modifier}, sélectionnez-le et modifiez-en ses détails.
+
+%% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{supprimer un exercice}\index{exercice !supprimer}, sélectionnez-le, cliquez sur le bouton \menu{Enlever}, puis validez la fenêtre de confirmation. 
+
+% espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : cette suppression ne fait que supprimer l'exercice dans le tableau \menu{Exercices définis}, ainsi que le champ \menu{Exercice} dans le formulaire de saisie des opérations et dans toutes les opérations qui y sont associées. Mais en aucun cas elle ne supprime les opérations elles-mêmes\ldots
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Le bouton \menu{Associer les opérations sans exercice}\index{exercice !opérations sans exercice}\index{opération !sans exercice} permet d'attribuer automatiquement un exercice à toutes les opérations qui en sont dépourvues, en fonction de leur date d'opération (ou de leur date de valeur). C'est aussi le bouton \emph{magique} dans le cas d'un fichier importé d'une ancienne version (ou au format QIF) ; si vous validez la fenêtre qui s'affiche ensuite, Grisbi affiche le nombre d'opérations qui ont été associées à l'exercice concerné.
+
+La zone \menu{Détails sur l'exercice}\index{exercice !détails} affiche les paramètres de l'exercice sélectionné dans le tableau \menu{Exercices définis}.
+
+%Fonctionnement à vérifier ultérieurement
+La case \menu{Activer les exercices dans le formulaire de saisie d'opérations}\index{formulaire de saisie !activer un exercice}\index{exercice !activer} permet d'\indexword{activer l'affichage des exercices} dans ce formulaire, et ainsi d'entrer un exercice lors de la saisie des opérations. Si cela n'est pas le cas, vous devrez le faire manuellement dans le menu \menu{Édition - Préférences} (voir la section \vref{setup-form-content}, \menu{Contenu} et éventuellement la section \vref{transactions-list-fields}, \menu{Champs d'information et de saisie}).
+%Fonctionnement à vérifier ultérieurement. L'affichage devrait être automatique dans le formulaire et dans la liste des opérations
+
+Vous pouvez aussi désactiver l'affichage des exercices en décochant la case \menu{Activez les exercices dans le formulaire de saisie d'opérations}.
+S'il est désactivé, et si vous rappelez, dans le formulaire de saisie des opérations, une opération dont l'exercice n'est plus affiché, la mention \menu{Automatique} apparaîtra à la place du libellé de l'exercice.
+
+
+\subsection{Modes de règlement\label{setup-resources-modes}}
+
+Cet onglet permet de configurer, compte par compte, les différents modes de règlement disponibles dans Grisbi, et apparaissant donc dans la liste déroulante\index{mode de règlement !liste}\index{mode de règlement !détails} du formulaire
+\ifIllustration de saisie des opérations\refimage{setup-modes-img}.
+\else de saisie des opérations.
+\fi
+
+\ifIllustration
+% image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_modes}
+\end{center}
+\caption{Configuration des modes de règlement}
+\label{setup-modes-img}
+\end{figure}
+% image centrée
+\fi
+
+Ce tableau affiche la liste de tous vos comptes dans l'ordre où ils sont affichés dans le panneau de navigation (et non celui où ils ont été créés), précédés d'un petit triangle. Un clic sur ce triangle déroule ou enroule la liste des modes de règlement disponibles pour le compte concerné.
+
+\textbf{Note} : ces triangles peuvent être remplacés, en fonction du thème de l'environnement de bureau ou du gestionnaire de fenêtres que vous utilisez, par d'autres caractères tels que +, -, >, <, etc.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+
+Ces modes de règlement sont les suivants :
+
+\begin{itemize}
+	\item \menu{Débit} ;
+	\item \menu{Crédit} ;
+	\item \menu{Virement} : un virement peut être entrant ou sortant. Ce mode doit donc être proposé tant au débit qu'au crédit. Grisbi considère par défaut qu'il est neutre (un mode neutre est un mode de règlement qui peut être indifféremment un débit ou un crédit).
+\end{itemize}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+De même, un autre clic sur le triangle devant le type \menu{Débit} déroule ou enroule la liste des modes de règlement disponibles :
+
+\begin{itemize}
+	\item \menu{Carte de crédit} ;
+	\item \menu{Prélèvement} ;
+	\item \menu{Chèque}.
+\end{itemize}
+
+Pour le type \menu{Crédit}, le seul mode de règlement disponible est \menu{Dépôt}.
+
+\ifIllustration
+\else
+% espace pour changement de thème
+\vspacepdf{5mm}
+\fi
+
+Pour \indexword{ajouter un nouveau mode de règlement}\index{mode de règlement !ajouter}, procédez comme suit :
+
+\begin{enumerate}
+	\item Sélectionnez le compte concerné, ou un de ses deux types \menu{Débit} ou  \menu{Crédit}, par un clic. Le bouton \menu{Ajouter} devient actif ;
+	\item cliquez sur le bouton \menu{Ajouter} : une nouvelle ligne \menu{Nouveau mode de règlement} s'affiche, provisoirement dans la section \menu{Débit} ;
+	\item sélectionnez ce \menu{Nouveau mode de règlement} par un clic sur sa ligne ;
+	\item si vous cliquez sur le bouton dans la colonne  \menu{Défaut}, la liste des modes de paiement sera positionnée par défaut sur ce nouveau mode à chaque nouvelle opération dans ce compte ;
+	\item dans la zone \menu{Détails sur le mode de règlement} :
+		\begin{enumerate}
+			\item saisissez son nom dans le champ \menu{Nom} : choisissez un nom pas trop long, pour son affichage correct dans le formulaire de saisie,
+			\item si vous cochez la case \menu{Ajoute entrée pour un numéro}, le champ \menu{\No chèque/virement} est ajouté dans le formulaire de Grisbi pour le mode de règlement sélectionné, et cela valide la case \menu{Activer},
+			\item si vous cochez la case \menu{Activer}, l'incrémentation automatique du champ \menu{\No chèque/virement} du formulaire de saisie des opérations est validée ; cette numérotation automatique fonctionne aussi pour tous les modes, c'est à vous d'imaginer ce que vous pouvez en faire (par exemple, vous pouvez numéroter automatiquement vos remises de chèques),
+			\item dans le champ \menu{Numérotation auto}, entrez des caractères, dont le dernier devra être numérique, à partir duquel la numérotation commencera, par exemple «Règlement1»,
+			\item dans la liste déroulante de libellé  \menu{Type}, choisissez le type d'opération : \menu{Débit}, \menu{Crédit} ou \menu{Neutre} pour un type indifférent.
+		\end{enumerate}
+\end{enumerate}
+
+\ifIllustration
+\else
+% espace pour changement de thème
+\vspacepdf{5mm}
+\fi
+
+Pour \indexword{modifier un mode de règlement}\index{mode de règlement !modifier}, sélectionnez-le et modifiez-en les détails.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{supprimer un mode de règlement}\index{mode de règlement !supprimer}, sélectionnez-le, cliquez sur le bouton \menu{Enlever}, puis validez dans la fenêtre de confirmation.
+
+
+\section{Budget prévisionnel\label{setup-budget}}
+
+
+Cet onglet permet de configurer les différents paramètres des budgets prévisionnels pour les différents comptes de votre fichier de comptes.
+
+
+\subsection{Généralités\label{setup-budget-general}}
+
+Cet onglet permet de définir les \indexword{paramètres généraux}\index{prévision !paramètres généraux} pour l'ensemble de vos \ifIllustration  budgets\refimage{setup-budgetGeneral-img}.
+\else budgets. 
+\fi
+
+\ifIllustration
+% image centrée
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_budget_general}
+\end{center}
+\caption{Configuration générale des budgets prévisionnels}
+\label{setup-budgetGeneral-img}
+% image centrée
+\end{figure}
+\fi
+
+Pour le configurer, choisissez le \menu{Début de la période} servant de référence pour établir les prévisions, en cliquant sur l'un des deux boutons dans la zone \menu{Données communes} : soit le \menu{1\up{er} jour du mois} (c'est le choix par défaut), soit \menu{Aujourd'hui}. 
+
+% message  : «Dans «Généralités», le choix de la date de l'exercice peut se faire avec les touches Flèche Droite et Gauche, mais pas à la souris. Est-ce volontaire  ? Ou est-ce un bogue  ?» «Oui il y avait un bug. je l'ai corrigé dans la branche grisbi-gtk3 mais il sera reporté dans les autres branches. %
+% A vérifier ultérieurement
+
+\textbf{Note} : ce choix n'est utilisé qu'en l'absence d'une date de début renseignée dans l'onglet \menu{Prévisions} du compte concerné (voir la section \vref{budget-estimate-summary}, \menu{En-tête des prévisions}).
+% espace après Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+
+De plus, choisissez si les \indexword{comptes de caisse}\index{prévision !comptes de caisse} pourront aussi avoir leur tableau de \indexword{prévisions}, en cochant la case \menu{Ajouter le tableau des prévisions aux comptes de caisse}.
+
+
+\subsection{Données des comptes\label{setup-budget-data}}
+
+Cet onglet permet de valider la fonctionnalité de budget prévisionnel et d'en configurer les paramètres, pour chacun des comptes à budgétiser.
+
+\ifIllustration
+% image centrée
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_budget_data1}
+\end{center}
+\caption{Configuration des budgets : choix des comptes}
+\label{setup-budgetData1-img}
+\end{figure}
+% image centrée
+\fi
+
+La zone \menu{Sélectionner un compte} \ifIllustration affiche\refimage{setup-budgetData1-img} :
+\else affiche : 
+\fi
+
+\begin{itemize}
+	\item une liste déroulante pour choisir le compte sur lequel vous voulez faire les prévisions ;
+	\item la case à cocher \menu{Utiliser le module budgétaire}, pour \indexword{valider le module budgétaire}\index{module budgétaire !valider} pour ce compte.
+\end{itemize}
+
+Plusieurs comptes peuvent ainsi faire l'objet de prévisions, indépendamment et simultanément. 
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour \indexword{configurer le module budgétaire}\index{module budgétaire !configurer} pour un compte, sélectionnez ce compte dans la liste déroulante, puis cochez la case \menu{Utiliser le module budgétaire}. Une autre case à cocher de libellé \menu{Compte avec carte à débit différé} s'affiche en-dessous ; suivant le type de compte concerné et si vous cochez ou non cette case, le contenu du bas de la fenêtre est différent ; il y a plusieurs cas :
+
+\begin{itemize}
+	\item type compte de passif ;
+	\item type compte bancaire ;
+	\item type compte de caisse ;		
+	\item type compte de passif avec carte bancaire à débit différé ;	
+	\item type compte bancaire avec carte bancaire à débit différé ;
+	\item type compte de caisse avec carte bancaire à débit différé ;
+	\item type compte d'actif.	
+\end{itemize}		
+
+
+\subsubsection{Type compte de passif\label{setup-budget-data-liability}}
+
+Pour ces comptes, une case à cocher et une seule zone supplémentaire \ifIllustration s'affichent\refimage{setup_budget_dataLiability-img} :
+\else s'affichent :
+\fi
+
+\begin{itemize}
+	\item la case de libellé \menu{Compte avec carte à débit différé} ; 
+	\item la zone \menu{Données du crédit}.
+\end{itemize}
+
+\ifIllustration
+% image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_budget_dataLiability}
+\end{center}
+\caption{Configuration d'un budget pour un compte de passif}
+\label{setup_budget_dataLiability-img}
+\end{figure}
+% image centrée
+\fi
+
+De plus, dans le pavé des détails du compte concerné, un nouvel onglet \menu{Tableau d'amortissement} s'est ajouté entre les deux autres onglets \menu{Opérations} et \menu{Propriétés}.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour configurer les prévisions de ce compte, procédez comme suit :
+
+\begin{itemize}
+	\item ne cochez pas la case de libellé \menu{Compte avec carte à débit différé} ; %si ce compte est utilisé pour gérer \emph{uniquement} une carte bancaire à débit différé, cochez la case de libellé \menu{Compte avec carte à débit différé} ; dans ce cas, voir aussi la section \vref{bankcard-deferredCard}, \menu{Carte bancaire à débit différé}, qui explique en détails la configuration et l'utilisation des quatre fonctionnalités liées à cette carte bancaire ;  
+	\item dans la zone \menu{Données du crédit}, saisissez les données du crédit en vous référant aux documents du crédit que vous avez contracté avec votre organisme bancaire :
+		\begin{itemize}
+			 \item \menu{Capital emprunté} ; 
+			 \item \menu{Durée} : en nombre d'années ;
+			 \item \menu{Date de la première échéance} ;
+			 \item \menu{Taux d'intérêt annuel} : pour plus de précision de calcul, vous pouvez saisir jusqu'à trois décimales ;
+			 \item \menu{Frais par échéance} : en valeur absolue ;
+			 \item \menu{Type du taux appliqué} : \menu{Taux actuariel} (c'est le choix par défaut) ou \menu{Taux proportionnel} ;
+			 \item validez la fenêtre par le bouton \menu{Fermer}, sinon par la touche \key{Échap}.	
+		\end{itemize}
+\end{itemize}
+
+
+\subsubsection{Type compte bancaire\label{setup-budget-data-bank}}
+
+Pour ces comptes, une case à cocher et deux zones supplémentaires \ifIllustration s'affichent\refimage{setup_budget_dataBank-img} :
+\else s'affichent : 
+\fi
+
+\begin{itemize}
+	\item une case de libellé \menu{Compte avec carte à débit différé} ; 
+	\item une zone \menu{Données pour le tableau des prévisions} ;
+	\item une zone \menu{Sources des données historiques}.
+\end{itemize}
+
+\ifIllustration
+% image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_budget_dataBank}
+\end{center}
+\caption{Configuration d'un budget pour un compte de banque ou de caisse avec prévisions}
+\label{setup_budget_dataBank-img}
+\end{figure}
+% image centrée
+\fi
+
+De plus, dans le pavé des détails du compte concerné, deux nouveaux onglets \menu{Prévisions} et \menu{Données historiques} se sont ajoutés entre les deux autres onglets \menu{Opérations} et \menu{Propriétés}.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour configurer les prévisions de ce compte, procédez comme suit :
+
+\begin{enumerate}
+	\item ne cochez pas la case de libellé \menu{Compte avec carte à débit différé} ;	 
+	\item dans la zone \menu{Données pour le tableau des prévisions} :	
+		\begin{enumerate}	
+			\item définissez la \menu{Durée d'estimation} : période de temps sur laquelle les prévisions seront calculées, en nombre de mois ou d'années ; elle est au maximum de 5 ans, 
+			\item définissez le \menu{Libellé des opérations} : comment sont décrites les opérations, par une description \menu{Par défaut}, par les \menu{Catégories} ou par les \menu{Imputations budgétaires},
+			\item définissez le \menu{Libellé des opérations planifiées} : comment sont décrites les opérations planifiées, par une description \menu{Par défaut}, par les \menu{Catégories} ou par les \menu{Imputations budgétaires},		
+			\item définissez le \menu{Libellé des données prévisionnelles} : comment sont décrites les données prévisionnelles, par une description \menu{Par défaut}, par les \menu{Catégories} ou par les \menu{Imputations budgétaires} ; % leave the following line empty to make sure the left alignment of the following note
+			
+			\vspacehevea{5mm}
+			\textbf{Note} : la description \menu{Par défaut} est le contenu du premier de ces champs pour chaque opération, s'il existe et dans cet ordre : \menu{Remarques}, \menu{Tiers}, \menu{Catégories} et \menu{Imputations budgétaires}.
+		\end{enumerate}			
+	\item dans la zone \menu{Sources des données historiques} :
+		\begin{enumerate}	
+			\item définissez l'origine des \indexword{données de référence}\index{prévision !données de référence} pour établir les prévisions, grâce à l'un des deux boutons \menu{Catégories} (c'est le choix par défaut) ou \menu{Imputations budgétaires},
+			\item définissez la \indexword{période de référence}\index{prévision !période de référence} pour établir les prévisions, grâce à une liste déroulante permettant de choisir soit un exercice, soit \menu{12 mois glissants} ; % leave the following line empty to make sure the left alignment of the following note
+			
+			\vspacehevea{5mm}
+			\textbf{Note} : le choix des exercices ne s'affiche que si au moins un exercice a été défini (voir la section \vref{financialyear-start}, \menu{Mise en place des exercices}). % leave the following line empty to make sure the left alignment of the following note
+			
+			\vspacehevea{5mm}
+			\textbf{Note} : ces deux choix peuvent aussi être faits dans l'onglet \menu{Données historiques} du compte concerné.
+			\item validez la fenêtre par le bouton \menu{Fermer}, sinon par la touche \key{Échap}.	
+		\end{enumerate}
+\end{enumerate}
+
+
+\subsubsection{Type compte de caisse\label{setup-budget-data-cash}}
+
+Pour les comptes de caisse, deux cas se présentent, suivant l'état de la case à cocher   \menu{Ajouter le tableau des prévisions aux comptes de caisse} (voir la section \vref{setup-budget-general}, \menu{Généralités}) :
+
+\paragraph{Sans prévisions :}si vous n'avez pas coché la case \menu{Ajouter le tableau des prévisions aux comptes de caisse}, une case à cocher et deux zones supplémentaires \ifIllustration s'affichent\refimage{setup_budget_dataCash-img} :
+\else s'affichent : 
+\fi
+
+\ifIllustration
+% image centrée
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.5]{image/screenshot/setup_budget_dataCash}
+\end{center}
+\caption{Configuration d'un budget pour un compte de caisse sans prévisions}
+\label{setup_budget_dataCash-img}
+\end{figure}
+% image centrée
+\fi
+
+\begin{itemize}
+	\item une case de libellé \menu{Compte avec carte à débit différé} ; 
+	\item une zone \menu{Sources des données historiques}.
+\end{itemize}
+
+% espace pour changement de thème
+\vspacepdf{5mm}   
+De plus, dans le pavé des détails du compte concerné, un seul nouvel onglet \menu{Données historiques} s'est ajouté entre les deux autres onglets \menu{Opérations} et \menu{Propriétés} ; 
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour configurer les prévisions de ce compte, procédez comme suit :
+\begin{enumerate}	
+	\item définissez l'origine des \indexword{données de référence}\index{prévision !données de référence} pour établir les prévisions, grâce à l'un des deux boutons \menu{Catégories} (c'est le choix par défaut) ou \menu{Imputations budgétaires} ;
+	\item définissez la \indexword{période de référence}\index{prévision !période de référence} pour établir les prévisions, grâce à une liste déroulante permettant de choisir soit un exercice, soit \menu{12 mois glissants} ; % leave the following line empty to make sure the left alignment of the following note
+	
+	\vspacehevea{5mm}
+	\textbf{Note} : le choix des exercices ne s'affiche que si au moins un exercice a été défini (voir la section \vref{financialyear-start}, \menu{Mise en place des exercices}).
+	
+	\vspacehevea{5mm}
+	\textbf{Note} : ces deux choix peuvent aussi être faits dans l'onglet \menu{Données historiques} du compte concerné.
+	\item validez la fenêtre par le bouton \menu{Fermer}, sinon par la touche \key{Échap}.	
+\end{enumerate}
+
+\paragraph{Avec prévisions :}si vous avez coché la case \menu{Ajouter le tableau des prévisions aux comptes de caisse}, une case à cocher et deux zones supplémentaires \ifIllustration s'affichent\refimage{setup_budget_dataBank-img} :
+\else s'affichent : 
+\fi
+
+\begin{itemize}
+	\item une case de libellé \menu{Compte avec carte à débit différé} ; 
+	\item une zone \menu{Données pour le tableau des prévisions}, seulement si vous avez coché la case \menu{Ajouter le tableau des prévisions aux comptes de caisse} ; 
+	\item une zone \menu{Sources des données historiques}.
+\end{itemize}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+De plus, dans le pavé des détails du compte concerné, deux nouveaux onglets \menu{Prévisions} et \menu{Données historiques} se sont ajoutés entre les deux autres onglets \menu{Opérations} et \menu{Propriétés}.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+La configuration des prévisions de ce compte se fait de la même manière que pour les comptes bancaires (voir le paragraphe \vref{setup-budget-data-bank}, \menu{Type compte bancaire}).
+
+
+\subsubsection{Type compte de passif avec carte bancaire à débit différé\label{setup-budget-data-liabilityWithCard}}
+
+Pour ces comptes, la fenêtre de configuration est la même que pour un compte de caisse, elle se configure de la même manière, et le pavé des détails affiche les mêmes onglets (voir le paragraphe \vref{setup-budget-data-cash} \menu{Type compte de caisse}, \menu{Sans prévisions}).
+
+\ifIllustration
+% espace pour lien hypertexte solidaire
+\newpage
+\fi
+
+
+\subsubsection{Type compte bancaire avec carte bancaire à débit différé\label{setup-budget-data-bankWithCard}}
+
+Pour ces comptes, la fenêtre de configuration est la même que pour un compte bancaire, elle se configure de la même manière, et le pavé des détails affiche les mêmes onglets (voir le paragraphe \vref{setup-budget-data-bank}, \menu{Type compte bancaire}).
+
+
+\subsubsection{Type compte de caisse avec carte bancaire à débit différé\label{setup-budget-data-cashWithCard}}
+
+Cette possibilité permet d'établir des prévisions sur ce type de compte auquel pourrait  être dédiée une carte bancaire, qui pourrait être par exemple un porte-monnaie électronique à débit différé, si cela existe, ou toute autre utilisation dont vous pourriez avoir besoin.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour les comptes de caisse, deux cas se présentent, suivant l'état de la case à cocher   \menu{Ajouter le tableau des prévisions aux comptes de caisse} (voir la section \vref{setup-budget-general}, \menu{Généralités}) :
+
+\paragraph{Sans prévisions :} si vous n'avez pas coché la case \menu{Ajouter le tableau des prévisions aux comptes de caisse}, la fenêtre de configuration est la même que pour un compte de caisse sans prévisions, elle se configure de la même manière, et le pavé des détails affiche les mêmes onglets (voir le paragraphe \vref{setup-budget-data-cash}, \menu{Type compte de caisse}, \menu{Sans prévisions}).
+
+\paragraph{Avec prévisions :} si vous avez coché la case \menu{Ajouter le tableau des prévisions aux comptes de caisse}, la fenêtre de configuration est la même que pour un compte bancaire, elle se configure de la même manière, et le pavé des détails affiche les mêmes onglets (voir le paragraphe \vref{setup-budget-data-bank}, \menu{Type compte bancaire}).
+
+
+\subsubsection{Type compte d'actif\label{setup-budget-data-asset}}
+
+Il n'y a pas de module budgétaire pour un compte d'actif, on ne peut donc pas le valider.
+
+
+
+

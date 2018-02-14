@@ -1,0 +1,961 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents: The XML chapter
+% $Id: grisbi-manuel-XML.tex, v 0.4 2002/10/27 Daniel Cartron
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Format d'enregistrement du fichier de comptes\label{xml}}
+
+\section{Généralités\label{xml-general}}
+
+Le fichier de comptes de Grisbi est enregistré au format XML. Il est 
+visualisable avec n'importe quel éditeur, mais il est très fortement recommandé
+de ne pas le modifier.
+
+Le format XML est un format universel, ce qui permet à n'importe quel autre 
+programme de pouvoir utiliser les données provenant de Grisbi, à condition qu'il 
+reprenne le formatage de Grisbi. C'est pourquoi nous allons détailler ce 
+formatage ci-après.
+
+Un fichier XML stocke des informations de manière hiérarchique. On reconnait
+un fichier XML à son en-tête: \xml{<?xml version="1.0"?>}.
+
+Les données étant organisées de manière arborescente, on distingue des n{\oe}uds de 
+l'arbre, se divisant en plusieurs branches, et des feuilles, qui sont des n{\oe}uds 
+finals contenant l'information recherchée.
+
+La manière dont ces n{\oe}uds se suivent et sont imbriqués est libre, mais on
+peut contraindre la grammaire d'un fichier XML en fonction d'une DTD
+(Document Type Definition, ou Définition de Type de Document), qui dictera
+les combinaisons autorisées.
+
+\section{Vue d'ensemble}
+
+Le principe du XML est l'utilisation de balises, un peu comme le HTML, sauf
+qu'en XML c'est le programmeur qui définit ses propres balises.
+
+Une information est entourée par deux balises, la balise ouvrante qui ressemble
+à \cmd{<balise>} et la balise fermante qui ressemble à \cmd{/<balise>}.
+
+Par exemple le numéro de version utilisé pour enregistrer votre fichier s'écrit~:
+
+ \cmd{<Version>0.3.2/<Version>}.
+
+Les informations sont classées en sections. Les sections débutent et finissent 
+par des balises portant leur nom. Exemple~: les informations de configuration 
+générale sont comprises entre les balises \cmd{<Generalites>} et 
+\cmd{/<Generalites>}.
+
+Si une balise ne contient aucune information le XML écrit une balise
+vide sous la forme \cmd{<balise/>}.
+
+Dans la présentation de la structure du fichier de compte de Grisbi nous 
+noterons "/" le fait qu'un élément est compris dans un autre.
+
+Certaines balises ont un nom tellement explicite que nous nous contenterons de 
+les citer sans autres explications.
+
+\section{Organisation du fichier}
+
+\subsection{Section de la configuration générale\label{xml-setup}}
+
+Contenu de cette section~:
+
+\begin{itemize}
+
+\item \xml{<Grisbi>}~: c'est l'élément racine, ancêtre de tous les autres~;
+
+\item \xml{<Grisbi>/<Generalites>}~: le bloc d'informations générales
+relatives à la configuration de Grisbi~;
+
+\item \xml{<Grisbi>/<Generalites>/<Version\_fichier>}~: le numéro de version 
+du format de fichier. Ce numéro peut être différent du numéro de version de Grisbi~;
+
+\item \xml{<Grisbi>/<Generalites>/<Version\_Grisbi>}~: le numéro de version de Grisbi~;
+
+\item \xml{<Grisbi>/<Generalites>/<Fichier\_ouvert>}~: est utilisée pour le
+verrouillage dans le mode multi-utilisateurs. 1~=~le fichier est ouvert, 
+0~=~le fichier n'est pas ouvert ~;
+
+\item \xml{<Grisbi>/<Generalites>/<Backup>}~: chemin et nom du fichier de 
+sauvegarde~;
+
+\item \xml{<Grisbi>/<Generalites>/<Titre>}~: le titre de votre fichier~;
+
+\item \xml{<Grisbi>/<Generalites>/<Adresse\_commune>}~: l'adresse du titulaire du
+compte~;
+
+\item \xml{<Grisbi>/<Generalites>/<Adresse\_secondaire>}~: une deuxième zone 
+adresse pour enregistrer par exemple l'adresse du trésorier de l'association~;
+
+\item \xml{<Grisbi>/<Generalites>/<Utilise\_exercices>}~: 1~=~le fichier de compte
+utilise les exercices, 0~=~il ne les utilise pas~;
+
+\item \xml{<Grisbi>/<Generalites>/<Utilise\_IB>}~: 1~=~le fichier de compte
+utilise les imputations budgétaires, 0~=~il ne les utilise pas~;
+
+\item \xml{<Grisbi>/<Generalites>/<Utilise\_PC>}~: 1~=~le fichier de compte
+utilise le champ \cmd{Pièces comptables}, 0~=~il ne l'utilise pas~;
+
+\item \xml{<Grisbi>/<Generalites>/<Utilise\_info\_BG>}~: 1~=~le fichier de compte
+utilise le champ \menu{Coordonnées bancaires}, 0~=~il ne l'utilise pas~;
+
+\item \xml{<Grisbi>/<Generalites>/<Numero\_devise\_totaux\_tiers>}~: le numéro de
+la devise utilisée pour les totalisations dans les onglets \menu{Tiers}
+\menu{Catégories} et \menu{Imputations budgétaires}~;
+
+\item \xml{<Grisbi>/<Generalites>/<Type\_affichage\_des\_echeances>}~: 0~=~mois,
+1~=~2 mois, 2~=~année, 3~=~toutes, 4~=~personnalisée~;
+
+\item \xml{<Grisbi>/<Generalites>/<Affichage\_echeances\_perso\_nb\_libre>}~: 
+contenu de l'entrée pour l'affichage personnalisé des échéances~;
+
+\item \xml{<Grisbi>/<Generalites>/<Type\_affichage\_perso\_echeances>}~: 0~=~
+jours, 1~=~mois, 2~=~années~;
+
+\item \xml{<Grisbi>/<Generalites>/<Numero\_derniere\_operation>}~: numéro de la 
+dernière opération du fichier~;
+
+\item \xml{<Grisbi>/<Generalites>/<Chemin\_logo>}~: le chemin d'accès au logo utilisé dans le fichier~; 
+
+\item \xml{<Grisbi>/<Generalites>/<Affichage\_opes>}~: suite de 28 numéros séparés par des tirets déterminant l'affichage des informations dans l'onglet \menu{Opérations}.  Les 28 numéros représentent les quatre lignes, chacune de 7 colonnes. Les numéros des informations sont~:
+
+	\begin{itemize}
+
+	\item 1~=~Date de l'opération~;
+
+	\item 2~=~Date de valeur~;
+
+	\item 3~=~Tiers~;
+
+	\item 4~=~Imputation budgétaire~;
+
+	\item 5~=~Débit~;
+
+	\item 6~=~Crédit~;
+
+	\item 7~=~Solde~;
+
+	\item 8~=~Montant en devise~;
+
+	\item 9~=~Moyen de paiement~;
+
+	\item 10~=~Numéro de rapprochement~;
+
+	\item 11~=~Exercice~;
+
+	\item 12~=~ Catégorie~;
+
+	\item 13~=~P/R (opération pointée ou rapprochée)~;
+
+	\item 14~=~Pièce comptable~;
+
+	\item 15~=~Notes~;
+
+	\item 16~=~Informations bancaires~;
+
+	\item 17~=~Numéro de l'opération~;
+
+	\item 18~=~Numéro de chèque.
+
+	\end{itemize} 
+
+Un zéro signifie qu'aucune information n'est affichée dans la cellule. Le paramétrage par défaut est~:
+18-1-3-13-5-6-7-0-0-12-0-9-8-0-0-11-15-0-0-0-0-0-0-0-0-0-0-0
+
+\item \xml{<Grisbi>/<Generalites>/<Rapport\_largeur\_col>}~: suite de 7 nombres séparés par des tirets, représentant la variation de la taille des 7 colonnes de l'onglet \menu{Opérations} en pourcentage (par défaut 11-13-30-3-11-11-11)~;
+
+\item \xml{<Grisbi>/<Generalites>/<Ligne\_aff\_une\_ligne>}~: le numéro (de 0 à 3) de la ligne affichée lors de l'affichage des opérations sur une seule ligne dans l'onglet \menu{Opérations} (par défaut 0)~;
+
+\item \xml{<Grisbi>/<Generalites>/<Lignes\_aff\_deux\_lignes>}~: les deux numéros (de 0 à 3), séparés par un tiret, des lignes affichées lors de l'affichage des opérations sur deux lignes dans l'onglet \menu{Opérations} (par défaut 0-1)~;
+
+\item \xml{<Grisbi>/<Generalites>/<Lignes\_aff\_trois\_lignes>}~: les trois numéros (de 0 à 3), séparés par des tirets, des lignes affichées lors de l'affichage des opérations sur trois lignes dans l'onglet \menu{Opérations} (par défaut 0-1-3).
+
+\end{itemize}
+
+\subsection{Section relative aux comptes}
+
+Cette section est une branche de l'arbre Grisbi et devrait donc
+être notée
+
+ \xml{<Grisbi>/<Comptes>}.
+
+Afin de simplifier nous n'indiquerons pas l'élément racine \xml{<Grisbi>}
+et nous commencerons à \xml{<Comptes>}. Cette remarque est valable pour toutes 
+les sections qui suivront.
+
+Voici le contenu de cette section~:
+
+\begin{itemize}
+
+\item \xml{<Comptes>/<Generalites>} est une sous-section qui décrit les points 
+communs à tous les comptes du fichier~;
+
+\item \xml{<Comptes>/<Generalites>/<Ordre\_des\_comptes>} est l'ordre dans
+lequel les comptes sont affichés dans l'onglet \menu{Opérations} (configuré dans 
+\menu{Configuration/Affichage}, voir le paragraphe \vref{setup-display}).
+Les comptes sont désignés par leur numéro (voir ci-après) et séparés par des
+tirets sans espace (exemple~: 3-2-0-1)~;
+
+\item \xml{<Comptes>/<Generalites>/<Compte\_courant>}~: c'est le compte qui 
+était affiché dans l'onglet \menu{Opérations} lors de la fermeture du fichier et 
+qui le sera lors de sa ré-ouverture~;
+
+\item \xml{<Comptes>/<Compte>} est un bloc d'informations renfermant tous les 
+détails d'un compte donné. L'élément père \xml{<Comptes>} peut contenir 
+plusieurs fils \xml{<Compte>} qui se suivent les uns les autres. Ils seront 
+identifiés par leur numéro interne. Nous allons décrire ici la syntaxe attendue 
+d'un tel compte.
+
+\item \xml{<Comptes>/<Compte>/<Details>} ~: il s'agit de toutes les informations 
+que vous avez saisies lors de la création du compte (ou peut-être après)~:
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Nom>}~: le nom que vous avez donné à 
+votre compte~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<No\_de\_compte >}~: le numéro de votre 
+compte dans Grisbi~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Titulaire>}~: si  le titulaire du 
+compte est différent du titulaire général~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Type\_de\_compte>}~: le type de compte 
+( 0~=~bancaire,  1~=~espèces,  2~=~passif, 3~=~actif )~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Nb\_operations>}~: le nombre 
+d'opérations enregistrées dans ce compte~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Devise>} ~: le numéro de la devise dans 
+laquelle est tenu le compte~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Banque>} ~: le numéro de l'établissement 
+bancaire tenant le compte~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Guichet>} ~: le code Guichet de 
+l'établissement bancaire~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<No\_compte\_banque>}~: le numéro de 
+votre compte dans votre établissement bancaire~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Cle\_du\_compte>}~: la clé RIB~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Solde\_initial>}~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Solde\_mini\_voulu>}~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Solde\_mini\_autorise>}~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Solde\_courant>}~: pour accélérer les 
+traitements Grisbi enregistre le solde de votre compte dans cette balise~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Date\_dernier\_releve>} ~: concerne les 
+rapprochements~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Solde\_dernier\_releve>}~: concerne les 
+rapprochements~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Dernier\_no\_de\_rapprochement>}~: 
+concerne les rapprochements~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Compte\_cloture>}~: 0~=~Non, 1~=~Oui~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Affichage\_r>}~: si vous avez choisi d'avoir des caractéristiques d'affichage propres à chaque compte, cette balise détermine l'affichage des opérations rapprochées. 0~=~les opérations ne sont pas affichées, 1~=~elles le sont~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Nb\_lignes\_ope>}~: si vous avez choisi d'avoir des caractéristiques d'affichage propres à chaque compte, cette balise détermine le nombre de lignes affichées pour les opérations~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Commentaires>}~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Adresse\_du\_titulaire>}~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Nombre\_de\_types>}~: nombre de modes de paiement définis pour ce compte~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Type\_defaut\_debit>}~: le numéro du 
+mode de paiement par défaut en débit~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Type\_defaut\_credit>}~: le numéro du 
+mode de paiement par défaut en crédit~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Tri\_par\_type>}~: 0~=~tri par date 
+lors du rapprochement, 1~=~tri par type d'opération~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Neutres\_inclus>}~: 1~=~les modes de paiement
+neutres sont séparés en fonction du montant de l'opération (débit/crédit)~;
+
+\item \xml{<Comptes>/<Compte>/<Details>/<Ordre\_du\_tri>}~: classement des modes
+de paiement lors du rapprochement .
+
+\end{itemize}
+
+\subsubsection{Les types d'opérations du compte}
+
+La balise suivante est une sous-sous-section qui se nomme 
+
+\xml{<Comptes>/<Compte>/<Detail\_de\_Types>}. 
+
+Elle décrit tous les types 
+d'opérations paramétrés pour le compte. Le format change, à savoir que chaque 
+type est contenu dans sa propre balise, incluant tous les paramètres le 
+distinguant. La valeur des paramètres leur est affectée de la façon suivante~: 
+\xml{Nom="Virement"} c'est-à-dire le nom du paramètre, le signe =, puis la 
+valeur du paramètre entre guillemets. Un type d'opération est décrit par la
+balise \xml{<Type>} contenant les paramètres suivants, séparés par des espaces~:
+
+\begin{itemize}
+
+\item \xml{<No>}~: numéro du type d'opération pour ce compte~;
+
+\item \xml{<Nom>}~: le nom que vous donnez à ce type d'opération~;
+
+\item \xml{<Signe>}~: 0=neutre, 1=débit, 2=crédit~;
+
+\item \xml{<Affiche\_entree>}~: affiche l'entrée complémentaire (numéro de 
+chèque ou de virement)~;
+
+\item \xml{<Numerotation\_auto>}~: 1~=~incrémente le numéro en cours
+lors de l'affichage de l'entrée complémentaire, 0~=~ne l'incrémente pas~;
+
+\item \xml{<No\_en\_cours>}~: numéro en cours pour l'entrée complémentaire.
+
+\end{itemize}
+
+\subsubsection{Détail des opérations du compte}
+
+La balise suivante est une sous-sous-section qui se nomme
+\xml{<Comptes>/<Compte>/<Detail\_des\_operations>} et qui liste toutes les 
+opérations du compte, ainsi que leurs lignes de ventilation. De même que les 
+types, les opérations sont contenues dans une balise \xml{<Operation>} avec les 
+paramètres suivants~:
+
+\begin{itemize}
+
+\item \xml{<No>}~: c'est le numéro de l'opération dans le fichier, tous comptes
+confondus~;
+
+\item \xml{<D>}~: la date de l'opération~;
+
+\item \xml{<Db>}~: la date de valeur de l'opération~;
+
+\item \xml{<M>}~: le montant (signé) de l'opération. A noter que bien que le 
+formulaire de saisie présente deux zones, une pour les débits et une pour les 
+crédits, le montant est enregistré dans un seul paramètre~;
+
+\item \xml{<De>}~: le numéro de la devise utilisée~;
+
+\item \xml{<Rdc>}~: c'est le Rez-de-chaussée. Heu, non, c'est l'indication de la 
+devise à laquelle on applique le taux de change défini plus loin~:
+
+\begin{itemize}
+
+\item 1~: devise du compte~=~devise étrangère x taux de change~;
+
+\item 0~: devise étrangère~=~devise du compte  x taux de change.
+
+\end{itemize}
+
+\item \xml{<Tc>}~: le taux de change permettant de passer de la devise du compte 
+à la devise étrangère ou inversement~;
+
+\item \xml{<Fc>}~: les frais de change, s'il y en a~;
+
+\item \xml{<T>}~: le numéro du tiers~;
+
+\item \xml{<C>}~: le numéro de la catégorie~;
+
+\item \xml{<Sc>}~: le numéro de la sous-catégorie~;
+
+\item \xml{<Ov>}~: 0~=~l'opération n'est pas ventilée, 1~=~l'opération est
+ventilée~;
+
+\item \xml{<N>}~: les notes~;
+
+\item \xml{<Ty>}~: le numéro du type de l'opération tel que définit plus haut~;
+
+\item \xml{<Ct>}~: l'information liée au type d'opération (n° de chèque, de 
+virement,
+etc.)~;
+
+\item \xml{<P>}~: le statut de l'opération~: 0~=~non pointée, 1~=~pointée mais 
+non 
+rapprochée, 2~=~rapprochée~;
+
+\item \xml{<A>}~: si l'opération est planifiée, définit son statut~: 1~=~
+automatique, 0
+= manuelle~;
+
+\item \xml{<R>}~: le numéro du rapprochement~;
+
+\item \xml{<E>}~: le numéro de l'exercice~;
+
+\item \xml{<I>}~: le numéro de l'imputation budgétaire~;
+
+\item \xml{<Si>}~: le numéro de la sous-imputation budgétaire~;
+
+\item \xml{<Pc>}~: les références de la pièce comptable~;
+
+\item \xml{<Ibg>}~: les informations Banque - Guichet~;
+
+\item \xml{<Ro>}~: pour les virements, le numéro de l'opération de contrepartie 
+;
+
+\item \xml{<Rc>}~: pour les virements, le numéro du compte de contrepartie~;
+
+\item \xml{<Va>}~: si l'opération est une ligne de ventilation, ce paramètre 
+contient le 
+numéro de l'opération-mère.
+
+\end{itemize}
+
+\subsection{Échéances}
+
+Cette section traite des opérations planifiées et comprend les informations
+suivantes~:
+
+\begin{itemize}
+
+\item \xml{<Echeances>/<Generalites>}~: la sous-section des généralités 
+comprenant~:
+
+\item \xml{<Echeances>/<Generalites>/<Nb\_echeances>}~: le nombre d'opérations 
+planifiées~;
+
+\item \xml{<Echeances>/<Generalites>/<No\_derniere\_echeance>}~: le numéro de la 
+dernière opération planifiée~;
+
+\item \xml{<Echeances>/<Detail\_des\_echeances>}~: Cette balise ouvre la liste
+des opérations planifiées décrites dans une balise nommée 
+\xml{<Echeances>/<Detail\_des\_echeances>/<echeance>}. Les paramètres
+de cette balise correspondent aux champs à renseigner lors de la création de 
+l'opération planifiée~:
+
+\begin{itemize}
+
+\item \xml{<No>}~: numéro d'ordre de l'opération planifiée~;
+
+\item \xml{<Date>}~: date de la première échéance de l'opération 
+planifiée~;
+
+\item \xml{<Compte>}~: compte concerné par l'opération planifiée~;
+
+\item \xml{<Montant>}~;
+
+\item \xml{<Devise>}~;
+
+\item \xml{<Tiers>}~;
+
+\item \xml{<Categorie>}~;
+
+\item \xml{<Sous-categorie>}~;
+
+\item \xml{<Virement\_compte>}~: numéro de compte vers lequel ou duquel le virement
+s'effectue~;
+
+\item \xml{<Type>}~;
+
+\item \xml{<Contenu\_du\_type>}~: lorsqu'un type d'opération affiche une entrée
+complémentaire, mais non incrémentée automatiquement, le contenu de cette entrée 
+est enregistré ici~;
+
+\item \xml{<Exercice>}~;
+
+\item \xml{<Imputation>}~: il s'agit de l'imputation budgétaire~;
+
+\item \xml{<Sous-imputation>}~: voir ligne précédente~;
+
+\item \xml{<Piece\_comptable>}~;
+
+\item \xml{<Info\_banque\_guichet>}~;
+
+\item \xml{<Notes>}~;
+
+\item \xml{<Automatique>}~: 0~=~manuelle, 1~=~automatique~;
+
+\item \xml{<Periodicite>}~: 0=une fois, 1=hebdo, 2=mensuel, 3=annuel, 
+4=personnalisé~;
+
+\item \xml{<Intervalle\_periodicite>}~: 0=jours, 1=mois, 2=années~;
+
+\item \xml{<Periodicite\_personnalisee>}~: le nombre de jours/mois/années quand 
+la périodicité est personnalisée~;
+
+\item \xml{<Date\_limite>}.
+
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Tiers}
+
+Cette section liste tous les tiers enregistrés dans le fichier de comptes~:
+
+\begin{itemize}
+
+\item \xml{<Tiers>/<Generalites>}~: cette sous-section contient comme d'habitude
+le nombre de tiers et le numéro du dernier tiers enregistré~;
+
+\item \xml{<Tiers>/<Generalites>/<Nb\_tiers>}~;
+
+\item \xml{<Tiers>/<Generalites>/<No\_dernier\_tiers>}~;
+
+\item \xml{<Tiers>/<Detail\_des\_tiers>}~: cette sous-section comprend autant de 
+balises \xml{<Tiers>} que de tiers enregistrés. Chaque balise décrit un tiers 
+avec les paramètres suivants~:
+
+\begin{itemize}
+
+\item \xml{<No>}~;
+
+\item \xml{<Nom>}~;
+
+\item \xml{<Informations>}~;
+
+\item \xml{<Liaison>}~: 1~=~le tiers est lié à un autre logiciel, 0~=~le tiers 
+n'est pas lié (sans intérêt pour l'instant).
+
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Catégories\label{xml-categories} }
+
+Cette section est construite exactement sur le même principe que celle des tiers 
+et comprend~:
+
+\begin{itemize}
+
+\item \xml{<Categories>/<Generalites>}~;
+
+\item \xml{<Categories>/<Generalites>/<Nb\_Categories>}~;
+
+\item \xml{<Categories>/<Generalites>/<No\_derniere\_categorie>}~;
+
+\item \xml{<Categories>/<Detail\_des\_categories>}~: sous-section comportant les 
+balises \xml{<Categorie>} dont chacune décrit une  catégorie~:
+
+\begin{itemize}
+
+\item \xml{<No>}~;
+
+\item \xml{<Nom>}~;
+
+\item \xml{<Type>}~: 1 indique que cette catégorie est normalement au débit, 0 
+au crédit et 2 signifie spécial (concrètement, c'est une catégorie de virement 
+ou d'opération ventilée)~;
+
+\item \xml{<No\_derniere\_sous\_categorie>}.
+
+\end{itemize}
+
+\item \xml{<Categories>/<Sous\_categorie>}~: si la catégorie contient une ou 
+plusieurs sous-catégories la balise \xml{<Categorie>} est suivie par une ou
+plusieurs balises \xml{<Sous\_categorie>} contenant les paramètres suivants~:
+
+\begin{itemize}
+
+\item \xml{<No>}~: le numéro d'ordre de la sous-catégorie dans la catégorie (de
+1 à n, n étant normalement égal au contenu de la balise 
+\xml{<No\_derniere\_sous\_categorie>}, sauf si la dernière sous-catégorie a été 
+supprimée~;
+
+\item \xml{<Nom>}.
+
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Imputations budgétaires\label{xml-budgetlines} }
+
+Cette section est exactement identique à celle des catégories, à ceci près que le 
+mot catégorie est remplacé par le mot imputation~:
+
+\begin{itemize}
+
+\item \xml{<Imputations>/<Generalites>}~: cette sous-section contient le nombre 
+d'imputations et le numéro de la dernière imputation enregistrée~;
+
+\item \xml{<Imputations>/<Generalites>/<Nb\_imputations>}~;
+
+\item \xml{<Imputations>/<Generalites>/<No\_derniere\_imputation>}~;
+
+\item \xml{<Categories>/<Detail\_des\_imputations>}~: sous-section comportant 
+les balises \xml{<Imputation>} dont chacune décrit une imputation~:
+
+\begin{itemize}
+
+\item \xml{<No>}~: le numéro d'ordre de l'imputation~;
+
+\item \xml{<Nom>}~;
+
+\item \xml{<Type>}~;
+
+\item \xml{<No\_derniere\_sous\_imputation>}.
+
+\end{itemize}
+
+\item \xml{<Categories>/<Sous\_imputation>}~: si l'imputation contient une ou 
+plusieurs sous-imputations la balise \xml{<Imputation>} est suivie par une ou
+plusieurs balises \xml{<Sous\_imputation>} contenant les paramètres suivants~:
+\begin{itemize}
+
+\item \xml{<No>}~: le numéro d'ordre de la sous-imputation dans l'imputation (de
+1 à n, n étant normalement égal au contenu de la balise 
+\xml{<No\_derniere\_sous\_imputation>}, sauf si la dernière sous-imputation a 
+été supprimée)~;
+
+\item \xml{<Nom>}.
+
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Devises\label{xml-currencies} }
+
+La gestion des devises est antérieure au passage à la monnaie unique, ce qui
+explique qu'il reste un certain nombre de paramètres liés au passage à l'euro. 
+Ces paramètres seront conservés encore quelque temps pour permettre l'import 
+d'anciens fichiers, puis disparaîtront.
+
+La section \xml{<Devises>} utilise la structure désormais familière des autres
+sections du fichier~:
+
+\begin{itemize}
+
+\item \xml{<Devises>/<Generalites>}~: la sous-section des généralités, à savoir
+:
+
+\item \xml{<Devises>/<Generalites>/<Nb\_devises>}~;
+
+\item \xml{<Devises>/<Generalites>/<No\_derniere\_devise>}.
+
+\item \xml{<Devises>/<Generalites>/<Detail\_des\_devises>}~: la sous-section 
+des détails, comprenant des balises  \xml{<Devise>} et leurs paramètres~:
+
+\begin{itemize}
+
+\item \xml{<No>}~;
+
+\item \xml{<Nom>}~;
+
+\item \xml{<Code>}~;
+
+\item \xml{<Passage\_euro>}~: 1~=~la devise fait partie de la zone euro, 0~=~elle ne fait
+pas partie de la zone euro~;
+
+\item \xml{<Date\_dernier\_change>}~: la date du dernier taux de change saisi~;
+
+\item \xml{<Rapport\_entre\_devises>}~: 1~=~le taux de la devise est égal à la 
+devise en 
+rapport multipliée par le taux de change, 0~=~pas de conversion~;
+
+\item \xml{<Devise\_en\_rapport>}~: la devise en rapport avec la devise courante 
+(ex: liaison franc-euro)~;
+
+\item \xml{<Change>}~: taux de change entre les deux devises.
+
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Banques\label{xml-bank} }
+
+Nous retrouvons la structure habituelle~:
+
+\begin{itemize}
+
+\item \xml{<Banques>}~;
+
+\item \xml{<Banques>/<Generalites>}~;
+
+\item \xml{<Banques>/<Generalites>/<Nb\_banques>}~;
+
+\item \xml{<Banques>/<Generalites>/<No\_derniere\_banque>}~;
+
+\item \xml{<Banques>/<Detail\_des\_banques>}~;
+
+\begin{itemize}
+
+\item \xml{<No>}~;
+
+\item \xml{<Nom>}~;
+
+\item \xml{<Code>}~: c'est le code banque de votre RIB~;
+
+\item \xml{<Adresse>}~;
+
+\item \xml{<Tel>}~;
+
+\item \xml{<Mail>}~;
+
+\item \xml{<Web>}~;
+
+\item \xml{<Nom\_correspondant>}~;
+
+\item \xml{<Fax\_correspondant>}~;
+
+\item \xml{<Tel\_correspondant>}~;
+
+\item \xml{<Mail\_correspondant>}~;
+
+\item \xml{<Remarques>}.
+
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Exercices\label{xml-financialyear} }
+
+Cette section s'étoffera probablement lors de l'introduction des budgets. Pour 
+l'instant elle comporte~:
+
+\begin{itemize}
+
+\item \xml{<Exercices>/<Generalites>}~;
+
+\item \xml{<Exercices>/<Nb\_exercices>}~;
+
+\item \xml{<Exercices>/<No\_dernier\_exercice>}~;
+
+\item \xml{<Exercices>/<Detail\_des\_exercices>}~:
+
+\begin{itemize}
+
+\item \xml{<No>}~;
+
+\item \xml{<Nom>}~;
+
+\item \xml{<Date\_debut>}~;
+
+\item \xml{<Date\_fin>}~;
+
+\item \xml{<Affiche>}~: 1~=~l'exercice est affiché dans la liste déroulante du 
+formulaire des opérations, 0~=~il n'est pas affiché.
+
+\end{itemize}
+
+\end{itemize}
+
+\section{Rapprochements\label{xml-reconciliation} }
+
+Grisbi permettant de personnaliser le numéro des rapprochements, cette section 
+enregistre simplement la liste des numéros personnalisés~:
+
+\xml{<Rapprochements>}~;
+
+\xml{<Rapprochements>/<Detail\_des\_rapprochements>}~;
+
+\begin{itemize}
+
+\item \xml{<No>}~: ce numéro est repris dans la balise \xml{<Operation>/<R>}~;
+
+\item \xml{<Nom>}~: le numéro (ou nom) personnalisé.
+
+\end{itemize}
+
+\section{États\label{xml-reports} }
+
+Cette section enregistre le paramétrage de tous vos états.
+Nous retrouvons ici aussi la structure familière des autres sections. 
+
+\begin{itemize}
+
+\item  \xml{<Etats>/<Generalites>} est une sous-section commune à tous les états, et qui ne comporte pour l'instant qu'une seule information~;
+
+\item  \xml{<Etats>/<Generalites>/<No\_dernier\_etat>} indique le numéro du dernier état~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>} est une sous-section enregistrant le détail de tous les états créés~;
+
+      \item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>} marque le début d'un état~;
+
+        \item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<No>}~: c'est le numéro d'ordre de l'état dans votre fichier~;
+
+        \item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Nom>} le nom que vous avez donné à votre état~;
+
+        \item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Type\_classement>}~: organisation des niveaux de regroupement (par défaut 1/2/3/4/5/6)~:
+
+		\begin{itemize}
+
+		\item  1~=~catégorie~;
+
+		\item  2~=~sous-catégorie~;
+
+		\item  3~=~imputation budgétaire~;
+
+		\item  4~=~sous-imputation budgétaire~;
+
+		\item  5~=~compte~;
+
+		\item  6~=~tiers.
+
+		\end{itemize} 
+
+        \item  suivent 17 balises déterminant l'affichage des opérations. Une valeur 0 indique que l'information n'est pas affichée, une valeur 1 que l'information est affichée~:
+
+		\begin{itemize}
+		
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_r>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_nb\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_no\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_date\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_tiers\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_categ\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_ss\_categ\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_type\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_ib\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_ss\_ib\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_cheque\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_notes\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_pc\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_rappr\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_infobd\_ope>}
+
+		\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_exo\_ope>}
+      
+		\end{itemize} 
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Class\_ope>} indique comment seront triées les opérations à l'intérieur de chaque niveau de regroupement~:
+
+		\begin{itemize}
+
+		\item 0~=~classement par date~;
+
+		\item 1~=~classement par numéro d'opération~; 
+
+		\item 2~=~classement par tiers~;
+
+		\item 3~=~classement par catégorie~;
+
+		\item 4~=~classement par imputation budgétaire~;
+
+		\item 5~=~classement par notes~;
+
+		\item 6~=~classement par mode de paiement~;
+
+		\item 7~=~classement par numéro de chèque~;
+
+		\item 8~=~classement par pièce comptable~;
+
+		\item 9~=~classement par références bancaires~;
+
+		\item 10~=~classement par numéro de rapprochement.
+		
+		\end{itemize} 
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_titres\_col>}~: 0~=~n'affiche pas les titres des colonnes, 1~=~les affiche~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_titres\_chgt>}~: 0~=~n'affiche pas les titres à chaque changement de section, 1~=~les affiche~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Pas\_detail\_ventil>}~: 0~=~affiche le détail des opérations ventilées, 1~=~ne l'affiche pas~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Sep\_rev\_dep>}~: 0~=~ne sépare pas les opérations de recette et de dépense, 1~=~les sépare~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Devise\_gen>}~: numéro de la devise générale de l'état~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Incl\_tiers>}~: 0~=~la liste des tiers de cet état n'apparaît pas dans la liste déroulante des tiers du formulaire de saisie des opérations, 1~=~elle apparaît~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Ope\_click>}~: 0~=~les opérations ne sont pas interactives, 1~=~elles le sont~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Exo\_date>}~: 0~=~utilise une plage de dates, 1~=~utilise les exercices~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Detail\_exo>}~: indique quel exercice est utilisé~:
+
+	\begin{itemize}
+
+	\item 0~=~tous les exercices~;
+
+	\item 1~=~l'exercice courant~;
+
+	\item 2~=~l'exercice précédent~;
+
+	\item 3~=~exercices personnalisés.
+
+	\end{itemize} 
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<No\_exo>}~: si les exercices sont personnalisés, indique la liste des exercices utilisés dans l'état sous forme de suite de nombres séparés par des tirets~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Plage\_date>}~: indique quelle plage de dates est utilisée~:
+
+	\begin{itemize}
+
+	\item 0~=~toutes les dates~;
+
+	\item 1~=~dates personnalisées~;
+
+	\item 2~=~cumul à ce jour~;
+
+	\item 3~=~mois en cours~;
+
+	\item 4~=~année en cours~;
+
+	\item 5~=~cumul mensuel~;
+
+	\item 6~=~cumul annuel~;
+
+	\item 7~=~mois précédent~;
+
+	\item 8~=~année précedente ~;
+
+	\item 9~=~30 derniers jours~;
+
+	\item 10~=~3 derniers mois~;
+
+	\item 11~=~6 derniers mois~;
+
+	\item 12~=~12 derniers mois.
+
+	\end{itemize} 
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Date\_debut>}~: date de début pour les dates personnalisées~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Date\_fin>}~: date de fin pour les dates personnalisées~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Utilise\_plages>}~: 0~=~ne sépare pas les résultats par période, 1~=~les sépare~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Sep\_plages>}~: 0~=~résultats séparés par semaines, 1~=~résultats séparés par mois, 2 =résultats séparés par année~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Deb\_sem\_plages>}~: jour où la semaine commence~: 0=lundi, etc.
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Detail\_comptes>}~: 0~=~ne sélectionne pas les opérations en fonction du compte, 1~=~sélectionne en fonction du compte~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<No\_comptes>}~: liste des comptes utilisés séparés par des /~; 
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Grp\_ope\_compte>}~: 0~=~ne regroupe pas les opérations par comptes, 1~=~les regroupe~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Total\_compte>}~: 0~=~n'affiche pas de total lors d'un changement de compte, 1~=~affiche un total~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Aff\_nom\_compte>}~: 0~=~n'affiche pas le nom du compte, 1~=~l'affiche~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Type\_vir>}~: détermine si les opérations de virement sont sélectionnées pour l'état ou non~:
+
+	\begin{itemize}
+
+	\item 0~=~les virements ne sont pas inclus~;
+
+	\item 1~=~seuls les virements vers les comptes d'actif ou de passif sont inclus~;
+
+	\item 2~=~seuls les virements de ou vers les comptes ne figurant pas dans l'état sont inclus~;
+
+	\item 3~=~les comptes dont les virements sont inclus sont sélectionnés manuellement.
+
+	\end{itemize} 
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<No\_comptes\_virements>}~: suite de nombres, séparés par des barres obliques, représentant les numéros des comptes dont les virements sont inclus dans l'état~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Exclure\_non\_vir>}~: 0~=~les opérations qui ne sont pas des virements ne sont pas exclues de l'état, 1~=~elles le sont~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Categ>} ~: 0~=~les opérations ne sont pas sélectionnées en fonction de la catégorie, 1~=~elles le sont~;
+
+\item  \xml{<Etats>/<Detail\_des\_etats>/<Etat>/<Detail\_

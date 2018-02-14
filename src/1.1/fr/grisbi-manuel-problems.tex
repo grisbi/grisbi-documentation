@@ -1,0 +1,123 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents: The problems chapter
+% $Id: grisbi-manuel-problems.tex, v 0.4 2002/10/27 Daniel Cartron
+% $Id: grisbi-manuel-problems.tex, v 0.6.0 2011/11/17 Jean-Luc Duflot
+% $Id: grisbi-manuel-problems.tex, v 0.6.0 2011/XX/XX Jean-Luc Duflot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Problèmes, alertes et erreurs\label{problems}}
+
+Un certain nombre de problèmes et erreurs prévisibles sont gérés directement par
+Grisbi qui vous indique alors la nature du problème ou de l'erreur et vous
+demande éventuellement d'intervenir. Certains messages sont aussi tout
+simplement informatifs et ne seront pas traités ici.
+
+\section{Problèmes connus\label{problems-known} }
+
+\subsection{Permissions\label{problems-known-rights} }
+
+Si vous êtes seul à utiliser votre fichier de comptes, l'idéal est que les permissions de votre fichier de compte soient à 600\footnote{ou encore -rw-~---~---},
+c'est-à-dire que vous êtes le seul à pouvoir le lire et y écrire. Si vous êtes plusieurs à utiliser le fichier, l'idéal est alors de créer un groupe \file{grisbi}, de mettre les permissions du fichier de comptes à 660\footnote{ou encore -rw-~rw-~---}, et d'ajouter tous les utilisateurs autorisés dans ce groupe. Le fichier de comptes doit bien évidemment appartenir au groupe \file{grisbi}.
+Grisbi vérifie à l'ouverture du fichier quelles sont les permissions et si elles ne sont pas égales à 600 il vous en avertit en affichant le message suivant: 
+
+\begin{center}
+\menu{Le fichier de comptes est lisible par tous}
+
+\menu{(Ce message peut être désactivé dans le menu Configuration/Général.)} 
+\end{center}
+
+Cependant, dans le cadre d'une utilisation multi-utilisateurs, les permissions du
+ficher doivent être à 660.
+
+Si vous souhaitez avoir un fichier accessible par plusieurs utilisateurs, vous
+aurez avantage à désactiver l'affichage de ce message avec le menu
+\menu{Edition - Préférences - Affichage - /Messages et Alertes } (voir le paragraphe \vref{setup-display-messages}).
+
+\subsection{Fichier de compte invalide}
+
+Si Grisbi affiche le message suivant: 
+
+\begin{center}
+\menu{Fichier de compte invalide}
+\end{center}
+
+c'est que le fichier que vous essayez d'ouvrir n'a pas été créé par Grisbi.
+
+\subsection{Version inconnue}
+
+Si Grisbi affiche le message suivant: 
+
+\begin{center}
+\menu{Version inconnue}
+\end{center}
+
+c'est que le fichier que vous essayez d'ouvrir est bien un fichier Grisbi, mais d'une
+version non compatible avec la version de Grisbi que vous utilisez. En général,
+la version du fichier est supérieure à celle de Grisbi, sinon vous aurez plutôt 
+le message ci-après.
+
+\subsection{Fichier inférieur à la version 0.n.n}
+
+Si la version de votre fichier de compte est trop ancienne, Grisbi affiche 
+le message suivant: 
+
+\begin{center}
+\menu{Problème dans la récupération des opérations!}
+\end{center}
+
+En effet, Grisbi ne peut importer que les fichiers de la version précédente. Ce message
+signifie que le fichier est trop vieux et qu'il vous faut passer par toutes les 
+versions intermédiaires pour le transformer.
+
+\subsection{Forcer l'enregistrement}
+
+Le mode multi-utilisateurs de Grisbi permet uniquement une utilisation
+successive et non simultanée du fichier de comptes. Pour indiquer que le fichier
+est déjà ouvert par un utilisateur Grisbi positionne un drapeau à 1 dans
+le fichier.
+
+Si vous voulez ouvrir un fichier dans ce cas, Grisbi affiche le message suivant: 
+
+\begin{center}
+\menu{Attention le fichier semble déjà ouvert par un autre utilisateur ou n'a
+pas été fermé correctement (plantage?).}
+
+Vous ne pourrez enregistrer vos modifications qu'en activant l'option «Forcer
+l'enregistrement» dans le menu Édition - Préférences - Généralités - Fichiers.
+\end{center}
+
+Vous pourrez ouvrir le fichier en consultation mais il est très fortement
+déconseillé d'y faire quelque modification que ce soit.
+
+Si vous avez activé l'option \menu{Forcer l'enregistrement}, à chaque fois que
+vous ouvrirez le fichier Grisbi affichera le message suivant: 
+
+\begin{center}
+\menu{Attention le fichier semble déjà ouvert par un autre utilisateur ou n'a
+pas été fermé correctement (plantage?).}
+
+Cependant Grisbi va forcer l'enregistrement; cette option est déconseillée
+
+sauf si vous êtes sûr que personne d'autre n'utilise le fichier pour le
+moment.
+
+La désactivation de cette option s'effectue dans le menu Édition - Préférences - Généralités - Fichiers.
+\end{center}
+
+Si l'option n'est pas activée, le menu \menu{Fichier/Enregistrer} ne sera pas
+actif et vous ne pourrez pas enregistrer.
+
+Il peut aussi se produire que Grisbi se plante et dans ce cas le drapeau n'a pas
+pu se repositionner à 0. Dans ce cas, m\^eme si vous \^etes le seul utilisateur,
+vous pouvez forcer l'enregistrement sans crainte. C'est la seule façon de
+rétablir le drapeau dans un état correct. N'oubliez pas de revenir désactiver
+l'option ensuite si vous n'utilisez pas Grisbi en mode multi-utilisateurs.
+
+\section{Problèmes non connus}
+
+Soit ces problèmes sont déjà connus et vous consulterez avec profit la F.A.Q.
+sur le site de Grisbi, soit ils ne le sont pas encore et dans ce cas nous vous
+remercions de nous transmettre un rapport de bug sur la \lang{liste de  
+développement}\footnote{\urlListDevelEmail{}} ou mieux sur le \lang{gestionnaire de
+bogues}\footnote{\urlBugTracker{}} du site de Grisbi.

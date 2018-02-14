@@ -1,0 +1,70 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents : The search chapter 
+% $Id : grisbi-manuel-search.tex, v 0.4 2002/10/27 Daniel Cartron
+% $Id : grisbi-manuel-search.tex, v 0.5.0 2004/06/01 Loic Breilloux
+% $Id : grisbi-manuel-search.tex, v 0.6.0 2011/11/17 Jean-Luc Duflot
+% $Id : grisbi-manuel-search.tex, v 0.8.9 2012/04/27 Jean-Luc Duflot
+% $Id : grisbi-manuel-search.tex, v 1.0 2014/02/12 Jean-Luc Duflot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Recherches\label{search} }
+
+Vous pouvez avoir besoin de consulter une opération plus ou moins récente. Pour cela, Grisbi propose plusieurs méthodes de recherche d'opérations.
+
+
+\section{Recherche dans les listes d'opérations et d'opérations planifiées\label{search-list} }
+
+
+La liste des opérations d'un compte et la liste des opérations planifiées permettent de faire des tris, basés sur un seul critère de tri à la fois. La méthode est décrite :
+
+\begin{itemize}
+	 \item pour les opérations d'un compte, dans la section \vref{transactions-list-sorts}, \menu{Tris} ;
+	 \item pour les opérations planifiées, dans la section \vref{plannedtransactions-list-sorts}, \menu{Tris}.
+\end{itemize}
+
+%espace pour changement de thème
+\vspacepdf{5mm}
+Une fois la liste triée, vous pouvez identifier plus rapidement l'opération qui vous intéresse.
+
+
+\section{Recherche dans les tiers, catégories ou imputations budgétaires\label{search-simple} }
+
+
+Si vous recherchez une opération dont vous connaissez le tiers, la catégorie ou l'imputation budgétaire, procédez comme suit :
+
+\begin{itemize}
+	 \item ouvrez l'onglet tiers, catégorie ou imputation budgétaire selon le cas ;
+	 \item sélectionnez une ligne quelconque ;
+	 \item tapez au clavier le ou les premiers caractères du tiers, catégorie ou imputation budgétaire recherché : ils s'affichent alors dans une petite fenêtre en bas et à droite du pavé des détails, et la sélection se place sur la ligne du terme recherché ;
+	 \item déroulez le contenu de cette sélection pour afficher ses opérations ;
+	 \item double-cliquez sur l'opération recherchée : la liste des opérations du compte concerné s'affiche, dans laquelle l'opération s'affiche sur fond rouge{\couleur}.	 	 	 
+\end{itemize}
+
+%espace pour changement de thème
+\vspacepdf{5mm}
+
+Pour plus de détails, reportez-vous respectivement aux sections \vref{thirdparties-list}, \menu{Liste des tiers}, \vref{categories-list}, \menu{Liste des catégories et des sous-catégories}, ou \vref{budgetarylines-list}, \menu{Liste des imputations budgétaires} et suivantes.
+
+
+\section{Recherche par états\label{search-advanced} }
+
+
+Si la méthode ci-dessus ne convient pas, une recherche plus élaborée passe par la création d'un état spécifique à cette recherche. Pour cela vous pouvez utiliser l'état pré-formaté \menu{Recherche}, qui vous affichera toutes les informations de toutes les opérations pour tous les comptes de  l'année en cours.
+
+%espace pour changement de thème
+\vspacepdf{5mm}
+Il vous faudra probablement ajuster le choix dans la date, et préciser d'autres critères, tels un montant (qui doit être affecté d'un signe \og moins \fg{} pour une dépense) ou une \indexword{chaîne de caractères}\index{chaîne de caractères} à rechercher. 
+
+ % espace avant Attention ou Note  : 5 mm
+\vspacepdf{5mm}
+\textbf{Note} : si vous sélectionnez \menu{Toutes les dates}, la génération de l'état risque d'être assez longue. D'une manière générale, moins les critères seront précis, plus cette génération sera longue et plus les résultats seront nombreux.
+
+%espace pour changement de thème
+\vspacepdf{5mm}
+Une fois l'opération trouvée dans l'état, et si les opérations sont configurées comme \indexword{cliquables}\index{opération !cliquable} (voir le paragraphe \vref{reportscreation-display-transactions-clickable}, \menu{Opérations cliquables}), cliquez sur sa ligne pour afficher directement le détail de l'opération.
+
+%espace pour changement de thème
+\vspacepdf{5mm}
+Pour savoir comment créer un état, voir le chapitre \vref{reportscreation}, \menu{Création d'un état}.
+
+
