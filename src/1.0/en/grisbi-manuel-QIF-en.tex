@@ -17,18 +17,18 @@ This conversion can not be done at once on all data, but must be done separately
 % espace avant Attention ou Note  : 5 mm
 \vspacepdf{5mm}
 
-\strong{Warning} :  do not confuse the \og account file \fg{}which contains all the data of all the accounts created for the management of an accounting entity (in Grisbi, this file has the \gls{extension} \file{.gsb}), and the \og account files\fg{}, which are files that contain only data from one account at a time, and created only to export or import that data from one accounting application to another. These \og account files  \fg{}  must have a  \gls{file format} (or extension) that must be compatible with the original application AND the destination application.
+\strong{Warning} :  do not confuse the \og accounts file \fg{}which contains all the data of all the accounts created for the management of an accounting entity (in Grisbi, this file has the \gls{extension} \file{.gsb}), and the \og account files\fg{}, which are files that contain only data from one account at a time, and created only to export or import that data from one accounting application to another. These \og account files  \fg{}  must have a  \gls{file format} (or extension) that must be compatible with the original application AND the destination application.
 % espace après Attention ou Note  : 5 mm
 \vspacepdf{5mm}
 
-Grisbi currently supports \gls{Gnucash}, \gls{OFX}, \gls{CSV} et \gls{QIF} personal accounting data formats.
+Grisbi currently supports \gls{Gnucash}, \gls{OFX}, \gls{CSV} and \gls{QIF} personal accounting data formats.
 
 \section{Importing accounts from another accounting application\label{move-import}}
 
 If you want to use account data that has been created
 in another accounting application in Grisbi, you must first export each of the accounts of this application individually to a set of files, then import these same files into Grisbi.
 
-\subsection{Export an account file to another accounting application \label{move-import-exportinit}}
+\subsection{Export an account file from the other accounting application \label{move-import-exportinit}}
 
 The first step is, in the originating personal accounting application, to export each account in a file in the chosen format. The chosen format must be compatible with the export formats supported by the original application \emph{and} compatible with import to Grisbi.
 
@@ -51,21 +51,21 @@ When you import a file, Grisbi allows you to establish an association between a 
 % espace pour changement de thème
 \vspacepdf{5mm}
 
-In the Grisbi \menu{File} menu, choose the option  \menu{Import a
-file}, which opens the import wizard window. The import of the account files takes place in five steps :
+In the Grisbi \menu{File} menu, choose the option  \menu{Import
+file\ldots{ }}, which opens the import wizard window. The import of the account files takes place in five steps :
 
 \begin{enumerate}
-	\item Launches the import assistant; confirm with the \menu{Next} button;
+	\item Launches the import assistant; confirm with the \menu{Forward} button;
 	\item Selection of the account files to import :	
 		\begin{enumerate}
-			\item click the button \menu{Add file or files button} : a file manager window opens,	
+			\item click the button \menu{Add file to import} button : a file manager window opens,	
 			\item look for the directory where these account files are,
-			\item select one or more account files (with the combination   \key{Ctrl}\key{Click} and \key{Shift}\key{Click}); you can also change the \gls{locale} (\gls{character encoding}) of the files to import from the \menu{Coding} drop-down menu,
+			\item select one or more account files (with the combination   \key{Ctrl}\key{Click} and \key{Shift}\key{Click}); you can also change the \gls{locale} (\gls{character encoding}) of the files to import from the \menu{Encoding} drop-down menu,
 			\item validate the window to return to the account file selection window,
-			\item when the desired files are checked, you can validate the selection with the \menu{Next} button;
+			\item when the desired files are checked, you can validate the selection with the \menu{Forward} button;
 		\end{enumerate}		  
-	\item Complete the import of the files: if everything went well, this window gives the list of the account files which will be imported; continue the import by confirming with the \menu{Next} button;
-	\item Review: you can review each account and choose the following actions \ifIllustration \refimage{QIF-import-files-setup-img} :
+	\item Complete the import of the files: if everything went well, this window gives the list of the account files which will be imported; continue the import by confirming with the \menu{Forward} button;
+	\item Review: you can review each account and choose the following actions \strong{Translators Note:} this paragraph has not been checked against Grisbi so could still contain translation errors \ifIllustration \refimage{QIF-import-files-setup-img} :
 	% image centrée
 	\begin{figure}[htbp]
 	\begin{center}
@@ -101,12 +101,12 @@ Otherwise, you can start using the account you just created.
 
 If you want to use account data created by Grisbi in another accounting application, you must first export this data to files and then import them into the other application using these files. The file format chosen must be compatible with the export by Grisbi \emph{and} compatible with the import by the destination application.
  
-In the \menu{File} menu select the \menu{Export to QIF / CSV / file option\ldots{ }} that opens the Export Accounts Wizard. There are four steps to exporting accounts:
+In the \menu{File} menu select the \menu{Export accounts as QIF/CSV file\ldots{ }} that opens the Export Accounts Wizard. There are four steps to exporting accounts:
 
 \begin{enumerate}
-	\item Starting the assistant; this window indicates that, since the QIF and CSV file formats do not support currency, all transactions will be converted into the currency of their respective account; confirm with the \menu{Next} button;
-	\item Select the accounts to export by clicking in the corresponding box; confirm with the  \menu{Next} button;
-	\item For each account, define the name of the file, the destination directory and the export format, then validate with the \menu{Next} button \ifIllustration \refimage{QIF-export-img} ;
+	\item Starting the assistant; this window indicates that, since the QIF and CSV file formats do not support currency, all transactions will be converted into the currency of their respective account; confirm with the \menu{Forward} button;
+	\item Select the accounts to export by clicking in the corresponding box; confirm with the  \menu{Forward} button;
+	\item For each account, define the name of the file, the destination directory and the export format, then validate with the \menu{Forward} button \ifIllustration \refimage{QIF-export-img} ;
 	% image centrée
 	\begin{figure}[t]
 	\begin{center}

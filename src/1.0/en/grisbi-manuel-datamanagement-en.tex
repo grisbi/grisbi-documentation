@@ -13,12 +13,12 @@ The data you enter into Grisbi must be carefully preserved and protected against
 You can set the following management options:
 
 \begin{itemize}
-	\item automatic loading of the most recently opened file ;
-	\item auto save on program closure ;
-	\item the \indexword{forced file saving}\index{enregistrement !forçage} of locked files ;
-	\item the \indexword{account file encryption}\index{fichier de comptes !chiffrement}\index{chiffrement !fichier de comptes} ;
-	\item the \indexword{\gls{compression}} of account files\index{fichier de comptes !compression}\index{compression !fichier de comptes} ;
-	\item tracking recently open files.
+	\item automatically load last file on startup;
+	\item automatically on exit;
+	\item \indexword{Force saving}\index{enregistrement !forçage} of locked files ;
+	\item \indexword{Encrypt}\index{fichier de comptes !chiffrement}\index{chiffrement !fichier de comptes} Grisbi file;
+	\item\indexword{\gls{Compress}} Grisbi file\index{fichier de comptes !compression}\index{compression !fichier de comptes} ;
+	\item Memorise last opened files.
 \end{itemize}
 
 All of these options are explained in detail and can be configured in the \menu{Edit - Preferences} menu (see \vref{setup-general-files-manage}, \menu{Managing Account Files}).
@@ -37,7 +37,7 @@ Grisbi allows you to make automatic backups of your accounts file. These backups
 \vspacepdf{5mm}
 
 Grisbi can automatically save, in a directory to be defined, either a single backup file that is replaced regularly, or backup files that accumulate in this directory.
-The backup files have a name of the form \file{name\_of\_file\_YYYYMMDDTHHMMSS.gsb}, where \emph{name\_of\_file} is the name of your accounts file, \emph{YYYYMMDD} is the date in year-month-days, \emph{T}  is a separator, and \emph{HHMMSS}  is the time in hours- minutes-seconds. This format is based on the ISO 8601 international date format, which allows, among other things, the automatic classification in alphanumeric and chronological order in your backup directory.
+The backup files have a name of the form \file{name\_of\_file\_YYYYMMDDTHHMMSS.gsb}, where \emph{name\_of\_file} is the name of your accounts file, \emph{YYYYMMDD} is the date in year-month-days, \emph{T}  is a separator, and \emph{HHMMSS}  is the time in hours- minutes-seconds. This format is based on the ISO 8601 international date format, which permits, among other things, the automatic sorting in alphanumeric and chronological order in your backup directory.
 
 %espace pour changement de thème
 \vspacepdf{5mm}
@@ -59,15 +59,17 @@ All of these options are described in detail and can be configured in the \menu{
 
 \section{Archives\label{datamanagement-history}}
 
-An archive is a little like \og placing in parentheses \fg{} some of the entries from all the accounts in your account file. Entries inside an archive are no longer displayed and can no longer be processed, but are preserved. You can always unarchive an existing archive at any time to access its data. 
+%An archive is a little like \og placing in parentheses \fg{} some of the entries from all the accounts in your account file.
 
-When you use Grisbi, you enter transactions into your different accounts. These operations are all stored in the computer's memory and hard disk, and a small portion is displayed on the screen. The display and processing of operations consumes memory and microprocessor time.
+Entries inside an archive are no longer displayed and can no longer be processed, but are preserved. You can always unarchive an existing archive at any time to access its data. 
 
-As time goes by, there are more and more operations recorded, so their display and processing require more and more memory space and microprocessor time. Your computer is becoming slower, but of course it still depends on its own characteristics.
+When you use Grisbi, you enter transactions into your different accounts. These operations are all stored in the computer's memory and hard disk, and a few of these are displayed on the screen. The display and processing of account entries consumes memory and microprocessor time.
 
-To limit this loss of performance in the display and the processing, in particular in the state-building or in the search for information, Grisbi prompts you to choose a portion of your entries and to put them in an archive, that is, to set them apart so that they are not affected by future postings or operation.
+As time goes by, there are more and more operations recorded, so their display and processing require more and more memory space and microprocessor time. Your computer (depending on its specification) will eventually start to run Grisbi more slowly. 
 
-Archiving can be manual or automated. Grisbi considers that beyond three thousand operations in an account, the entries become too slow, so on the one hand it warns you if you exceed this number of operations and prompts you to manually archive a section of them. on the other hand, it can also let you archive these three thousand operations by automatically launching an assistant.
+To limit this loss of performance in the display and the processing, in particular in report generation or in the search for information, Grisbi prompts you to choose a portion of your entries and to put them in an archive, that is, to set them apart so that they are not affected by future postings or operation.
+
+Archiving can be manual or automated. Grisbi considers that beyond three thousand operations in an account, the entries become too slow, so on the one hand it warns you if you exceed this number of transactions and prompts you to manually archive a section of them. Alternatively, it can let you archive these three thousand transactions by automatically launching an assistant.
 
 Whether you do an archiving manually or with the assistant, the counting process is then reset and Grisbi will offer you the same thing again after three thousand additional operations.
 
@@ -75,7 +77,7 @@ Whether you do an archiving manually or with the assistant, the counting process
 
 \subsection{Archives in the list of transactions\label{datamanagement-history-list}}
 
-The \indexword{display of an archive}\index{archive !affichage} appears at the top of the list of operations for \emph{each account},  in the form of an operation line on a green{\couleur} background, indicating its date of creation, its name and its creation parameters. (dates, fiscal year or state), as well as \ifIllustration the \indexword{ number of archived operations}\index{archive !nombre d'opérations} \emph{for the account displayed}, and the \indexword{total number of transaction}\index{opération !nombre total} in your accounts file\refimage{datamanagement-history-line-img}.
+The \indexword{display of an archive}\index{archive !affichage} appears at the top of the list of operations for \emph{each account},  in the form of an operation line on a green{\couleur} background, indicating its date of creation, its name and its creation parameters. (dates and financial year or report name), as well as \ifIllustration the \indexword{ number of archived operations}\index{archive !nombre d'opérations} \emph{for the account displayed}, and the \indexword{total number of transaction}\index{opération !nombre total} in your accounts file\refimage{datamanagement-history-line-img}.
 
 % image centrée
 \begin{figure}[htbp]
@@ -103,7 +105,7 @@ If you want to view the operations inside an archive, you can open this archive 
 To create an archive, follow these steps:
 
 \begin{enumerate}
-	\item in the menu bar, select \menu{File - Create Archive} : The Archive Creation Wizard window is displayed; confirm with the \menu{Next} button;
+	\item in the menu bar, select \menu{File - Archive transactions\ldots{}} : The Archive Creation Wizard window is displayed; confirm with the \menu{Forward} button;
 	\item in the following window, you can choose the operation selection mode to archive  \ifIllustration archiver\refimage{datamanagement-history-create-img}:
 	% image centrée
 	\begin{figure}[htbp]
@@ -118,14 +120,14 @@ To create an archive, follow these steps:
 	\fi
 	
 		\begin{itemize}
-			\item \menu{Sort by Date}: enter the \menu{Initial date} and \menu{Final date} in the appropriate fields,
+			\item \menu{Archive by Date}: enter the \menu{Initial date} and \menu{Final date} in the appropriate fields,
 			\item \menu{Archive transactions by financial year}: Select an available year from the drop-down list,
-			\item \menu{Archive transactions by status}: Select an available status from the drop-down list;
+			\item \menu{Archive transactions by report}: Select an available report from the drop-down list;
 % saut de ligne pour indentation correcte de la note dans la liste
 
 			\textbf{Note}: the last line in the window indicates either an error in entering these parameters, the number of transactions that will be archived and the total number of operations in your accounts file.  
 		\end{itemize}
-	\item confirm with the \menu{Next} btton;
+	\item confirm with the \menu{Forward} btton;
 	\item in the next window, enter the name you want for this archive; confirm with the  \menu{Apply} button;
 	\item the last window informs you that the archive has been created, and displays the \indexword{number of archived transactions}\index{archive !nombre d'opérations}, number of transactions and the total number of transactions of your accounts file;  \emph{all accounts taken together};  validate with the \menu{Back} button to create another archive, otherwise by the \menu{Close} button.
 \end{enumerate}
@@ -176,9 +178,9 @@ Allows you to create a file containing the archive, in order to store it, or to 
 To export an archive, follow these steps:
 
 \begin{enumerate}
-	\item in the menu bar, select \menu{Export an archive to a GSB, QIF or CSV file ... } : the archive export wizard window is displayed; confirm with the \menu{Next} button;
-	\item a table displays the list of existing archives with their name and, as the case may be, their initial and final dates, their exercise or the name of the report; select the archive to export by checking the box in its line; confirm with the \menu{Next} button;
-	\item a file manager window is displayed; optionally modify the name of the file under which the archive will be exported, the folder where it will be saved and the format of the export file; confirm with the \menu{Next} button;
+	\item in the menu bar, select \menu{Export an archive to a GSB, QIF or CSV file ... } : the archive export wizard window is displayed; confirm with the \menu{Forward} button;
+	\item a table displays the list of existing archives with their name and, as the case may be, their initial and final dates, their exercise or the name of the report; select the archive to export by checking the box in its line; confirm with the \menu{Forward} button;
+	\item a file manager window is displayed; optionally modify the name of the file under which the archive will be exported, the folder where it will be saved and the format of the export file; confirm with the \menu{Forward} button;
 	\item the last window informs you that the archive has been exported; confirm with the \menu{Close} button.
 \end{enumerate}
 
