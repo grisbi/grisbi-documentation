@@ -27,7 +27,7 @@ To build the English version of the manual as a series of html pages and as a si
 
 Contributing to the English User Manual
 =======================================
-There is still much work to be done to finish off the English User Manual and your help would be very welcaome.  Plesase read HelpTranslate-en.md for detailed instructions about how you can contribute your time and skills and make a big difference to all the English speaking users of Grisbi.
+There is still much work to be done to finish off the English User Manual and your help would be very welcome.  Please read HelpTranslate-en.md for detailed instructions about how you can contribute your time and skills and make a big difference to all the English speaking users of Grisbi.
 
 
 
