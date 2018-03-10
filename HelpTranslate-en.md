@@ -1,6 +1,6 @@
 # How to assist in the production of the English manual
 
-Please use a markdown file reading program (for example ReText) to display this file formatted as I intended it to be read.
+Please use a markdown file reading program (for example ReText) or read it on the GitHib website to display this file formatted as I intended it to be read.
 
 I (*Bob Anderson*) will coordinate contributions to the English manual, at least until all the chapters of the Grisbi version 1.0 User Manual have been translated into English.  
 
