@@ -29,17 +29,9 @@ where an extra paragraph or footnote has had to be added to explain a problem wi
 
 \subsection*{How to assist in the production of an English manual}
 
-I hope this preliminary attempt at this English user manual will be improved upon by others as time goes on. Please visit the \lang{Github }\footnote{\urlGitDoc{}} site to contribute and improve upon this translation project. Until all chapters have been translated also visit  \lang{my own fork of the English Manual}\footnote{\urlBobDoc{}}, particularly if you are planning to translate some of the missing chapters.  My own fork tends to be a little more up-to-date so there you can check you are not at risk of duplicating work I have already done.  The most recent pending pull request will be on a branch off the master branch.
+There are many ways you can help to complete this English translation.  As yet only a handful of chapters have been translated.  The figures are currently showing the French interface version and all the example account entries in the illustrations are also in French.  Those chapters that have been translated could probably benefit from better phrasing in places.
 
-You can also ask {Jean-Luc \familyname{Duflot}}\footnote{\urlJeanLucDuflotEmail{}} to subscribe you to the grisbi-documentation list so you are in touch with the rest of the documentation contributors. If you do join this list then out of courtesy to the rest of the developers please communicate on this list in French.  
-
-If you do not want to wrestle with the full \LaTeX{} file then simply provide us with a translation from the text copied from the French manual and we will add the  \LaTeX{} commands to your text. Alternatively if you are happy to work on the French .tex file, continue as follows:
-
-To create a new chapter in the English version of the manual copy the original chapter's French .tex file and add -en to the end of the file name.  Replace the existing dummy file of the same name with your new file (the existing short files that have the names ending in -en were just created as a temporary fix so the full manual generation \cmd{make} file runs without errors).  Take care not to change any of the \LaTeX{} commands that the copied-from-the-French .tex file contains and carefully replace all the French text with a suitable English translation.  You can then test your newly edited file with a suitable \LaTeX{} file viewer or simply run 
-\\\cmd{make English}
-\\this will generate both the html and pdf versions but with the French Manual images.
-
-\strong{Warning} If you use your own \LaTeX{} file viewer, you will find that there are many special \LaTeX{} macros that have been defined specially for Grisbi and these will cause processing errors until you define quite a few dummy macros to supress these. You are strongly advised to stick to the \cmd{make English} method to check your work unless you are very comfortable working with \LaTeX{} files.
+For detailed guidance on how you can help please see the document HelpTranslate-en.md on the manual\lang{Github }\footnote{\urlGitDoc{}} site.
 
 \subsection*{Acknowledgements and a dedication}
 Most of my translations were done with the aid of \lang{Google Translate}\footnote{\urlGtrans{}}
