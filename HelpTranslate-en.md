@@ -1,8 +1,8 @@
 # How to assist in the production of the English manual
 
-Please use a markdown file reading program (for example ReText) or read it on the GitHib website to display this file formatted as I intended it to be read.
+These notes are intended to be read using a markdown enabled program (for example ReText) alternatively you can just view this file on the GitHib website.
 
-I (*Bob Anderson*) will coordinate contributions to the English manual, at least until all the chapters of the Grisbi version 1.0 User Manual have been translated into English.  
+Bob Anderson (that's me) will coordinate contributions to the English manual, at least until all the chapters of the Grisbi version 1.0 User Manual have been translated into English. 
 
 For this reason please contribute your work to my fork of the manual at  
 <https://github.com/doubledodge/grisbi-documentation>
