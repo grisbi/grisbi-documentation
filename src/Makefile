@@ -141,6 +141,7 @@ html_img:	img html
 	tar -czf $(FILE)-html_img-$(VERSION).tar.gz fr/$(FILE)* fr/image fr/index.html fr/*.svg INSTALL fr/topic.dat
 	test -d tgz_html_img || mkdir tgz_html_img
 	mv $(FILE)-html_img-$(VERSION).tar.gz tgz_html_img/$(FILE)-html_img-$(VERSION).tar.gz
+	rm -rf html_img/fr
 	mv fr html_img
 	@echo Archive in tgz_html_img/ done
 
