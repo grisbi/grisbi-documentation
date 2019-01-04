@@ -116,13 +116,13 @@ html/$(FILE).html:   $(INCLUDES)
 # copy files into html/
 	cd .hevea_tmpdir &&  cp -p *.css ../html/
 	cd .hevea_tmpdir && cp -p *.html ../html/ 
-	cd .hevea_tmpdir && cp -p *.gif ../html/
+	cd .hevea_tmpdir && cp -p *.svg ../html/
 # create symbolic link to change the name of the file displayed in several pages
 	cd html && ln -sf index.html $(FILE).html
 	@echo Symbolic link to "grisbi-manuel.html" done
 	@echo Compilation in html completed		
 # create the archive for html
-	cd html && tar -czf $(FILE)-html-$(VERSION).tar.gz $(FILE)* index.html *.gif
+	cd html && tar -czf $(FILE)-html-$(VERSION).tar.gz $(FILE)* index.html *.svg
 	test -d tgz_html || mkdir tgz_html
 	mv html/$(FILE)-html-$(VERSION).tar.gz tgz_html/$(FILE)-html-$(VERSION).tar.gz
 	@echo Archive in tgz_html/ done
@@ -137,7 +137,7 @@ html_img:	img html
 	mv html fr
 	cp topic.dat fr/topic.dat
 # create the archive for html_img
-	tar -czf $(FILE)-html_img-$(VERSION).tar.gz fr/$(FILE)* fr/image fr/index.html fr/*.gif INSTALL fr/topic.dat
+	tar -czf $(FILE)-html_img-$(VERSION).tar.gz fr/$(FILE)* fr/image fr/index.html fr/*.svg INSTALL fr/topic.dat
 	test -d tgz_html_img || mkdir tgz_html_img
 	mv $(FILE)-html_img-$(VERSION).tar.gz tgz_html_img/$(FILE)-html_img-$(VERSION).tar.gz
 	mv fr html_img
@@ -147,7 +147,7 @@ html_img:	img html
 html_txt:	txt html
 	mv html fr
 	cp topic.dat fr/topic.dat
-	tar -czhf $(FILE)-txt-$(VERSION).tar.gz fr/$(FILE)* fr/index.html fr/*.gif INSTALL fr/topic.dat --exclude fr/$(FILE).html
+	tar -czhf $(FILE)-txt-$(VERSION).tar.gz fr/$(FILE)* fr/index.html fr/*.svg INSTALL fr/topic.dat --exclude fr/$(FILE).html
 	test -d tgz || mkdir tgz
 	mv $(FILE)-txt-$(VERSION).tar.gz tgz/$(FILE)-txt-$(VERSION).tar.gz
 	mv fr html_txt
