@@ -135,6 +135,7 @@ html_img:	img html
 	(test -L .hevea_tmpdir/$(FILE)001.png && cp -pd .hevea_tmpdir/*.png html/) || true
 	cd html && (test -e image || cp -RfL ../image .)
 	@echo Images added to html/
+	rm -rf fr
 	mv html fr
 	cp topic.dat fr/topic.dat
 # create the archive for html_img
