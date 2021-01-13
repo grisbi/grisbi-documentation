@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents : The maintenance chapter
+% $Id : grisbi-manuel-maintenance.tex, v 0.8.9 2012/04/27 Jean-Luc Duflot
+% $Id : grisbi-manuel-maintenance.tex, v 1.0 2014/02/12 Jean-Luc Duflot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Outils de maintenance\label{maintenance}}
+
+Dans le cas où vous auriez des \indexword{problèmes de stabilité}\index{problèmes de stabilité} avec Grisbi, la première précaution  devrait être de \strong{ne pas enregistrer votre fichier de comptes} si vous venez d'y faire des modifications ; en effet, dans ce cas, vous risqueriez d'introduire des erreurs dans ce fichier, qui pourraient être difficiles à détecter et réparer. 
+
+Essayez alors d'ouvrir le fichier \file{Example\_1.0.gsb}, que vous pourrez télécharger sur le site de Grisbi dans la rubrique \lang{Téléchargement}\footnote{\urlGrisbi{}}, ou sur le site SourceForge dans l'onglet \lang{Files}\footnote{\urlGitGrisbi}. Faites-y quelques actions similaires à celles que vous aviez faites avec votre propre fichier de comptes avant la survenue de votre problème. Si Grisbi fonctionne correctement, c'est probablement que ce problème se situe dans votre fichier de comptes.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Grisbi met à votre disposition quelques outils pour vous aider à sortir de ce mauvais pas (voir la section \vref{home-menus-file}, \menu{Menu Fichier}) :
+\begin{itemize}
+	\item \menu{Déboguer le fichier de comptes} ; 
+	\item \menu{Rendre anonyme le fichier de comptes} ; 
+	\item \menu{Rendre anonyme le fichier QIF} ;
+	\item \menu{Mode de débogage}.
+\end{itemize}
+
+
+\section{Déboguer le fichier de comptes\label{maintenance-file-debug}}
+
+Cet outil peut vous aider à chercher des \indexword{incohérences} dans votre fichier de comptes\index{fichier de comptes !incohérences}, qui peuvent être causées par des bogues ou par de mauvaises manipulations.
+
+Pour déboguer votre fichier de comptes, procédez comme suit :
+
+\begin{enumerate}
+	\item dans la barre de menus, sélectionnez \menu{Déboguer le fichier de comptes} ; la fenêtre de l'assistant de débogage s'ouvre ; validez par le bouton \menu{Suivant} ;
+	\item Grisbi recherche des incohérences dans le fichier ; l'affichage dépend évidemment de ce qu'il trouve, et ne peut donc être détaillé ici ; en tout état de cause, suivez les instructions données ; si Grisbi ne trouve rien d'anormal, il affiche \menu{Pas d'incohérence trouvée} ; validez par le bouton \menu{Fermer}.
+\end{enumerate}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Si votre fichier de comptes a bien été réparé ou s'il n'a rien d'anormal, vous pouvez alors l'utiliser avec Grisbi.
+
+% saut de page pour titre solidaire
+\newpage
+
+
+\section{Rendre anonyme le fichier de comptes\label{maintenance-file-anonymous}}
+
+Cet outil produit une copie de votre fichier de comptes, anonymée par remplacement de vos \indexword{données personnelles}\index{fichier de comptes !sans données personnelles} par des données non significatives. En joignant cette copie anonymée au rapport de bogue que vous envoyez, vous ne risquez pas de divulguer vos données personnelles.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour anonymer le fichier de comptes, procédez comme suit :
+
+\begin{enumerate}
+	\item dans la barre de menus, sélectionnez \menu{Rendre anonyme le fichier de comptes} ; la fenêtre de l'assistant d'anonymation s'ouvre ; validez par le bouton \menu{Suivant} ;
+	\item sélectionnez les données à cacher dans la liste ; validez par le bouton \menu{Suivant} ;
+
+% espace pour changement de ligne dans une liste
+\vspacepdf{1mm}	
+\strong{Attention} : seules les données sélectionnées seront anonymées dans votre fichier, et toutes les autres resteront compréhensibles.
+
+	\item la dernière fenêtre de l'assistant s'ouvre ; validez par le bouton \menu{Fermer} ;
+	\item une boîte de dialogue s'ouvre et affiche \menu{L'opération pour anonymer le fichier a réussi} ; validez par le bouton \menu{Fermer} ;
+	\item Grisbi se ferme.
+\end{enumerate}
+
+Le fichier anonymé se nomme \file{nom-de-votre-fichier-de-comptes-obfuscated.gsb} et est enregistré dans le même répertoire que l'original. Il est au format XML, donc vous pouvez vérifier avec un \gls{editeur de texte} si des données personnelles non souhaitées seraient encore présentes.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Vérifiez que le bogue est toujours présent avec ce fichier, et si oui, envoyez ce fichier avec vos explications à la \lang{liste de rapports de bogues}\footnote{\urlListBugsreport{}}, ou déposez-le sur le  \lang{gestionnaire de bogues Mantis}\footnote{\urlTuxFamilyMantis{}}.
+
+ 
+\section{Rendre anonyme le fichier QIF\label{maintenance-QIF-anonymous}}
+
+
+Vous pouvez ici anonymer seulement le \indexword{fichier d'exportation d'un compte}\index{fichier de comptes !sans données personnelles}\index{export !sans données personnelles}, au lieu de le faire pour l'ensemble de vos comptes avec l'anonymation de votre fichier de comptes comme ci-dessus.
+
+Si vous avez auparavant exporté un compte dans un fichier au format QIF (voir la section \vref{move-export}, \menu{Export de comptes à partir de Grisbi}), cet outil produit une copie de ce fichier, anonymé par remplacement de vos données personnelles par des données non significatives. En joignant cette copie anonymée au rapport de bogue que vous envoyez, vous ne risquez pas de divulguer vos données personnelles.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Pour anonymer un fichier QIF, procédez comme suit :
+
+\begin{enumerate}
+	\item dans la barre de menus, sélectionnez \menu{Rendre anonyme le fichier QIF} ; la fenêtre de l'assistant d'anonymation s'ouvre ; validez par le bouton \menu{Suivant} ;
+	\item un gestionnaire de fichiers s'ouvre ; sélectionnez le fichier QIF que vous voulez anonymer, puis validez ;
+	\item une boîte de dialogue s'ouvre et annonce le succès de l'opération ; le fichier se nomme \file{nom-de-votre-fichier-QIF-anonymized.qif} et son chemin est indiqué ; validez par le bouton \menu{Fermer}.
+\end{enumerate}
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Envoyez ce fichier QIF avec vos explications à la \lang{liste de rapports de bogues}\footnote{\urlListBugsreport{}}, ou déposez-le sur le  \lang{gestionnaire de bogues Mantis}\footnote{\urlTuxFamilyMantis{}}.
+
+
+\section{Mode de débogage\label{maintenance-debug-mode}}
+
+
+Pour utiliser ce \indexword{mode de réparation}\index{bogues !réparation}, sélectionnez \menu{Mode de débogage} dans la barre de menus ;  une boîte de dialogue s'ouvre, qui indique que le mode de débogage est démarré et qui donne le nom du fichier-journal (ou fichier de log) et son chemin ; validez par le bouton \menu{Fermer}.
+
+Grisbi a créé le fichier-journal (ou fichier de log) \file{nom-de-votre-fichier-log.txt}.
+
+% espace pour changement de thème
+\vspacepdf{5mm}
+Envoyez ce fichier avec votre fichier de comptes ou votre fichier QIF anonymé, et avec vos explications à la \lang{liste de rapports de bogues}\footnote{\urlListBugsreport{}}, ou déposez-le sur le  \lang{gestionnaire de bogues Mantis}\footnote{\urlTuxFamilyMantis{}}.
+
+
