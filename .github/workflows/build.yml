@@ -1,0 +1,73 @@
+name: Generate documentation
+
+# Controls when the action will run. Triggers the workflow on push or
+# pull request events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run
+# sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part
+    # of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job
+      # can access it
+      - uses: actions/checkout@v2
+
+      - name: setup prerequisites
+        shell: bash
+        run: |
+          sudo apt install texlive-latex-base texlive-latex-recommended  	texlive-latex-extra hevea texlive-lang-french
+          wget http://mirrors.ctan.org/macros/latex209/contrib/picins.zip
+          unzip picins.zip
+          mkdir -p ~/texmf/tex/latex
+          mv picins ~/texmf/tex/latex
+          texhash ~/texmf
+
+      - name: "build 1.1 fr pdf"
+        shell: bash
+        run: cd src/1.1/fr ; make
+
+      - name: artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: pdf-fr-1.1
+          path: src/1.1/fr/pdf_img/grisbi-manuel-img-1.0.pdf
+
+      - name: "build 1.1 fr html"
+        shell: bash
+        run: cd src/1.1/fr ; make html_img
+
+      - name: artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: html-fr-1.1
+          path: src/1.1/fr/html_img
+
+      - name: "build 1.0 en pdf"
+        shell: bash
+        run: cd src/1.0/en ; make English
+
+      - name: artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: pdf-en-1.0
+          path: src/1.0/en/pdf_img/grisbi-manuel-en-img-1.0.pdf
+
+      - name: "build 1.0 en html"
+        shell: bash
+        run: cd src/1.0/en ; make html_img
+
+      - name: artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: html-en-1.0
+          path: src/1.0/en/html_img
