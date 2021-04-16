@@ -29,6 +29,7 @@ all:
 	@echo '* BUILDING THE IMAGES PDF VERSION'
 	@echo '********************************************************'
 	$(MAKE) clean
+	$(MAKE) pdf_img_indexglossary
 	$(MAKE) pdf_img
 	@echo '********************************************************'
 	@echo '* BUILDING THE IMAGES HTML VERSION'
