@@ -63,7 +63,7 @@ pdf:	$(FILE).pdf
 
 pdf_indexglossary: $(FILE).pdf
 	texindy -C utf8 $(FILE).idx
-	makeglossaries grisbi-manuel.glo
+	makeglossaries $(FILE).glo
 	@echo Remove pdf file
 	rm $(FILE).pdf
 	@echo Compile again in pdf by make pdf to get index and glossary.
@@ -78,7 +78,7 @@ pdf_img_indexglossary:	img pdf
 	test -d pdf_img || mkdir pdf_img
 	mv $(FILE).pdf pdf_img/$(FILE)-img-$(VERSION).pdf
 	texindy -C utf8 $(FILE).idx
-	makeglossaries grisbi-manuel.glo
+	makeglossaries $(FILE).glo
 	@echo Remove pdf file
 	rm pdf_img/$(FILE)-img-$(VERSION).pdf
 	@echo Compile again in pdf by make pdf_img to get index and glossary.
