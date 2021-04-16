@@ -25,7 +25,7 @@ jobs:
       - name: setup prerequisites
         shell: bash
         run: |
-          sudo apt install texlive-latex-base texlive-latex-recommended  	texlive-latex-extra hevea texlive-lang-french
+          sudo apt install texlive-latex-base texlive-latex-recommended  	texlive-latex-extra hevea texlive-lang-french xindy
           wget http://mirrors.ctan.org/macros/latex209/contrib/picins.zip
           unzip picins.zip
           mkdir -p ~/texmf/tex/latex
@@ -34,7 +34,7 @@ jobs:
 
       - name: "build 1.1 fr pdf"
         shell: bash
-        run: cd src/1.1/fr ; make
+        run: cd src/1.1/fr ; make pdf_img_indexglossary ; make pdf_img
 
       - name: artifacts
         uses: actions/upload-artifact@v2
