@@ -32,9 +32,9 @@ jobs:
           mv picins ~/texmf/tex/latex
           texhash ~/texmf
 
-      - name: "build 1.1 fr pdf"
+      - name: "build 1.1 fr"
         shell: bash
-        run: cd src/1.1/fr ; make pdf_img_indexglossary ; make pdf_img
+        run: cd src/1.1/fr ; make
 
       - name: artifacts
         uses: actions/upload-artifact@v2
@@ -42,17 +42,13 @@ jobs:
           name: pdf-fr-1.1
           path: src/1.1/fr/pdf_img/grisbi-manuel-img-1.0.pdf
 
-      - name: "build 1.1 fr html"
-        shell: bash
-        run: cd src/1.1/fr ; make html_img
-
       - name: artifacts
         uses: actions/upload-artifact@v2
         with:
           name: html-fr-1.1
           path: src/1.1/fr/html_img
 
-      - name: "build 1.0 en pdf"
+      - name: "build 1.0 en"
         shell: bash
         run: cd src/1.0/en ; make English
 
@@ -61,10 +57,6 @@ jobs:
         with:
           name: pdf-en-1.0
           path: src/1.0/en/pdf_img/grisbi-manuel-en-img-1.0.pdf
-
-      - name: "build 1.0 en html"
-        shell: bash
-        run: cd src/1.0/en ; make html_img
 
       - name: artifacts
         uses: actions/upload-artifact@v2
