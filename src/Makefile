@@ -29,6 +29,7 @@ all:
 	@echo '* BUILDING THE IMAGES PDF VERSION'
 	@echo '********************************************************'
 	$(MAKE) clean
+	$(MAKE) pdf_img_indexglossary
 	$(MAKE) pdf_img
 	@echo '********************************************************'
 	@echo '* BUILDING THE IMAGES HTML VERSION'
@@ -61,8 +62,8 @@ pdf:	$(FILE).pdf
 	cp $(FILE).pdf pdf/$(FILE)-$(VERSION).pdf
 
 pdf_indexglossary: $(FILE).pdf
-	texindy $(FILE).idx
-	makeglossaries grisbi-manuel.glo
+	texindy -C utf8 $(FILE).idx
+	makeglossaries $(FILE).glo
 	@echo Remove pdf file
 	rm $(FILE).pdf
 	@echo Compile again in pdf by make pdf to get index and glossary.
@@ -76,8 +77,8 @@ pdf_img:	img pdf
 pdf_img_indexglossary:	img pdf
 	test -d pdf_img || mkdir pdf_img
 	mv $(FILE).pdf pdf_img/$(FILE)-img-$(VERSION).pdf
-	texindy $(FILE).idx
-	makeglossaries grisbi-manuel.glo
+	texindy -C utf8 $(FILE).idx
+	makeglossaries $(FILE).glo
 	@echo Remove pdf file
 	rm pdf_img/$(FILE)-img-$(VERSION).pdf
 	@echo Compile again in pdf by make pdf_img to get index and glossary.
