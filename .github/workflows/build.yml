@@ -32,21 +32,21 @@ jobs:
           mv picins ~/texmf/tex/latex
           texhash ~/texmf
 
-      - name: "build 1.1 fr"
+      - name: "build 2.0 fr"
         shell: bash
-        run: cd src/1.1/fr ; make
+        run: cd src/2.0/fr ; make
 
       - name: artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: pdf-fr-1.1
-          path: src/1.1/fr/pdf_img/grisbi-manuel-img-1.0.pdf
+          name: pdf-fr-2.0
+          path: src/2.0/fr/pdf_img/grisbi-manuel-img-2.0.pdf
 
       - name: artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: html-fr-1.1
-          path: src/1.1/fr/html_img
+          name: html-fr-2.0
+          path: src/2.0/fr/html_img
 
       - name: "build 1.0 en"
         shell: bash
